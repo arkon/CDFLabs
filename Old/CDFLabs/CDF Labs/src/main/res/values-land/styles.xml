@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="android:Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/actionBar</item>
+        <item name="android:actionOverflowButtonStyle">@style/actionBarOverflow</item>
+        <item name="android:spinnerItemStyle">@style/spinnerItemStyle</item>
+        <item name="android:actionBarTabStyle">@style/ActionBarTabStyle</item>
+    </style>
+
+    <style name="actionBar" parent="android:Widget.Holo.ActionBar">
+        <item name="android:titleTextStyle">@style/actionBarTitleText</item>
+        <item name="android:background">@color/actionbar</item>
+    </style>
+
+    <style name="actionBarTitleText" parent="android:TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="actionBarOverflow" parent="android:style/Widget.Holo.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_action_overflow</item>
+    </style>
+
+    <style name="spinnerItemStyle">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:textSize">@dimen/spinner_size</item>
+        <item name="android:textColor">@color/black_text</item>
+    </style>
+
+    <style name="ActionBarTabStyle" parent="@android:style/Widget.Holo.Light.ActionBar.TabView">
+        <item name="android:background">@drawable/tab_indicator_land</item>
+    </style>
+
+</resources>

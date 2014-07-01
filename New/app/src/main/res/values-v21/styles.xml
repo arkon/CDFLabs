@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
+        <item name="android:colorPrimary">@color/actionbar</item>
+        <item name="android:colorPrimaryDark">@color/actionbar_dark</item>
+        <item name="android:spinnerItemStyle">@style/spinnerItemStyle</item>
+        <item name="ptrHeaderStyle">@style/Widget.Custom.PtrHeader</item>
+    </style>
+
+    <style name="spinnerItemStyle">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:textSize">@dimen/spinner_size</item>
+        <item name="android:textColor">@color/black_text</item>
+    </style>
+
+    <style name="Widget.Custom.PtrHeader" parent="android:Widget">
+        <item name="ptrPullText">@string/pull_text</item>
+        <item name="ptrRefreshingText">@string/pull_refreshing</item>
+    </style>
+
+</resources>
