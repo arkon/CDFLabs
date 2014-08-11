@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="C:\Users\Eugene\Documents\GitHub\CDFLabs\New\app\build\intermediates\pre-dexed\debug\jsoup-1.7.3-708d590bb435843f904e723c37b9a89f99c09cd7.jar"
+        jar="C:\Users\Eugene\Documents\GitHub\CDFLabs\New\app\libs\jsoup-1.7.3.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="ab1f22cadc2f8b514e55ba368f5128056fe304da"/>
+    <item
+        dex="C:\Users\Eugene\Documents\GitHub\CDFLabs\New\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-6e26799cb42adf534fbef31863efe2d07a8334f9.jar"
+        jar="C:\Users\Eugene\AppData\Local\Android\android-studio\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67"/>
+    <item
+        dex="C:\Users\Eugene\Documents\GitHub\CDFLabs\New\app\build\intermediates\pre-dexed\debug\support-v13-19.1.0-d71257c3692fe81e8fa06b70bb85d260850e5ac2.jar"
+        jar="C:\Users\Eugene\AppData\Local\Android\android-studio\sdk\extras\android\m2repository\com\android\support\support-v13\19.1.0\support-v13-19.1.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="6b852a232f642c75a7fdfc7212b841b8c8f8959c"/>
+    <item
+        dex="C:\Users\Eugene\Documents\GitHub\CDFLabs\New\app\build\intermediates\pre-dexed\debug\classes-1a19a343b146ce085a1c7da5d81683a4b1278ac8.jar"
+        jar="C:\Users\Eugene\Documents\GitHub\CDFLabs\New\build\intermediates\exploded-aar\com.github.castorflex.smoothprogressbar\library\0.4.0\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="6ca319f998430aa20c4dde97ba6df213d6cf3dd0"/>
+    <item
+        dex="C:\Users\Eugene\Documents\GitHub\CDFLabs\New\app\build\intermediates\pre-dexed\debug\classes-d03d021b662ed0e61b6cf799bd7bd95385b8b427.jar"
+        jar="C:\Users\Eugene\Documents\GitHub\CDFLabs\New\build\intermediates\exploded-aar\com.github.chrisbanes.actionbarpulltorefresh\library\0.9.9\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="06ca4ea902f14efb76284d918edb085df33cc365"/>
+
+</pre-dex-items>
