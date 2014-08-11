@@ -9,3 +9,5 @@ This project was created using Android Studio Beta (*not Eclipse*).
 Please note that the current version is aimed at the Android L developer preview and as such is incompatible with older versions of Android (due to the nature of the preview SDK).
 
 The app is available for download from the [Google Play Store](https://play.google.com/store/apps/details?id=me.echeung.cdflabs).
+
+This app is available under a GPL V2 license, so you're free to redistrubute the code however you wish, but you must make your code available under the same terms.
