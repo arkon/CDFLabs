@@ -2,6 +2,8 @@ package me.echeung.cdflabs.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -74,11 +76,25 @@ public class AboutActivity extends Activity {
         final String[] aboutData = getResources().getStringArray(R.array.about);
         data = new ArrayList<Map<String, String>>();
 
+        // Try to get the version number
+        String version;
+        try {
+            PackageInfo pInfo = this.getPackageManager().getPackageInfo(this.getPackageName(), PackageManager.GET_META_DATA);
+            version = pInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            version = "Uh... something went wrong here.";
+        }
+
         // 2 items per row
         for (int i = 0; i < aboutData.length; i += 2) {
             Map<String, String> item = new HashMap<String, String>();
             item.put("1", aboutData[i]);
-            item.put("2", aboutData[i + 1]);
+            if (i == 2) {
+                // Version number
+                item.put("2", version);
+            } else {
+                item.put("2", aboutData[i + 1]);
+            }
             data.add(item);
         }
 

@@ -10,8 +10,8 @@ android {
         minSdkVersion 16
 //        targetSdkVersion 'android-L'
         targetSdkVersion 20
-        versionCode 7
-        versionName "0.7"
+        versionCode 8
+        versionName "0.8"
     }
     buildTypes {
         release {

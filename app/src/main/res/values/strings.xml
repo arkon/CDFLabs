@@ -5,9 +5,10 @@
     <string name="website_faq">http://www.cdf.toronto.edu/faq.html</string>
     <string name="website_cats">https://www.imgur.com/r/catgifs/</string>
     <string name="website_me">http://www.echeung.me/</string>
-    <string name="website_github">https://github.com/arkon94/CDFLabs</string>
+    <string name="website_github">https://github.com/arkon/CDFLabs</string>
 
     <string name="app_name">CDF Labs</string>
+
     <string name="action_map">Locations</string>
     <string name="action_cdf">CDF FAQ</string>
     <string name="action_about">About</string>
