@@ -33,6 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="sans-serif-light"
                 android:textSize="20sp"
                 android:textColor="@color/black_text"
                 android:text="@string/bahen_address" />
@@ -49,26 +50,28 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-light"
             android:textSize="20sp"
             android:text="@string/floor_second" />
 
         <ImageView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:layout_gravity="center_horizontal"
             android:contentDescription="@string/map_bahen_second_alt"
-            android:src="@drawable/map_gerstein" />
+            android:src="@drawable/map_bahen_second" />
 
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-light"
             android:textSize="20sp"
             android:text="@string/floor_third" />
 
         <ImageView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:layout_gravity="center_horizontal"
