@@ -11,4 +11,6 @@
     <dimen name="lab_text_size">22dp</dimen>
     <dimen name="stats_text_size">14dp</dimen>
 
+    <dimen name="widget_margin">8dp</dimen>
+
 </resources>
