@@ -1,13 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 'android-L'
+//    compileSdkVersion 'android-L'
+    compileSdkVersion 20
     buildToolsVersion "20.0.0"
 
     defaultConfig {
         applicationId "me.echeung.cdflabs"
         minSdkVersion 16
-        targetSdkVersion 'android-L'
+//        targetSdkVersion 'android-L'
+        targetSdkVersion 20
         versionCode 7
         versionName "0.7"
     }
@@ -20,8 +22,8 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v13:19.+'
-    compile 'com.android.support:support-v4:19.0.+'
+    compile 'com.android.support:support-v13:20.+'
+    compile 'com.android.support:support-v4:20.0.+'
     compile 'com.github.chrisbanes.actionbarpulltorefresh:library:+'
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }

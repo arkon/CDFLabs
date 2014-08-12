@@ -2,34 +2,52 @@
 <pre-dex-items>
 
     <item
-        dex="C:\Users\Eugene\Documents\GitHub\CDFLabs\New\app\build\intermediates\pre-dexed\debug\jsoup-1.7.3-708d590bb435843f904e723c37b9a89f99c09cd7.jar"
-        jar="C:\Users\Eugene\Documents\GitHub\CDFLabs\New\app\libs\jsoup-1.7.3.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="ab1f22cadc2f8b514e55ba368f5128056fe304da"/>
-    <item
-        dex="C:\Users\Eugene\Documents\GitHub\CDFLabs\New\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-6e26799cb42adf534fbef31863efe2d07a8334f9.jar"
-        jar="C:\Users\Eugene\AppData\Local\Android\android-studio\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67"/>
-    <item
-        dex="C:\Users\Eugene\Documents\GitHub\CDFLabs\New\app\build\intermediates\pre-dexed\debug\support-v13-19.1.0-d71257c3692fe81e8fa06b70bb85d260850e5ac2.jar"
-        jar="C:\Users\Eugene\AppData\Local\Android\android-studio\sdk\extras\android\m2repository\com\android\support\support-v13\19.1.0\support-v13-19.1.0.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="6b852a232f642c75a7fdfc7212b841b8c8f8959c"/>
-    <item
-        dex="C:\Users\Eugene\Documents\GitHub\CDFLabs\New\app\build\intermediates\pre-dexed\debug\classes-1a19a343b146ce085a1c7da5d81683a4b1278ac8.jar"
-        jar="C:\Users\Eugene\Documents\GitHub\CDFLabs\New\build\intermediates\exploded-aar\com.github.castorflex.smoothprogressbar\library\0.4.0\classes.jar"
+        dex="C:\Users\Eugene\Documents\GitHub\CDFLabs\app\build\intermediates\pre-dexed\debug\classes-6533112e63da3e5fc1a9c9604d8e0da4e5fb3ab9.jar"
+        jar="C:\Users\Eugene\Documents\GitHub\CDFLabs\app\build\intermediates\exploded-aar\com.github.castorflex.smoothprogressbar\library\0.4.0\classes.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="6ca319f998430aa20c4dde97ba6df213d6cf3dd0"/>
     <item
-        dex="C:\Users\Eugene\Documents\GitHub\CDFLabs\New\app\build\intermediates\pre-dexed\debug\classes-d03d021b662ed0e61b6cf799bd7bd95385b8b427.jar"
-        jar="C:\Users\Eugene\Documents\GitHub\CDFLabs\New\build\intermediates\exploded-aar\com.github.chrisbanes.actionbarpulltorefresh\library\0.9.9\classes.jar"
+        dex="C:\Users\Eugene\Documents\GitHub\CDFLabs\app\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-55977f563617b7ec48f22f59af413a7e6f520938.jar"
+        jar="C:\Users\Eugene\Documents\GitHub\CDFLabs\app\build\intermediates\exploded-aar\com.android.support\support-v13\20.0.0\libs\internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="27bbd3982cdfe4468a9bf99c8c773734a9049e33"/>
+    <item
+        dex="C:\Users\Eugene\Documents\GitHub\CDFLabs\app\build\intermediates\pre-dexed\debug\classes-d5cc2a0279505f2a42078934d9f6687d2a2220a5.jar"
+        jar="C:\Users\Eugene\Documents\GitHub\CDFLabs\app\build\intermediates\exploded-aar\com.android.support\support-v13\20.0.0\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e128103d5281ddd26195a7f980b36d0d005a4e56"/>
+    <item
+        dex="C:\Users\Eugene\Documents\GitHub\CDFLabs\app\build\intermediates\pre-dexed\debug\jsoup-1.7.3-bca66a841d6186d4ed2a6af59e8b76cc9141702a.jar"
+        jar="C:\Users\Eugene\Documents\GitHub\CDFLabs\app\libs\jsoup-1.7.3.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="ab1f22cadc2f8b514e55ba368f5128056fe304da"/>
+    <item
+        dex="C:\Users\Eugene\Documents\GitHub\CDFLabs\app\build\intermediates\pre-dexed\debug\classes-0ec3cbeb35037eb50eacfdc2d0c21a6d008156a2.jar"
+        jar="C:\Users\Eugene\Documents\GitHub\CDFLabs\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
+    <item
+        dex="C:\Users\Eugene\Documents\GitHub\CDFLabs\app\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-36e0c5f925875aeaa83012bc939803365a37a8e2.jar"
+        jar="C:\Users\Eugene\AppData\Local\Android\android-studio\sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
+    <item
+        dex="C:\Users\Eugene\Documents\GitHub\CDFLabs\app\build\intermediates\pre-dexed\debug\classes-f0fadc24cc05fc9fa95b64e225ed3a2adf485c2c.jar"
+        jar="C:\Users\Eugene\Documents\GitHub\CDFLabs\app\build\intermediates\exploded-aar\com.github.chrisbanes.actionbarpulltorefresh\library\0.9.9\classes.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="06ca4ea902f14efb76284d918edb085df33cc365"/>
+    <item
+        dex="C:\Users\Eugene\Documents\GitHub\CDFLabs\app\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-719e0dcf1d59342bbc9ee3d091570483501e2f54.jar"
+        jar="C:\Users\Eugene\Documents\GitHub\CDFLabs\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
 
 </pre-dex-items>
