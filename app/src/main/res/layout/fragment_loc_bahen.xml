@@ -76,7 +76,7 @@
             android:adjustViewBounds="true"
             android:layout_gravity="center_horizontal"
             android:contentDescription="@string/map_bahen_third_alt"
-            android:src="@drawable/map_gerstein" />
+            android:src="@drawable/map_bahen_third" />
 
     </LinearLayout>
 
