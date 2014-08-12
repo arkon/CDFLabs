@@ -34,15 +34,17 @@ public class DataScraper extends AsyncTask<Void, Void, Document> {
         try {
             doc = Jsoup.connect(context.getString(R.string.website_data)).get();
             return doc;
-        } catch (IOException e) {}
-
-        return null;
+        } catch (IOException e) {
+            return null;
+        }
     }
 
     @Override
     protected void onPostExecute(Document items) {
-        labs = retrieveData();
-        fragment.updateAdapter(labs);
+        if (doc != null) {
+            labs = retrieveData();
+            fragment.updateAdapter(labs);
+        }
     }
 
     /** Scrape web page and instantiate the Labs with the data. */

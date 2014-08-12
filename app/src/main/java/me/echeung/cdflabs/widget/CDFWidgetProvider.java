@@ -7,14 +7,17 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.RemoteViews;
 
-import java.util.Random;
-
 import me.echeung.cdflabs.R;
+import me.echeung.cdflabs.activities.MainActivity;
+import me.echeung.cdflabs.adapters.LabsListAdapter;
 
 /**
- * Created by Eugene on 2014-08-12.
+ * This handles the widget.
  */
 public class CDFWidgetProvider extends AppWidgetProvider {
 
@@ -29,25 +32,21 @@ public class CDFWidgetProvider extends AppWidgetProvider {
                 CDFWidgetProvider.class);
         int[] allWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
         for (int widgetId : allWidgetIds) {
-            // create some random data
-            int number = 10;
 
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
                     R.layout.appwidget_layout);
 
+//            GridView gridview = (GridView) remoteViews.findViewById(R.id.labs_grid);
+//            gridview.setAdapter(new LabsListAdapter(context, null));
+
             // Set the text
-            remoteViews.setTextViewText(R.id.update, String.valueOf(number));
+//            remoteViews.setTextViewText(R.id.update, String.valueOf(number));
 
             // Register an onClickListener
-            Intent intent = new Intent(context, CDFWidgetProvider.class);
-
-            intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
-            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
-
+            Intent intent = new Intent(context, MainActivity.class);
             PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
                     0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-            remoteViews.setOnClickPendingIntent(R.id.update, pendingIntent);
-            appWidgetManager.updateAppWidget(widgetId, remoteViews);
+            remoteViews.setOnClickPendingIntent(R.id.labs_grid, pendingIntent);
         }
     }
 }
