@@ -33,9 +33,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:drawableLeft="@drawable/ic_place"
                 android:fontFamily="sans-serif-light"
                 android:textSize="20sp"
                 android:textColor="@color/black_text"
+                android:gravity="center_vertical"
                 android:text="@string/bahen_address" />
 
         </LinearLayout>

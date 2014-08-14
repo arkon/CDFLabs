@@ -35,16 +35,16 @@
             android:parentActivityName="me.echeung.cdflabs.activities.MainActivity" >
         </activity>
 
-        <receiver
-            android:name="me.echeung.cdflabs.widget.CDFWidgetProvider"
-            android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/cdf_appwidget" />
-        </receiver>
+        <!--<receiver-->
+            <!--android:name="me.echeung.cdflabs.widget.CDFWidgetProvider"-->
+            <!--android:label="@string/app_name" >-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
+            <!--</intent-filter>-->
+            <!--<meta-data-->
+                <!--android:name="android.appwidget.provider"-->
+                <!--android:resource="@xml/cdf_appwidget" />-->
+        <!--</receiver>-->
     </application>
 
 </manifest>

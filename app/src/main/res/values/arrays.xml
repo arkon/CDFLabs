@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string-array name="sort_array">
         <item>Labs by building</item>
         <item>Labs by availability</item>
@@ -15,4 +16,5 @@
         <item>GitHub</item>
         <item>This project is open source!</item>
     </string-array>
+
 </resources>

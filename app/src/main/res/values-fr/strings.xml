@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="website_data">http://www.cdf.toronto.edu/usage/</string>
+    <string name="website_faq">http://www.cdf.toronto.edu/faq.html</string>
+    <string name="website_cats">https://www.imgur.com/r/catgifs/</string>
+    <string name="website_me">http://www.echeung.me/</string>
+    <string name="website_github">https://github.com/arkon/CDFLabs</string>
+
+    <string name="app_name">CDF Labs</string>
+
+    <string name="action_map">Emplacements</string>
+    <string name="action_cdf">FAQ CDF</string>
+    <string name="action_about">À propos</string>
+
+    <string name="no_connection">Il n\'y a pas de connexion réseau à l\'heure actuelle. Réessayez plus tard.</string>
+    <string name="retry">Essayer de nouveau</string>
+
+    <string name="pull_text">Déroulez pour rafraîchir</string>
+    <string name="pull_refreshing">Obtenir des mises à jour...</string>
+
+    <string name="free_comps">DISPONIBLE</string>
+    <string name="stats" formatted="false">%s machines total (%s%% occupé)</string>
+    <string name="timestamp">Dernière mise à jour: %s</string>
+
+    <string name="title_activity_about">À propos</string>
+    <string name="title_activity_map">Emplacements</string>
+    <string name="title_section1">Bahen</string>
+    <string name="title_section2">Gerstein</string>
+    <string name="title_section3">NX</string>
+
+    <string name="bahen_name">Centre Bahen de technologie de l\'information</string>
+    <string name="bahen_address">40 rue St George</string>
+    <string name="bahen_web">https://www.google.com/maps/place/Bahen+Centre+for+Information+Technology/@43.659489,-79.397613,17z/data=!3m1!4b1!4m2!3m1!1s0x882b34c75165c957:0x6459384147b4b67b?hl=en</string>
+    <string name="bahen_info">La majorité des laboratoires CDF sont dans le Centre Bahen. Ils se situent à:
+BA 2210, BA 2220, BA 2240, BA 3175, BA 3185, BA 3195 et la Grande Salle (BA 3200).</string>
+    <string name="map_bahen_second_alt">Un plan du deuxième étage du Centre Bahen</string>
+    <string name="map_bahen_third_alt">Un plan du troisième étage du Centre Bahen</string>
+
+    <string name="gerstein_name">Centre d\'information sur la science Gerstein</string>
+    <string name="gerstein_address">Bibliothèque Sigmund Samuel, 7 cercle King\'s College</string>
+    <string name="gerstein_web">https://www.google.com/maps/place/Gerstein+Science+Information+Centre/@43.66208,-79.393764,17z/data=!3m2!4b1!5s0x882b34b84d333c2f:0xc015f6f99a229640!4m2!3m1!1s0x882b34b84d5634db:0x405cf564711b5702?hl=en</string>
+    <string name="gerstein_info">Gerstein contient un laboratoire CDF : chambre 2360 au face nord du deuxième étage</string>
+    <string name="map_gerstein_alt">Un plan du deuxième étage de Gerstein</string>
+
+    <string name="nx_name">NX (Accès distant)</string>
+    <string name="nx_web">http://www.cdf.utoronto.ca/using_cdf/remote_access_server.html</string>
+    <string name="nx_info">CDF offre un serveur NX pour accès à distance à partir de chez vous ou de votre portatif. Si votre connexion Internet est lente, la technologie NX vise à améliorer l\'expérience graphique de l\'accès à distance en optimisant la vitesse apparente de réaction et en permettant la suspension d\'une session graphique pour être rejoint plus tard. Vous pouvez également vous connecter au serveur NX à partir de n\'importe quel poste CDF ou n\'importe quelle poste de travail aux Information Commons en utilisant un profil spécialement conçu.</string>
+    <string name="nx_more">Informations supplementaires en ligne</string>
+
+    <string name="floor_second">Deuxième étage</string>
+    <string name="floor_third">Troisième étage</string>
+
+</resources>
