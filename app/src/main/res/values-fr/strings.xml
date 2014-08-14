@@ -20,7 +20,7 @@
     <string name="pull_refreshing">Obtenir des mises à jour...</string>
 
     <string name="free_comps">DISPONIBLE</string>
-    <string name="stats" formatted="false">%s machines total (%s%% occupé)</string>
+    <string name="stats" formatted="false">%s ordinateurs au total (%s%% occupé)</string>
     <string name="timestamp">Dernière mise à jour: %s</string>
 
     <string name="title_activity_about">À propos</string>
