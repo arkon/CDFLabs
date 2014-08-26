@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="website_data">http://www.cdf.toronto.edu/usage/</string>
+    <string name="website_faq">http://www.cdf.toronto.edu/faq.html</string>
+    <string name="website_cats">https://www.imgur.com/r/catgifs/</string>
+    <string name="website_me">http://www.echeung.me/</string>
+    <string name="website_github">https://github.com/arkon/CDFLabs</string>
+
+    <string name="app_name">CDF Labs</string>
+
+    <string name="action_map">Konumlar</string>
+    <string name="action_cdf">CDF SSS</string>
+    <string name="action_about">Hakkında</string>
+
+    <string name="no_connection">Şu anda ağ bağlantısı yok. Daha sonra tekrar deneyin.</string>
+    <string name="retry">Tekrar dene</string>
+
+    <string name="pull_text">Yenilemek için aşağı çekin</string>
+    <string name="pull_refreshing">Güncelliyor...</string>
+
+    <string name="free_comps">ÜCRETSİZ</string>
+    <string name="stats" formatted="false">%s toplam makine (%s%% meşgul)</string>
+    <string name="timestamp">Son güncelleme: %s</string>
+
+    <string name="title_activity_about">Hakkında</string>
+    <string name="title_activity_map">Konumlar</string>
+    <string name="title_section1">Bahen</string>
+    <string name="title_section2">Gerstein</string>
+    <string name="title_section3">NX</string>
+
+    <string name="bahen_name">Bahen Enformasyon Teknoloji Merkezi</string>
+    <string name="bahen_address">40 St George Sokağı</string>
+    <string name="bahen_web">https://www.google.com/maps/place/Bahen+Centre+for+Information+Technology/@43.659489,-79.397613,17z/data=!3m1!4b1!4m2!3m1!1s0x882b34c75165c957:0x6459384147b4b67b?hl=en</string>
+    <string name="bahen_info">Bahen Merkezi CDF laboratuvarlarının çoğunluğuna ev sahipliği yapmaktadır. Laboratuvarlar aşağıdaki odalarda yer almaktadırlar:
+BA 2210, BA 2220, BA 2240, BA 3175, BA 3185, BA 3195 ve Great Hall (BA 3200).</string>
+    <string name="map_bahen_second_alt">Bahen\'in ikinci kat haritası</string>
+    <string name="map_bahen_third_alt">Bahen\'in üçüncü kat haritası</string>
+
+    <string name="gerstein_name">Gerstein Bilim Enformasyon Merkezi</string>
+    <string name="gerstein_address">Sigmund Samuel Kütüphanesi, 7 King’s College Çemberi</string>
+    <string name="gerstein_web">https://www.google.com/maps/place/Gerstein+Science+Information+Centre/@43.66208,-79.393764,17z/data=!3m2!4b1!5s0x882b34b84d333c2f:0xc015f6f99a229640!4m2!3m1!1s0x882b34b84d5634db:0x405cf564711b5702?hl=en</string>
+    <string name="gerstein_info">Gerstein, ikinci katın kuzey ucunda, oda 2360\'da bir CDF laboratuvarına ev sahipliği yapmaktadır.</string>
+    <string name="map_gerstein_alt">Gerstein\'in ikinci kat haritası</string>
+
+    <string name="nx_name">NX (Uzaktan Erişim Sunucusu)</string>
+    <string name="nx_web">http://www.cdf.utoronto.ca/using_cdf/remote_access_server.html</string>
+    <string name="nx_info">CDF ev ya da dizüstü bilgisayarınız için kablosuz ağ vasıtasıyla uzaktan masaüstü bağlantısı için bir NX sunucusu sunmaktadır. NX Teknolojisi, algılanan yanıt hızını en uygun hale getirerek ve kullanıcıya bir canlı bağlantıyı askıya alıp daha sonra tekrar bağlanma imkanını vererek yavaş bir İnternet bağlantısı üzerinden uzaktan canlı bağlantı kurma tecrübesini büyük ölçüde geliştirmeye çalışmaktadır. CDF\'in NX Sunucusuna herhangi bir CDF veya Information Commons çalışma istasyonundan da özel olarak hazırlanmış bir profil kullanarak bağlanabilirsiniz.</string>
+    <string name="nx_more">Daha fazla bilgi çevrimiçi</string>
+
+    <string name="floor_second">İkinci kat</string>
+    <string name="floor_third">Üçüncü kat</string>
+
+</resources>

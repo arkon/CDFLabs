@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="sort_array">
+        <item>Binalara göre laboratuvarlar</item>
+        <item>Müsaitiyete göre laboratuvarlar</item>
+    </string-array>
+
+    <string-array name="about">
+        <item>CDF SSS</item>
+        <item>Bu uygulamanın CDF veya Toronto Üniversitesi ile herhangi bir bağlantısı yoktur.</item>
+        <item>Kuruluş sürümü</item>
+        <item>Dummy</item>
+        <item>Geliştirici</item>
+        <item>Eugene Cheung</item>
+        <item>GitHub</item>
+        <item>Bu proje açık kaynaklıdır!</item>
+    </string-array>
+
+</resources>
