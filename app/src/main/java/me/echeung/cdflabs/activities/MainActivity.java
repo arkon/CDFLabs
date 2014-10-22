@@ -58,11 +58,4 @@ public class MainActivity extends ActionBarActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
     }
-
-    /** Basically just restart the fragment (which will try to load the data again). */
-    public void retryButton(View view) {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, new LabsFragment())
-                .commit();
-    }
 }

@@ -1,5 +1,6 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/labs_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -34,25 +35,16 @@
             android:orientation="vertical"
             android:background="@color/list_divider" />
 
-        <android.support.v4.widget.SwipeRefreshLayout
-            android:id="@+id/ptr_layout"
-            android:layout_height="0dp"
-            android:layout_width="fill_parent"
-            android:layout_weight="1"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/labs"
+            android:scrollbars="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
             android:layout_below="@+id/divider1"
             android:layout_above="@+id/bottom"
-            android:visibility="gone">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/labs"
-                android:scrollbars="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipToPadding="false"
-                android:divider="@color/list_divider"
-                android:dividerHeight="1dip" />
-
-        </android.support.v4.widget.SwipeRefreshLayout>
+            android:divider="@color/list_divider"
+            android:dividerHeight="1dip" />
 
         <LinearLayout
             android:id="@+id/bottom"
@@ -108,12 +100,12 @@
             android:textColor="@color/grey_text" />
 
         <Button
+            android:id="@+id/btn_retry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="retryButton"
             android:text="@string/retry"
             android:textSize="20sp" />
 
     </LinearLayout>
 
-</RelativeLayout>
+</android.support.v4.widget.SwipeRefreshLayout>

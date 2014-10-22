@@ -11,7 +11,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -30,29 +32,44 @@ import me.echeung.cdflabs.labs.LabsByBuilding;
 
 public class LabsFragment extends Fragment {
 
+    private View rootView;
+
     private SwipeRefreshLayout mPullToRefreshLayout;
     private RecyclerView listLabs;
     private LabsListAdapter adapter;
     private RelativeLayout labsView;
     private ProgressBar progress;
     private LinearLayout empty;
+    private Button retry;
     private Spinner sort;
     private TextView timestamp;
 
     private List<Lab> labs;
 
-    private Boolean sortAvail = false;
+    private Boolean sortAvail = true;
 
     public LabsFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_labs, container, false);
+        rootView = inflater.inflate(R.layout.fragment_labs, container, false);
 
         progress = (ProgressBar) rootView.findViewById(R.id.progress);
-        empty    = (LinearLayout) rootView.findViewById(R.id.empty_list);
+        empty = (LinearLayout) rootView.findViewById(R.id.empty_list);
 
+        retry = (Button) rootView.findViewById(R.id.btn_retry);
+        retry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initializeView(rootView);
+            }
+        });
+
+        return initializeView(rootView);
+    }
+
+    private View initializeView(View rootView) {
         if (!isNetworkAvailable()) {
             // No network connection: show retry button
             empty.setVisibility(View.VISIBLE);
@@ -60,57 +77,74 @@ public class LabsFragment extends Fragment {
 
             return rootView;
         } else {
+            empty.setVisibility(View.GONE);
+
             // Get data from website
             DataScraper dataTask = new DataScraper(getActivity(), this);
             dataTask.execute();
-        }
 
-        labsView  = (RelativeLayout) rootView.findViewById(R.id.labs_list);
-        listLabs  = (RecyclerView) rootView.findViewById(R.id.labs);
-        sort      = (Spinner) rootView.findViewById(R.id.sort);
-        timestamp = (TextView) rootView.findViewById(R.id.timestamp);
+            labsView = (RelativeLayout) rootView.findViewById(R.id.labs_list);
+            timestamp = (TextView) rootView.findViewById(R.id.timestamp);
 
-        listLabs.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        // Pull to refresh on labs list
-        mPullToRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.ptr_layout);
-        mPullToRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                if (!isNetworkAvailable()) {
-                    // No network connection: show retry
-                    empty.setVisibility(View.VISIBLE);
-                    labsView.setVisibility(View.GONE);
-                    mPullToRefreshLayout.setRefreshing(false);
-                } else {
-                    // Get data from website
-                    DataScraper dataTask = new DataScraper(getActivity(), LabsFragment.this);
-                    dataTask.execute();
-                }
-            }
-        });
-
-        sort.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView,
-                                       int position, long id) {
-                if (labs != null) {
-                    if (position == 0) {
-                        // Labs by availability
-                        Collections.sort(labs, new LabsByAvail());
-                        sortAvail = true;
+            // Pull to refresh on labs list
+            mPullToRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.labs_container);
+            mPullToRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    if (!isNetworkAvailable()) {
+                        // No network connection: show retry
+                        empty.setVisibility(View.VISIBLE);
+                        labsView.setVisibility(View.GONE);
+                        mPullToRefreshLayout.setRefreshing(false);
                     } else {
-                        // Labs by building
-                        Collections.sort(labs, new LabsByBuilding());
-                        sortAvail = false;
+                        // Get data from website
+                        DataScraper dataTask = new DataScraper(getActivity(), LabsFragment.this);
+                        dataTask.execute();
                     }
-                    updateAdapter(labs);
                 }
-            }
+            });
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {}
-        });
+            // The list of labs
+            listLabs = (RecyclerView) rootView.findViewById(R.id.labs);
+            listLabs.setLayoutManager(new LinearLayoutManager(getActivity()));
+            listLabs.setOnScrollListener(new RecyclerView.OnScrollListener() {
+                @Override
+                public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                    super.onScrollStateChanged(recyclerView, newState);
+                }
+
+                @Override
+                public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                    int topRowVerticalPosition =
+                            (listLabs == null || listLabs.getChildCount() == 0) ? 0 : listLabs.getChildAt(0).getTop();
+                    mPullToRefreshLayout.setEnabled(topRowVerticalPosition >= 0);
+                }
+            });
+
+            sort = (Spinner) rootView.findViewById(R.id.sort);
+            sort.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parentView, View selectedItemView,
+                                           int position, long id) {
+                    if (labs != null) {
+                        if (position == 0) {
+                            // Labs by availability
+                            Collections.sort(labs, new LabsByAvail());
+                            sortAvail = true;
+                        } else {
+                            // Labs by building
+                            Collections.sort(labs, new LabsByBuilding());
+                            sortAvail = false;
+                        }
+                        updateAdapter(labs);
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parentView) {
+                }
+            });
+        }
 
         return rootView;
     }
