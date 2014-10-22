@@ -10,102 +10,108 @@
     tools:context="me.echeung.cdflabs.activities.MainActivity$LabsFragment">
 
     <RelativeLayout
-        android:id="@+id/labs_list"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/card"
-        android:orientation="vertical"
-        android:paddingTop="0dp"
-        android:paddingBottom="2dp"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp"
-        android:visibility="gone">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <Spinner
-            android:id="@+id/sort"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/sort_array"/>
-
-        <LinearLayout
-            android:id="@+id/divider1"
+        <RelativeLayout
+            android:id="@+id/labs_list"
             android:layout_width="fill_parent"
-            android:layout_height="1dip"
-            android:layout_below="@+id/sort"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card"
             android:orientation="vertical"
-            android:background="@color/list_divider" />
+            android:paddingTop="0dp"
+            android:paddingBottom="2dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:visibility="gone">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/labs"
-            android:scrollbars="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:layout_below="@+id/divider1"
-            android:layout_above="@+id/bottom"
-            android:divider="@color/list_divider"
-            android:dividerHeight="1dip" />
-
-        <LinearLayout
-            android:id="@+id/bottom"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="vertical">
+            <Spinner
+                android:id="@+id/sort"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/sort_array"/>
 
             <LinearLayout
+                android:id="@+id/divider1"
                 android:layout_width="fill_parent"
                 android:layout_height="1dip"
+                android:layout_below="@+id/sort"
                 android:orientation="vertical"
                 android:background="@color/list_divider" />
 
-            <TextView
-                android:id="@+id/timestamp"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/labs"
+                android:scrollbars="vertical"
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:layout_below="@+id/divider1"
+                android:layout_above="@+id/bottom"
+                android:divider="@color/list_divider"
+                android:dividerHeight="1dip" />
+
+            <LinearLayout
+                android:id="@+id/bottom"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:orientation="vertical"
+                    android:background="@color/list_divider" />
+
+                <TextView
+                    android:id="@+id/timestamp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:padding="@dimen/activity_vertical_margin"
+                    android:textSize="14sp"
+                    android:textColor="@color/grey_text" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/progress"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_centerInParent="true" />
+
+        <LinearLayout
+            android:id="@+id/empty_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
                 android:gravity="center"
-                android:padding="@dimen/activity_vertical_margin"
-                android:textSize="14sp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/no_connection"
+                android:textSize="20sp"
                 android:textColor="@color/grey_text" />
+
+            <Button
+                android:id="@+id/btn_retry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/retry"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
     </RelativeLayout>
-
-    <ProgressBar
-        android:id="@+id/progress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_centerInParent="true" />
-
-    <LinearLayout
-        android:id="@+id/empty_list"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
-            android:gravity="center"
-            android:layout_marginBottom="10dp"
-            android:text="@string/no_connection"
-            android:textSize="20sp"
-            android:textColor="@color/grey_text" />
-
-        <Button
-            android:id="@+id/btn_retry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/retry"
-            android:textSize="20sp" />
-
-    </LinearLayout>
 
 </android.support.v4.widget.SwipeRefreshLayout>

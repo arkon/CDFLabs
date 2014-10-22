@@ -16,9 +16,6 @@
     <string name="no_connection">Şu anda ağ bağlantısı yok. Daha sonra tekrar deneyin.</string>
     <string name="retry">Tekrar dene</string>
 
-    <string name="pull_text">Yenilemek için aşağı çekin</string>
-    <string name="pull_refreshing">Güncelliyor...</string>
-
     <string name="free_comps">ÜCRETSİZ</string>
     <string name="stats" formatted="false">%s toplam makine (%s%% meşgul)</string>
     <string name="timestamp">Son güncelleme: %s</string>

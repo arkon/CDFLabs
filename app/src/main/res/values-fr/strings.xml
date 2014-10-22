@@ -16,9 +16,6 @@
     <string name="no_connection">Il n\'y a pas de connexion réseau à l\'heure actuelle. Réessayez plus tard.</string>
     <string name="retry">Essayer de nouveau</string>
 
-    <string name="pull_text">Déroulez pour rafraîchir</string>
-    <string name="pull_refreshing">Obtenir des mises à jour...</string>
-
     <string name="free_comps">DISPONIBLE</string>
     <string name="stats" formatted="false">%s ordinateurs au total (%s%% occupé)</string>
     <string name="timestamp">Dernière mise à jour: %s</string>

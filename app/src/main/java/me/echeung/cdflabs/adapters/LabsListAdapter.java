@@ -57,7 +57,6 @@ public class LabsListAdapter extends RecyclerView.Adapter<LabsListAdapter.LabVie
     }
 
     public static class LabViewHolder extends RecyclerView.ViewHolder {
-
         View view;
         LinearLayout compsView;
         TextView freeView;

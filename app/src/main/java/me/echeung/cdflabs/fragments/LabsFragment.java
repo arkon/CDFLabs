@@ -11,7 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -34,7 +33,7 @@ public class LabsFragment extends Fragment {
 
     private View rootView;
 
-    private SwipeRefreshLayout mPullToRefreshLayout;
+    private SwipeRefreshLayout mPullToRefresh;
     private RecyclerView listLabs;
     private LabsListAdapter adapter;
     private RelativeLayout labsView;
@@ -57,6 +56,29 @@ public class LabsFragment extends Fragment {
 
         progress = (ProgressBar) rootView.findViewById(R.id.progress);
         empty = (LinearLayout) rootView.findViewById(R.id.empty_list);
+
+        mPullToRefresh = (SwipeRefreshLayout) rootView.findViewById(R.id.labs_container);
+        mPullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                if (!isNetworkAvailable()) {
+                    // No network connection: show retry
+                    empty.setVisibility(View.VISIBLE);
+                    labsView.setVisibility(View.GONE);
+                    mPullToRefresh.setRefreshing(false);
+                } else {
+                    // Get data from website
+                    DataScraper dataTask = new DataScraper(getActivity(), LabsFragment.this);
+                    dataTask.execute();
+                }
+            }
+        });
+
+        labsView = (RelativeLayout) rootView.findViewById(R.id.labs_list);
+        timestamp = (TextView) rootView.findViewById(R.id.timestamp);
+        listLabs = (RecyclerView) rootView.findViewById(R.id.labs);
+        listLabs.setLayoutManager(new LinearLayoutManager(getActivity()));
+        sort = (Spinner) rootView.findViewById(R.id.sort);
 
         retry = (Button) rootView.findViewById(R.id.btn_retry);
         retry.setOnClickListener(new View.OnClickListener() {
@@ -83,30 +105,7 @@ public class LabsFragment extends Fragment {
             DataScraper dataTask = new DataScraper(getActivity(), this);
             dataTask.execute();
 
-            labsView = (RelativeLayout) rootView.findViewById(R.id.labs_list);
-            timestamp = (TextView) rootView.findViewById(R.id.timestamp);
-
-            // Pull to refresh on labs list
-            mPullToRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.labs_container);
-            mPullToRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-                @Override
-                public void onRefresh() {
-                    if (!isNetworkAvailable()) {
-                        // No network connection: show retry
-                        empty.setVisibility(View.VISIBLE);
-                        labsView.setVisibility(View.GONE);
-                        mPullToRefreshLayout.setRefreshing(false);
-                    } else {
-                        // Get data from website
-                        DataScraper dataTask = new DataScraper(getActivity(), LabsFragment.this);
-                        dataTask.execute();
-                    }
-                }
-            });
-
             // The list of labs
-            listLabs = (RecyclerView) rootView.findViewById(R.id.labs);
-            listLabs.setLayoutManager(new LinearLayoutManager(getActivity()));
             listLabs.setOnScrollListener(new RecyclerView.OnScrollListener() {
                 @Override
                 public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -117,11 +116,10 @@ public class LabsFragment extends Fragment {
                 public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                     int topRowVerticalPosition =
                             (listLabs == null || listLabs.getChildCount() == 0) ? 0 : listLabs.getChildAt(0).getTop();
-                    mPullToRefreshLayout.setEnabled(topRowVerticalPosition >= 0);
+                    mPullToRefresh.setEnabled(topRowVerticalPosition >= 0);
                 }
             });
 
-            sort = (Spinner) rootView.findViewById(R.id.sort);
             sort.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parentView, View selectedItemView,
@@ -156,7 +154,7 @@ public class LabsFragment extends Fragment {
         labsView.setVisibility(View.VISIBLE);
 
         // Complete pull to refresh
-        mPullToRefreshLayout.setRefreshing(false);
+        mPullToRefresh.setRefreshing(false);
 
         // Sort according to what the user has selected
         if (sortAvail)
