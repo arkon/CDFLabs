@@ -37,12 +37,6 @@ BA 2210, BA 2220, BA 2240, BA 3175, BA 3185, BA 3195 ve Great Hall (BA 3200).</s
     <string name="map_bahen_second_alt">Bahen\'in ikinci kat haritası</string>
     <string name="map_bahen_third_alt">Bahen\'in üçüncü kat haritası</string>
 
-    <string name="gerstein_name">Gerstein Bilim Enformasyon Merkezi</string>
-    <string name="gerstein_address">Sigmund Samuel Kütüphanesi, 7 King’s College Çemberi</string>
-    <string name="gerstein_web">https://www.google.com/maps/place/Gerstein+Science+Information+Centre/@43.66208,-79.393764,17z/data=!3m2!4b1!5s0x882b34b84d333c2f:0xc015f6f99a229640!4m2!3m1!1s0x882b34b84d5634db:0x405cf564711b5702?hl=en</string>
-    <string name="gerstein_info">Gerstein, ikinci katın kuzey ucunda, oda 2360\'da bir CDF laboratuvarına ev sahipliği yapmaktadır.</string>
-    <string name="map_gerstein_alt">Gerstein\'in ikinci kat haritası</string>
-
     <string name="nx_name">NX (Uzaktan Erişim Sunucusu)</string>
     <string name="nx_web">http://www.cdf.utoronto.ca/using_cdf/remote_access_server.html</string>
     <string name="nx_info">CDF ev ya da dizüstü bilgisayarınız için kablosuz ağ vasıtasıyla uzaktan masaüstü bağlantısı için bir NX sunucusu sunmaktadır. NX Teknolojisi, algılanan yanıt hızını en uygun hale getirerek ve kullanıcıya bir canlı bağlantıyı askıya alıp daha sonra tekrar bağlanma imkanını vererek yavaş bir İnternet bağlantısı üzerinden uzaktan canlı bağlantı kurma tecrübesini büyük ölçüde geliştirmeye çalışmaktadır. CDF\'in NX Sunucusuna herhangi bir CDF veya Information Commons çalışma istasyonundan da özel olarak hazırlanmış bir profil kullanarak bağlanabilirsiniz.</string>

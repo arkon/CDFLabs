@@ -1,11 +1,11 @@
 package me.echeung.cdflabs.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,7 +19,7 @@ import java.util.Map;
 
 import me.echeung.cdflabs.R;
 
-public class AboutActivity extends Activity {
+public class AboutActivity extends ActionBarActivity {
 
     private ListView aboutList;
     private SimpleAdapter adapter;
@@ -31,7 +31,7 @@ public class AboutActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         setupList();
     }

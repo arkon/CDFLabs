@@ -1,10 +1,10 @@
 package me.echeung.cdflabs.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,7 +12,7 @@ import android.view.View;
 import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.fragments.LabsFragment;
 
-public class MainActivity extends Activity {
+public class MainActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction()
+            getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new LabsFragment())
                     .commit();
         }
@@ -59,17 +59,9 @@ public class MainActivity extends Activity {
         super.onConfigurationChanged(newConfig);
     }
 
-//    @Override
-//    public void onSaveInstanceState(Bundle savedInstanceState) {
-//    }
-//
-//    @Override
-//    public void onRestoreInstanceState(Bundle savedInstanceState) {
-//    }
-
     /** Basically just restart the fragment (which will try to load the data again). */
     public void retryButton(View view) {
-        getFragmentManager().beginTransaction()
+        getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, new LabsFragment())
                 .commit();
     }

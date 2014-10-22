@@ -2,7 +2,8 @@
 <resources>
 
     <color name="actionbar">#FF499EC7</color>
-    <color name="actionbar_dark">#FF3380A4</color>
+    <color name="actionbar_dark">#FF31799B</color>
+    <color name="accent">#FF8bc34a</color>
     <color name="background">#FFEEEEEE</color>
 
     <color name="transparent">#00000000</color>

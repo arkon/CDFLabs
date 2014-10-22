@@ -1,16 +1,18 @@
 package me.echeung.cdflabs.fragments;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -25,14 +27,11 @@ import me.echeung.cdflabs.adapters.LabsListAdapter;
 import me.echeung.cdflabs.labs.Lab;
 import me.echeung.cdflabs.labs.LabsByAvail;
 import me.echeung.cdflabs.labs.LabsByBuilding;
-import uk.co.senab.actionbarpulltorefresh.library.ActionBarPullToRefresh;
-import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout;
-import uk.co.senab.actionbarpulltorefresh.library.listeners.OnRefreshListener;
 
 public class LabsFragment extends Fragment {
 
-    private PullToRefreshLayout mPullToRefreshLayout;
-    private ListView listLabs;
+    private SwipeRefreshLayout mPullToRefreshLayout;
+    private RecyclerView listLabs;
     private LabsListAdapter adapter;
     private RelativeLayout labsView;
     private ProgressBar progress;
@@ -67,30 +66,29 @@ public class LabsFragment extends Fragment {
         }
 
         labsView  = (RelativeLayout) rootView.findViewById(R.id.labs_list);
-        listLabs  = (ListView) rootView.findViewById(R.id.labs);
+        listLabs  = (RecyclerView) rootView.findViewById(R.id.labs);
         sort      = (Spinner) rootView.findViewById(R.id.sort);
         timestamp = (TextView) rootView.findViewById(R.id.timestamp);
 
+        listLabs.setLayoutManager(new LinearLayoutManager(getActivity()));
+
         // Pull to refresh on labs list
-        mPullToRefreshLayout = (PullToRefreshLayout) rootView.findViewById(R.id.ptr_layout);
-        ActionBarPullToRefresh.from(getActivity())
-                .allChildrenArePullable()
-                .listener(new OnRefreshListener() {
-                    @Override
-                    public void onRefreshStarted(View view) {
-                        if (!isNetworkAvailable()) {
-                            // No network connection: show retry
-                            empty.setVisibility(View.VISIBLE);
-                            labsView.setVisibility(View.GONE);
-                            mPullToRefreshLayout.setRefreshComplete();
-                        } else {
-                            // Get data from website
-                            DataScraper dataTask = new DataScraper(getActivity(), LabsFragment.this);
-                            dataTask.execute();
-                        }
-                    }
-                })
-                .setup(mPullToRefreshLayout);
+        mPullToRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.ptr_layout);
+        mPullToRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                if (!isNetworkAvailable()) {
+                    // No network connection: show retry
+                    empty.setVisibility(View.VISIBLE);
+                    labsView.setVisibility(View.GONE);
+                    mPullToRefreshLayout.setRefreshing(false);
+                } else {
+                    // Get data from website
+                    DataScraper dataTask = new DataScraper(getActivity(), LabsFragment.this);
+                    dataTask.execute();
+                }
+            }
+        });
 
         sort.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -98,13 +96,13 @@ public class LabsFragment extends Fragment {
                                        int position, long id) {
                 if (labs != null) {
                     if (position == 0) {
-                        // Labs by building
-                        Collections.sort(labs, new LabsByBuilding());
-                        sortAvail = false;
-                    } else {
                         // Labs by availability
                         Collections.sort(labs, new LabsByAvail());
                         sortAvail = true;
+                    } else {
+                        // Labs by building
+                        Collections.sort(labs, new LabsByBuilding());
+                        sortAvail = false;
                     }
                     updateAdapter(labs);
                 }
@@ -124,7 +122,7 @@ public class LabsFragment extends Fragment {
         labsView.setVisibility(View.VISIBLE);
 
         // Complete pull to refresh
-        mPullToRefreshLayout.setRefreshComplete();
+        mPullToRefreshLayout.setRefreshing(false);
 
         // Sort according to what the user has selected
         if (sortAvail)
@@ -137,7 +135,8 @@ public class LabsFragment extends Fragment {
 
         if (adapter == null) {
             // Initialize adapter for the list of labs
-            adapter = new LabsListAdapter(getActivity(), labs);
+            adapter = new LabsListAdapter(getActivity());
+            adapter.setLabs(labs);
             listLabs.setAdapter(adapter);
         } else {
             // Update with new list

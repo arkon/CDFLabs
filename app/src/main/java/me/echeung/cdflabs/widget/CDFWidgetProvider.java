@@ -6,15 +6,10 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.RemoteViews;
 
 import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.activities.MainActivity;
-import me.echeung.cdflabs.adapters.LabsListAdapter;
 
 /**
  * This handles the widget.

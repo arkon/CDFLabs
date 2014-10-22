@@ -61,9 +61,7 @@ public class DataScraper extends AsyncTask<Void, Void, Document> {
                 case 0:
                     lab = new Lab();
 
-                    if (text.equals("gerstein"))
-                        text = "Gerstein";
-                    else if (!text.equals("NX"))
+                    if (!text.equals("NX"))
                         text = "BA " + text;
 
                     lab.setLab(text);

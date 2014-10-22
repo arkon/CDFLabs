@@ -14,3 +14,7 @@ $RECYCLE.BIN/
 
 # Mac crap
 .DS_Store
+
+# IDE things
+.idea/
+.gradle/

@@ -2,8 +2,8 @@
 <resources>
 
     <string-array name="sort_array">
-        <item>Laboratoires par édifice</item>
         <item>Laboratoires par disponibilité</item>
+        <item>Laboratoires par édifice</item>
     </string-array>
 
     <string-array name="about">

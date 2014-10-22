@@ -37,12 +37,6 @@ BA 2210, BA 2220, BA 2240, BA 3175, BA 3185, BA 3195 and the Great Hall (BA 3200
     <string name="map_bahen_second_alt">Map of Bahen\'s second floor</string>
     <string name="map_bahen_third_alt">Map of Bahen\'s third floor</string>
 
-    <string name="gerstein_name">Gerstein Science Information Centre</string>
-    <string name="gerstein_address">Sigmund Samuel Library, 7 King’s College Circle</string>
-    <string name="gerstein_web">https://www.google.com/maps/place/Gerstein+Science+Information+Centre/@43.66208,-79.393764,17z/data=!3m2!4b1!5s0x882b34b84d333c2f:0xc015f6f99a229640!4m2!3m1!1s0x882b34b84d5634db:0x405cf564711b5702?hl=en</string>
-    <string name="gerstein_info">Gerstein is home to one CDF lab located in room 2360 at the north end of the second floor.</string>
-    <string name="map_gerstein_alt">Map of Gerstein\'s second floor</string>
-
     <string name="nx_name">NX (Remote Access Server)</string>
     <string name="nx_web">http://www.cdf.utoronto.ca/using_cdf/remote_access_server.html</string>
     <string name="nx_info">CDF offers an NX server for remote desktop connection from home or from your laptop via the wireless network. The NX technology attempts to greatly improve the experience of remote graphical connection over a slow Internet link by optimising perceived speed of response and allowing one to suspend a graphical session and reconnect to it later. You can also connect to CDF\'s NX server from any CDF workstation or Information Commons workstation using a specially crafted profile.</string>

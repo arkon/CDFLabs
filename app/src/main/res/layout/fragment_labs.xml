@@ -34,24 +34,25 @@
             android:orientation="vertical"
             android:background="@color/list_divider" />
 
-        <uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout
+        <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/ptr_layout"
             android:layout_height="0dp"
             android:layout_width="fill_parent"
             android:layout_weight="1"
             android:layout_below="@+id/divider1"
-            android:layout_above="@+id/bottom">
+            android:layout_above="@+id/bottom"
+            android:visibility="gone">
 
-            <ListView
+            <android.support.v7.widget.RecyclerView
                 android:id="@+id/labs"
-                android:layout_height="fill_parent"
-                android:layout_width="fill_parent"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:clipToPadding="false"
-                android:listSelector="@color/transparent"
                 android:divider="@color/list_divider"
                 android:dividerHeight="1dip" />
 
-        </uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout>
+        </android.support.v4.widget.SwipeRefreshLayout>
 
         <LinearLayout
             android:id="@+id/bottom"
