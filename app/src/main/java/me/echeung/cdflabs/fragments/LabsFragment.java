@@ -34,14 +34,13 @@ public class LabsFragment extends Fragment {
     private View rootView;
 
     private SwipeRefreshLayout mPullToRefresh;
-    private RecyclerView listLabs;
+    private RecyclerView mListLabs;
     private LabsListAdapter adapter;
-    private RelativeLayout labsView;
-    private ProgressBar progress;
-    private LinearLayout empty;
-    private Button retry;
-    private Spinner sort;
-    private TextView timestamp;
+    private RelativeLayout mLabsView;
+    private ProgressBar mProgress;
+    private LinearLayout mEmpty;
+    private Spinner mSort;
+    private TextView mTimestamp;
 
     private List<Lab> labs;
 
@@ -54,34 +53,34 @@ public class LabsFragment extends Fragment {
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_labs, container, false);
 
-        progress = (ProgressBar) rootView.findViewById(R.id.progress);
-        empty = (LinearLayout) rootView.findViewById(R.id.empty_list);
+        mProgress = (ProgressBar) rootView.findViewById(R.id.progress);
+        mEmpty = (LinearLayout) rootView.findViewById(R.id.empty_list);
 
         mPullToRefresh = (SwipeRefreshLayout) rootView.findViewById(R.id.labs_container);
+        mPullToRefresh.setColorSchemeResources(R.color.actionbar);
         mPullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 if (!isNetworkAvailable()) {
-                    // No network connection: show retry
-                    empty.setVisibility(View.VISIBLE);
-                    labsView.setVisibility(View.GONE);
+                    // No network connection: show retry button
+                    mEmpty.setVisibility(View.VISIBLE);
+                    mLabsView.setVisibility(View.GONE);
                     mPullToRefresh.setRefreshing(false);
                 } else {
                     // Get data from website
-                    DataScraper dataTask = new DataScraper(getActivity(), LabsFragment.this);
-                    dataTask.execute();
+                    new DataScraper(getActivity(), LabsFragment.this).execute();
                 }
             }
         });
 
-        labsView = (RelativeLayout) rootView.findViewById(R.id.labs_list);
-        timestamp = (TextView) rootView.findViewById(R.id.timestamp);
-        listLabs = (RecyclerView) rootView.findViewById(R.id.labs);
-        listLabs.setLayoutManager(new LinearLayoutManager(getActivity()));
-        sort = (Spinner) rootView.findViewById(R.id.sort);
+        mLabsView = (RelativeLayout) rootView.findViewById(R.id.labs_list);
+        mTimestamp = (TextView) rootView.findViewById(R.id.timestamp);
+        mListLabs = (RecyclerView) rootView.findViewById(R.id.labs);
+        mListLabs.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mSort = (Spinner) rootView.findViewById(R.id.sort);
 
-        retry = (Button) rootView.findViewById(R.id.btn_retry);
-        retry.setOnClickListener(new View.OnClickListener() {
+        Button mRetry = (Button) rootView.findViewById(R.id.btn_retry);
+        mRetry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 initializeView(rootView);
@@ -94,19 +93,18 @@ public class LabsFragment extends Fragment {
     private View initializeView(View rootView) {
         if (!isNetworkAvailable()) {
             // No network connection: show retry button
-            empty.setVisibility(View.VISIBLE);
-            progress.setVisibility(View.GONE);
+            mEmpty.setVisibility(View.VISIBLE);
+            mProgress.setVisibility(View.GONE);
 
             return rootView;
         } else {
-            empty.setVisibility(View.GONE);
+            mEmpty.setVisibility(View.GONE);
 
             // Get data from website
-            DataScraper dataTask = new DataScraper(getActivity(), this);
-            dataTask.execute();
+            new DataScraper(getActivity(), this).execute();
 
             // The list of labs
-            listLabs.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            mListLabs.setOnScrollListener(new RecyclerView.OnScrollListener() {
                 @Override
                 public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                     super.onScrollStateChanged(recyclerView, newState);
@@ -115,12 +113,12 @@ public class LabsFragment extends Fragment {
                 @Override
                 public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                     int topRowVerticalPosition =
-                            (listLabs == null || listLabs.getChildCount() == 0) ? 0 : listLabs.getChildAt(0).getTop();
+                            (mListLabs == null || mListLabs.getChildCount() == 0) ? 0 : mListLabs.getChildAt(0).getTop();
                     mPullToRefresh.setEnabled(topRowVerticalPosition >= 0);
                 }
             });
 
-            sort.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            mSort.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parentView, View selectedItemView,
                                            int position, long id) {
@@ -147,11 +145,15 @@ public class LabsFragment extends Fragment {
         return rootView;
     }
 
-    /** Update the adapter with the new list of labs. */
+    /**
+     * Update the adapter with the new list of labs.
+     *
+     * @param labs The list of labs to display.
+     */
     public void updateAdapter(List<Lab> labs) {
         // Hide progress spinner, and show the list
-        progress.setVisibility(View.GONE);
-        labsView.setVisibility(View.VISIBLE);
+        mProgress.setVisibility(View.GONE);
+        mLabsView.setVisibility(View.VISIBLE);
 
         // Complete pull to refresh
         mPullToRefresh.setRefreshing(false);
@@ -169,17 +171,21 @@ public class LabsFragment extends Fragment {
             // Initialize adapter for the list of labs
             adapter = new LabsListAdapter(getActivity());
             adapter.setLabs(labs);
-            listLabs.setAdapter(adapter);
+            mListLabs.setAdapter(adapter);
         } else {
             // Update with new list
             adapter.setLabs(labs);
             adapter.notifyDataSetChanged();
         }
 
-        timestamp.setText(String.format(getString(R.string.timestamp), labs.get(0).getTimestamp()));
+        mTimestamp.setText(String.format(getString(R.string.timestamp), labs.get(0).getTimestamp()));
     }
 
-    /** Checks if there's an Internet connection and returns true iff there is. */
+    /**
+     * Checks if there's an Internet connection and returns true iff there is.
+     *
+     * @return True iff there is an Internet connection available.
+     */
     private boolean isNetworkAvailable() {
         if (getActivity() != null) {
             ConnectivityManager connectivityManager

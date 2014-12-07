@@ -12,7 +12,7 @@
     tools:context="me.echeung.cdflabs.fragments.LocBahenFragment">
 
     <LinearLayout
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:orientation="vertical" >
 
@@ -27,12 +27,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:textSize="26sp"
+                android:textColor="@color/black_text"
                 android:text="@string/bahen_name" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:drawableStart="@drawable/ic_place"
                 android:drawableLeft="@drawable/ic_place"
                 android:fontFamily="sans-serif-light"
                 android:textSize="20sp"
