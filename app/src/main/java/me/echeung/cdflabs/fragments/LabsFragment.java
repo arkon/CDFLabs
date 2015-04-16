@@ -20,11 +20,11 @@ import java.util.Collections;
 import java.util.List;
 
 import me.echeung.cdflabs.R;
-import me.echeung.cdflabs.utils.DataScraper;
 import me.echeung.cdflabs.adapters.LabsListAdapter;
 import me.echeung.cdflabs.labs.Lab;
 import me.echeung.cdflabs.labs.LabsByAvail;
 import me.echeung.cdflabs.labs.LabsByBuilding;
+import me.echeung.cdflabs.utils.DataScraper;
 import me.echeung.cdflabs.utils.NetworkUtils;
 
 public class LabsFragment extends Fragment {
@@ -44,7 +44,8 @@ public class LabsFragment extends Fragment {
 
     private Boolean sortAvail = true;
 
-    public LabsFragment() {}
+    public LabsFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,7 +67,7 @@ public class LabsFragment extends Fragment {
                     mPullToRefresh.setRefreshing(false);
                 } else {
                     // Get data from website
-                    new DataScraper(getActivity(), LabsFragment.this).execute();
+                    new DataScraper(LabsFragment.this).execute();
                 }
             }
         });
@@ -99,7 +100,7 @@ public class LabsFragment extends Fragment {
             mEmpty.setVisibility(View.GONE);
 
             // Get data from website
-            new DataScraper(getActivity(), this).execute();
+            new DataScraper(this).execute();
 
             // The list of labs
             mListLabs.setOnScrollListener(new RecyclerView.OnScrollListener() {
