@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="website_data">http://www.cdf.toronto.edu/usage/</string>
+    <string name="website_data">http://www.cdf.toronto.edu/usage/usage.html</string>
     <string name="website_faq">http://www.cdf.toronto.edu/faq.html</string>
     <string name="website_cats">https://www.imgur.com/r/catgifs/</string>
     <string name="website_me">http://www.echeung.me/</string>
