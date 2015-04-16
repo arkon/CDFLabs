@@ -1,4 +1,4 @@
-package me.echeung.cdflabs.adapters;
+package me.echeung.cdflabs.utils;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -26,7 +26,7 @@ public class DataScraper extends AsyncTask<Void, Void, Document> {
     public DataScraper(Context context, LabsFragment fragment) {
         this.context = context;
         this.fragment = fragment;
-        this.labs = new ArrayList<Lab>();
+        this.labs = new ArrayList<>();
     }
 
     @Override

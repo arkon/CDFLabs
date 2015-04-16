@@ -1,8 +1,5 @@
 package me.echeung.cdflabs.fragments;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -23,11 +20,12 @@ import java.util.Collections;
 import java.util.List;
 
 import me.echeung.cdflabs.R;
-import me.echeung.cdflabs.adapters.DataScraper;
+import me.echeung.cdflabs.utils.DataScraper;
 import me.echeung.cdflabs.adapters.LabsListAdapter;
 import me.echeung.cdflabs.labs.Lab;
 import me.echeung.cdflabs.labs.LabsByAvail;
 import me.echeung.cdflabs.labs.LabsByBuilding;
+import me.echeung.cdflabs.utils.NetworkUtils;
 
 public class LabsFragment extends Fragment {
 
@@ -61,7 +59,7 @@ public class LabsFragment extends Fragment {
         mPullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                if (!isNetworkAvailable()) {
+                if (!NetworkUtils.isNetworkAvailable(getActivity())) {
                     // No network connection: show retry button
                     mEmpty.setVisibility(View.VISIBLE);
                     mLabsView.setVisibility(View.GONE);
@@ -91,7 +89,7 @@ public class LabsFragment extends Fragment {
     }
 
     private View initializeView(View rootView) {
-        if (!isNetworkAvailable()) {
+        if (!NetworkUtils.isNetworkAvailable(getActivity())) {
             // No network connection: show retry button
             mEmpty.setVisibility(View.VISIBLE);
             mProgress.setVisibility(View.GONE);
@@ -179,21 +177,5 @@ public class LabsFragment extends Fragment {
         }
 
         mTimestamp.setText(String.format(getString(R.string.timestamp), labs.get(0).getTimestamp()));
-    }
-
-    /**
-     * Checks if there's an Internet connection and returns true iff there is.
-     *
-     * @return True iff there is an Internet connection available.
-     */
-    private boolean isNetworkAvailable() {
-        if (getActivity() != null) {
-            ConnectivityManager connectivityManager
-                    = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-
-            return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-        }
-        return false;
     }
 }

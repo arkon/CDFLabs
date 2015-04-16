@@ -2,39 +2,53 @@
 <items version="2" >
 
     <item
-        jar="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/exploded-aar/com.android.support/support-v13/21.0.3/classes.jar"
+        jar="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.0.0/classes.jar"
         jumboMode="false"
-        revision="21.1.1"
-        sha1="2c2071dcaf7a008c3b01a6381a33be55396bab09">
-        <dex dex="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/pre-dexed/debug/classes-9e44838d8cce3fdc80345466d3d62d3aaaf6489d.jar" />
+        revision="22.0.1"
+        sha1="c6d79137693d494dee16372d3921f919eb724ced">
+        <dex dex="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/pre-dexed/debug/classes-4eb77466e9e86eaade53a0a6abc2ab7ffcb98941.jar" />
     </item>
     <item
-        jar="/home/eugene/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jar="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/exploded-aar/com.android.support/support-v13/22.0.0/libs/internal_impl-22.0.0.jar"
         jumboMode="false"
-        revision="21.1.1"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-e941ff727a16a4b5ba4c3935001617415ae4016a.jar" />
+        revision="22.0.1"
+        sha1="def3eff2b7b4774d96ae15b07b3fc0111edbfe24">
+        <dex dex="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-188187641a0d397220e99d19a9b338e5b19c6c5b.jar" />
     </item>
     <item
-        jar="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.3/classes.jar"
+        jar="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
         jumboMode="false"
-        revision="21.1.1"
-        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
-        <dex dex="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/pre-dexed/debug/classes-3067eb43a3027265b3e9228ec7002481f24a9275.jar" />
+        revision="22.0.1"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/pre-dexed/debug/classes-d56ec39cbeb9d5ccc4a893807747979c50e2b30a.jar" />
     </item>
     <item
-        jar="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/exploded-aar/com.android.support/support-v13/21.0.3/libs/internal_impl-21.0.3.jar"
+        jar="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
         jumboMode="false"
-        revision="21.1.1"
-        sha1="0dcc55e70f7ebf7238fe2ec53f662eb378ab2668">
-        <dex dex="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-1f44f9828ba84fab94ef72b412bb7893dafa6cfd.jar" />
+        revision="22.0.1"
+        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
+        <dex dex="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/pre-dexed/debug/classes-8baf0cb044a1e4458b0963c629cc341d829fb74e.jar" />
     </item>
     <item
-        jar="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jar="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
         jumboMode="false"
-        revision="21.1.1"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/pre-dexed/debug/classes-0a560c8f21f1ebeb6a044b0fc2e934698a2ab685.jar" />
+        revision="22.0.1"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-479aabe5f4d999134f64a01cac173afbc0778eab.jar" />
+    </item>
+    <item
+        jar="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/exploded-aar/com.android.support/support-v13/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="7f9cca1caa023a880b00c382bcc5c90245ae4895">
+        <dex dex="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/pre-dexed/debug/classes-a1d664654f12f1014ad3034bbf848353a0fb987a.jar" />
+    </item>
+    <item
+        jar="/home/eugene/.gradle/caches/modules-2/files-2.1/org.jsoup/jsoup/1.8.1/1eb6690b0c629d7000c77a72df5e822fb974f521/jsoup-1.8.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1eb6690b0c629d7000c77a72df5e822fb974f521">
+        <dex dex="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/pre-dexed/debug/jsoup-1.8.1-5bb416b0c9953d577c9e4ab1490ab60d005541c9.jar" />
     </item>
     <item
         jar="/home/eugene/.gradle/caches/modules-2/files-2.1/org.jsoup/jsoup/1.8.1/1eb6690b0c629d7000c77a72df5e822fb974f521/jsoup-1.8.1.jar"
@@ -44,18 +58,11 @@
         <dex dex="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/pre-dexed/debug/jsoup-1.8.1-5bb416b0c9953d577c9e4ab1490ab60d005541c9.jar" />
     </item>
     <item
-        jar="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jar="/home/eugene/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
         jumboMode="false"
-        revision="21.1.1"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-f29f234d4b6901c42533aa9c2a263fc94ce2f0e2.jar" />
-    </item>
-    <item
-        jar="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
-        jumboMode="false"
-        revision="21.1.1"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/pre-dexed/debug/classes-327fda4ccd7c66363d24c10ad9c707ec46b3ba93.jar" />
+        revision="22.0.1"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="/home/eugene/Documents/GitHub/CDFLabs/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-03bdee90617a86f77044e21f97a29d084eab4332.jar" />
     </item>
 
 </items>

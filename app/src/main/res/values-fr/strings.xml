@@ -23,8 +23,7 @@
     <string name="title_activity_about">À propos</string>
     <string name="title_activity_map">Emplacements</string>
     <string name="title_section1">Bahen</string>
-    <string name="title_section2">Gerstein</string>
-    <string name="title_section3">NX</string>
+    <string name="title_section2">NX</string>
 
     <string name="bahen_name">Centre Bahen de technologie de l\'information</string>
     <string name="bahen_address">40 rue St George</string>

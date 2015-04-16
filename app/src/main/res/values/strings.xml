@@ -23,8 +23,7 @@
     <string name="title_activity_about">About</string>
     <string name="title_activity_map">Locations</string>
     <string name="title_section1">Bahen</string>
-    <string name="title_section2">Gerstein</string>
-    <string name="title_section3">NX</string>
+    <string name="title_section2">NX</string>
 
     <string name="bahen_name">Bahen Centre for Information Technology</string>
     <string name="bahen_address">40 St George St</string>
