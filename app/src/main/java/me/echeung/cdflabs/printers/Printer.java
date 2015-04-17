@@ -7,10 +7,12 @@ public class Printer {
 
     private String name;
     private List<PrintQueue> printQueue;
+    private String timestamp;
 
-    public Printer(String name) {
+    public Printer(String name, String timestamp) {
         this.name = name;
         this.printQueue = new ArrayList<>();
+        this.timestamp = timestamp;
     }
 
     public String getName() {
@@ -27,5 +29,13 @@ public class Printer {
 
     public void addToQueue(PrintQueue queueItem) {
         this.printQueue.add(queueItem);
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 }

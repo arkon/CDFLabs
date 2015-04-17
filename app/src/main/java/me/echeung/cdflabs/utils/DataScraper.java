@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 
 import org.apache.http.client.HttpClient;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -21,6 +22,7 @@ import java.util.List;
 
 import me.echeung.cdflabs.fragments.LabsFragment;
 import me.echeung.cdflabs.labs.Lab;
+import me.echeung.cdflabs.printers.PrintQueue;
 import me.echeung.cdflabs.printers.Printer;
 
 public class DataScraper extends AsyncTask<Void, Void, Void> {
@@ -29,6 +31,9 @@ public class DataScraper extends AsyncTask<Void, Void, Void> {
             "http://www.cdf.toronto.edu/usage/usage.html";
     private static final String PRINT_QUEUE_URL =
             "http://www.cdf.toronto.edu/~g3cheunh/printdata.json";
+
+    private static final String[] PRINTERS =
+            new String[]{"2210a", "2210b", "3185a"};
 
     private Document doc;
     private LabsFragment fragment;
@@ -96,22 +101,13 @@ public class DataScraper extends AsyncTask<Void, Void, Void> {
         }
 
         if (printData != null) {
-            System.out.println(printData);
-
-//            String next;
-//            while ((next = bufferedReader.readLine()) != null){
-//                JSONArray ja = new JSONArray(next);
-//
-//                for (int i = 0; i < ja.length(); i++) {
-//                    JSONObject jo = (JSONObject) ja.get(i);
-//                    printData.add(jo.toString());
-//                }
-//            }
+            printers = parsePrintQueueData(printData);
         }
     }
 
     /**
      * Scrape web page and instantiate the Labs with the data.
+     * @return A list of Lab objects.
      */
     private List<Lab> parseLabData() {
         Elements links = doc.select("td");
@@ -155,4 +151,57 @@ public class DataScraper extends AsyncTask<Void, Void, Void> {
 
         return labs;
     }
+
+    /**
+     *
+     * @param printData The JSON data in string format.
+     * @return A list of Printer objects.
+     */
+    private List<Printer> parsePrintQueueData(String printData) {
+        List<Printer> printers = null;
+
+        try {
+            JSONObject jsonObj = new JSONObject(printData);
+
+            printers = new ArrayList<>();
+
+            String timestamp = jsonObj.getString("timestamp");
+
+            // 2210a
+            for (int i = 0; i < PRINTERS.length; i++) {
+                JSONArray jsonArr = jsonObj.getJSONArray(PRINTERS[i]);
+                printers.add(parseQueue(PRINTERS[i], timestamp, jsonArr));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return printers;
+    }
+
+    private Printer parseQueue(String name, String timestamp, JSONArray jsonArr) {
+        Printer printer = new Printer(name, timestamp);
+
+        try {
+            for (int i = 0; i < jsonArr.length(); i++) {
+
+                JSONObject jsonObj = jsonArr.getJSONObject(i);
+
+                printer.addToQueue(new PrintQueue(
+                        jsonObj.getString("rank"),
+                        jsonObj.getString("size"),
+                        jsonObj.getString("class"),
+                        jsonObj.getString("files"),
+                        jsonObj.getString("job"),
+                        jsonObj.getString("time"),
+                        jsonObj.getString("owner")
+                ));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return printer;
+    }
+
 }
