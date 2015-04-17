@@ -2,7 +2,6 @@ package me.echeung.cdflabs.utils;
 
 import android.os.AsyncTask;
 
-import org.apache.http.client.HttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,9 +10,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -51,9 +48,9 @@ public class DataScraper extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected Void doInBackground(Void... params) {
-        HttpURLConnection urlConnection = null;
-        InputStreamReader in = null;
-        BufferedReader reader = null;
+        HttpURLConnection urlConnection;
+        InputStreamReader in;
+        BufferedReader reader;
 
         try {
             // Usage
@@ -73,24 +70,20 @@ public class DataScraper extends AsyncTask<Void, Void, Void> {
             String line;
 
             while ((line = reader.readLine()) != null) {
-                sBuilder.append(line + "\n");
+                sBuilder.append(line);
+                sBuilder.append("\n");
             }
 
             printData = sBuilder.toString();
 
-            if (reader != null)
-                reader.close();
-
-            if (in != null)
-                in.close();
+            reader.close();
+            in.close();
+            urlConnection.disconnect();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            if (urlConnection != null)
-                urlConnection.disconnect();
-
-            return null;
         }
+
+        return null;
     }
 
     @Override
@@ -106,7 +99,7 @@ public class DataScraper extends AsyncTask<Void, Void, Void> {
     }
 
     /**
-     * Scrape web page and instantiate the Labs with the data.
+     * Parse the web page document and return it as a list of objects.
      * @return A list of Lab objects.
      */
     private List<Lab> parseLabData() {
@@ -153,7 +146,7 @@ public class DataScraper extends AsyncTask<Void, Void, Void> {
     }
 
     /**
-     *
+     * Parse the JSON data of print queue data and return it as a list of objects.
      * @param printData The JSON data in string format.
      * @return A list of Printer objects.
      */
@@ -167,10 +160,9 @@ public class DataScraper extends AsyncTask<Void, Void, Void> {
 
             String timestamp = jsonObj.getString("timestamp");
 
-            // 2210a
-            for (int i = 0; i < PRINTERS.length; i++) {
-                JSONArray jsonArr = jsonObj.getJSONArray(PRINTERS[i]);
-                printers.add(parseQueue(PRINTERS[i], timestamp, jsonArr));
+            for (String printer : PRINTERS) {
+                JSONArray jsonArr = jsonObj.getJSONArray(printer);
+                printers.add(parseQueue(printer, timestamp, jsonArr));
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -184,7 +176,6 @@ public class DataScraper extends AsyncTask<Void, Void, Void> {
 
         try {
             for (int i = 0; i < jsonArr.length(); i++) {
-
                 JSONObject jsonObj = jsonArr.getJSONObject(i);
 
                 printer.addToQueue(new PrintQueue(
@@ -197,7 +188,7 @@ public class DataScraper extends AsyncTask<Void, Void, Void> {
                         jsonObj.getString("owner")
                 ));
             }
-        } catch (Exception e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 
