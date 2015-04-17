@@ -35,7 +35,7 @@ public class LabsListAdapter extends RecyclerView.Adapter<LabsListAdapter.LabVie
         final Lab lab = mLabs.get(index);
 
         // Show available machines and set the square's background colour accordingly
-        int avail =lab.getAvail();
+        int avail = lab.getAvail();
         holder.freeView.setText(String.valueOf(avail));
 
         if (avail == 0)
@@ -56,6 +56,10 @@ public class LabsListAdapter extends RecyclerView.Adapter<LabsListAdapter.LabVie
         return mLabs.size();
     }
 
+    public void setLabs(List<Lab> labs) {
+        this.mLabs = labs;
+    }
+
     public static class LabViewHolder extends RecyclerView.ViewHolder {
         View view;
         LinearLayout compsView;
@@ -67,13 +71,9 @@ public class LabsListAdapter extends RecyclerView.Adapter<LabsListAdapter.LabVie
             super(itemView);
             view = itemView;
             compsView = (LinearLayout) itemView.findViewById(R.id.comps);
-            freeView  = (TextView) itemView.findViewById(R.id.free);
-            labView   = (TextView) itemView.findViewById(R.id.lab);
+            freeView = (TextView) itemView.findViewById(R.id.free);
+            labView = (TextView) itemView.findViewById(R.id.lab);
             statsView = (TextView) itemView.findViewById(R.id.stats);
         }
-    }
-
-    public void setLabs(List<Lab> labs) {
-        this.mLabs = labs;
     }
 }

@@ -44,7 +44,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return context.getString(R.string.title_section1).toUpperCase(l);
             case 1:
-                return context.getString(R.string.title_section3).toUpperCase(l);
+                return context.getString(R.string.title_section2).toUpperCase(l);
         }
         return null;
     }

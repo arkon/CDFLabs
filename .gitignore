@@ -24,3 +24,5 @@ gen/
 *.dex
 *.apk
 *.ap_
+*.iml
+app/manifest-merger-release-report.txt

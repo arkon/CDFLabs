@@ -1,6 +1,5 @@
-package me.echeung.cdflabs.adapters;
+package me.echeung.cdflabs.utils;
 
-import android.content.Context;
 import android.os.AsyncTask;
 
 import org.jsoup.Jsoup;
@@ -12,27 +11,29 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.fragments.LabsFragment;
 import me.echeung.cdflabs.labs.Lab;
 
 public class DataScraper extends AsyncTask<Void, Void, Document> {
 
-    private Context context;
+    private static final String USAGE_URL =
+            "http://www.cdf.toronto.edu/usage/usage.html";
+    private static final String PRINT_QUEUE_URL =
+            "http://www.cdf.toronto.edu/~g3cheunh/printdata.json";
+
     private Document doc;
     private LabsFragment fragment;
     private List<Lab> labs;
 
-    public DataScraper(Context context, LabsFragment fragment) {
-        this.context = context;
+    public DataScraper(LabsFragment fragment) {
         this.fragment = fragment;
-        this.labs = new ArrayList<Lab>();
+        this.labs = new ArrayList<>();
     }
 
     @Override
     protected Document doInBackground(Void... params) {
         try {
-            doc = Jsoup.connect(context.getString(R.string.website_data)).get();
+            doc = Jsoup.connect(USAGE_URL).get();
             return doc;
         } catch (IOException e) {
             return null;
@@ -42,13 +43,15 @@ public class DataScraper extends AsyncTask<Void, Void, Document> {
     @Override
     protected void onPostExecute(Document items) {
         if (doc != null) {
-            labs = retrieveData();
+            labs = parseLabData();
             fragment.updateAdapter(labs);
         }
     }
 
-    /** Scrape web page and instantiate the Labs with the data. */
-    private List<Lab> retrieveData() {
+    /**
+     * Scrape web page and instantiate the Labs with the data.
+     */
+    private List<Lab> parseLabData() {
         Elements links = doc.select("td");
 
         int i = 0;

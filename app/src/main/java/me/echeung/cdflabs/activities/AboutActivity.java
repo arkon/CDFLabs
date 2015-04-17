@@ -46,7 +46,9 @@ public class AboutActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /** Populates and handles list. */
+    /**
+     * Populates and handles list.
+     */
     private void setupList() {
         aboutList = (ListView) findViewById(R.id.about);
 
