@@ -2,6 +2,7 @@ package me.echeung.cdflabs.utils;
 
 import android.os.AsyncTask;
 
+import org.apache.http.client.HttpClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
@@ -9,7 +10,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -29,10 +32,11 @@ public class DataScraper extends AsyncTask<Void, Void, Void> {
 
     private Document doc;
     private LabsFragment fragment;
+
     private List<Lab> labs;
     private List<Printer> printers;
 
-    private List<String> printData;
+    private String printData;
 
     public DataScraper(LabsFragment fragment) {
         this.fragment = fragment;
@@ -42,36 +46,44 @@ public class DataScraper extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected Void doInBackground(Void... params) {
+        HttpURLConnection urlConnection = null;
+        InputStreamReader in = null;
+        BufferedReader reader = null;
+
         try {
             // Usage
             doc = Jsoup.connect(USAGE_URL).get();
 
             // Print queue
-            printData = new ArrayList<>();
-
             URL url = new URL(PRINT_QUEUE_URL);
-            HttpURLConnection urlConnection =
-                    (HttpURLConnection) url.openConnection();
+            urlConnection = (HttpURLConnection) url.openConnection();
 
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
 
-            BufferedReader bufferedReader =
-                    new BufferedReader(new InputStreamReader(
-                            urlConnection.getInputStream()));
+            in = new InputStreamReader(urlConnection.getInputStream());
+            reader = new BufferedReader(in);
 
-            String next;
-            while ((next = bufferedReader.readLine()) != null){
-                JSONArray ja = new JSONArray(next);
+            StringBuilder sBuilder = new StringBuilder();
+            String line;
 
-                for (int i = 0; i < ja.length(); i++) {
-                    JSONObject jo = (JSONObject) ja.get(i);
-                    printData.add(jo.getString("time"));
-                }
+            while ((line = reader.readLine()) != null) {
+                sBuilder.append(line + "\n");
             }
+
+            printData = sBuilder.toString();
+
+            if (reader != null)
+                reader.close();
+
+            if (in != null)
+                in.close();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+            if (urlConnection != null)
+                urlConnection.disconnect();
+
             return null;
         }
     }
@@ -84,7 +96,17 @@ public class DataScraper extends AsyncTask<Void, Void, Void> {
         }
 
         if (printData != null) {
+            System.out.println(printData);
 
+//            String next;
+//            while ((next = bufferedReader.readLine()) != null){
+//                JSONArray ja = new JSONArray(next);
+//
+//                for (int i = 0; i < ja.length(); i++) {
+//                    JSONObject jo = (JSONObject) ja.get(i);
+//                    printData.add(jo.toString());
+//                }
+//            }
         }
     }
 
