@@ -10,7 +10,7 @@
 
     <string name="action_map">Locations</string>
     <string name="action_cdf">CDF FAQ</string>
-    <string name="action_about">About</string>
+    <string name="action_help">Help</string>
 
     <string name="no_connection">There\'s no network connection right now. Try again later.</string>
     <string name="retry">Retry</string>

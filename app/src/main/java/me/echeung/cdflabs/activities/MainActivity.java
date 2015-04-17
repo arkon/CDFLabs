@@ -44,7 +44,7 @@ public class MainActivity extends ActionBarActivity {
                 intent.setData(Uri.parse(getString(R.string.website_faq)));
                 startActivity(intent);
                 return true;
-            case R.id.action_about:
+            case R.id.action_help:
                 intent = new Intent(this, HelpActivity.class);
                 startActivity(intent);
                 return true;
