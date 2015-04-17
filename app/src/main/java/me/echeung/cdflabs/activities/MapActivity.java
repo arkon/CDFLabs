@@ -74,7 +74,7 @@ public class MapActivity extends ActionBarActivity implements ActionBar.TabListe
                 startActivity(intent);
                 return true;
             case R.id.action_about:
-                intent = new Intent(this, AboutActivity.class);
+                intent = new Intent(this, HelpActivity.class);
                 startActivity(intent);
                 return true;
             default:

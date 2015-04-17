@@ -19,7 +19,7 @@ import java.util.Map;
 
 import me.echeung.cdflabs.R;
 
-public class AboutActivity extends ActionBarActivity {
+public class HelpActivity extends ActionBarActivity {
 
     private ListView aboutList;
     private SimpleAdapter adapter;
