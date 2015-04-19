@@ -68,11 +68,6 @@ public class MapActivity extends ActionBarActivity implements ActionBar.TabListe
             case android.R.id.home:
                 this.finish();
                 return true;
-            case R.id.action_cdf:
-                intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(getString(R.string.website_faq)));
-                startActivity(intent);
-                return true;
             case R.id.action_help:
                 intent = new Intent(this, HelpActivity.class);
                 startActivity(intent);

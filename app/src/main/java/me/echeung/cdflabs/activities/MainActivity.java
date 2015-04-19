@@ -39,11 +39,6 @@ public class MainActivity extends ActionBarActivity {
                 intent = new Intent(this, MapActivity.class);
                 startActivity(intent);
                 return true;
-            case R.id.action_cdf:
-                intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(getString(R.string.website_faq)));
-                startActivity(intent);
-                return true;
             case R.id.action_help:
                 intent = new Intent(this, HelpActivity.class);
                 startActivity(intent);

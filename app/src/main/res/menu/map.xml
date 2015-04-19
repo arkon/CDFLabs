@@ -4,14 +4,8 @@
     tools:context="me.echeung.cdflabs.activities.MapActivity">
 
     <item
-        android:id="@+id/action_cdf"
-        android:orderInCategory="100"
-        android:title="@string/action_cdf"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/action_help"
-        android:orderInCategory="200"
+        android:orderInCategory="100"
         android:title="@string/action_help"
         app:showAsAction="never" />
 
