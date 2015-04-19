@@ -90,6 +90,7 @@
     <orderEntry type="library" exported="" name="support-annotations-22.0.0" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-22.0.0" level="project" />
     <orderEntry type="library" exported="" name="jsoup-1.8.1" level="project" />
+    <orderEntry type="library" exported="" name="material-dialogs-0.7.2.4" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-v7-22.0.0" level="project" />
     <orderEntry type="library" exported="" name="support-v13-22.0.0" level="project" />
   </component>
