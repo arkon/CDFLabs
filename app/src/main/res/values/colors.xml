@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="actionbar">#FF499EC7</color>
-    <color name="actionbar_dark">#FF31799B</color>
+    <color name="primary">#FF4693D0</color>
+    <color name="primary_dark">#FF2A6EA3</color>
     <color name="accent">#FF8BC34A</color>
     <color name="background">#FFEEEEEE</color>
 

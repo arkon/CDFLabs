@@ -56,7 +56,7 @@ public class LabsFragment extends Fragment {
         mEmpty = (LinearLayout) rootView.findViewById(R.id.empty_list);
 
         mPullToRefresh = (SwipeRefreshLayout) rootView.findViewById(R.id.labs_container);
-        mPullToRefresh.setColorSchemeResources(R.color.actionbar);
+        mPullToRefresh.setColorSchemeResources(R.color.primary);
         mPullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
