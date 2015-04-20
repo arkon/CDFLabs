@@ -39,5 +39,14 @@ BA 2210, BA 2220, BA 2240, BA 3175, BA 3185, BA 3195 and the Great Hall (BA 3200
 
     <string name="floor_second">Second floor</string>
     <string name="floor_third">Third floor</string>
+    <string name="title_activity_main">Main</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+
+    <string name="action_settings">Settings</string>
 
 </resources>
