@@ -25,7 +25,7 @@ import me.echeung.cdflabs.fragments.base.TabFragment;
 import me.echeung.cdflabs.labs.Lab;
 import me.echeung.cdflabs.labs.LabsByAvail;
 import me.echeung.cdflabs.labs.LabsByBuilding;
-import me.echeung.cdflabs.utils.DataScraper;
+import me.echeung.cdflabs.utils.LabDataScraper;
 import me.echeung.cdflabs.utils.NetworkUtils;
 
 public class LabsFragment extends TabFragment {
@@ -91,19 +91,18 @@ public class LabsFragment extends TabFragment {
         return initializeView(rootView);
     }
 
-    private void fetchData() {
+    public void fetchData() {
         if (!NetworkUtils.isNetworkAvailable(getActivity())) {
             // No network connection: show retry button
             mEmpty.setVisibility(View.VISIBLE);
-            mLabsView.setVisibility(View.GONE);
             mProgress.setVisibility(View.GONE);
+            mLabsView.setVisibility(View.GONE);
             mPullToRefresh.setRefreshing(false);
         } else {
             mEmpty.setVisibility(View.GONE);
             mProgress.setVisibility(View.VISIBLE);
 
-            // Get lab/printer data
-            new DataScraper().execute();
+            new LabDataScraper().execute();
         }
     }
 
@@ -156,7 +155,6 @@ public class LabsFragment extends TabFragment {
 
     /**
      * Update the adapter with the new list of labs.
-     *
      * @param labs The list of labs to display.
      */
     public void updateAdapter(List<Lab> labs) {

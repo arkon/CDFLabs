@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import me.echeung.cdflabs.R;
 
 
-public class AboutActivity extends AppCompatActivity {
+public class InfoActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
 

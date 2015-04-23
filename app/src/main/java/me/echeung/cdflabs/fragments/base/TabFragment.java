@@ -3,7 +3,10 @@ package me.echeung.cdflabs.fragments.base;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-public class TabFragment extends Fragment {
+import me.echeung.cdflabs.utils.LabDataScraper;
+import me.echeung.cdflabs.utils.NetworkUtils;
+
+public abstract class TabFragment extends Fragment implements TabFragmentInterface {
 
     /**
      * The fragment argument representing the section number for this fragment.

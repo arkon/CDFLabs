@@ -49,10 +49,14 @@ public class MainActivity extends AppCompatActivity {
 
         switch (id) {
             case R.id.action_map:
-                startActivity(new Intent(this, AboutActivity.class));
+                startActivity(new Intent(this, InfoActivity.class));
+                return true;
+            case R.id.action_refresh:
+                ViewPagerAdapter.getLabsFragment().fetchData();
+                ViewPagerAdapter.getPrintersFragment().fetchData();
                 return true;
             case R.id.action_about:
-                startActivity(new Intent(this, AboutActivity.class));
+                startActivity(new Intent(this, InfoActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

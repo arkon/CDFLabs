@@ -2,6 +2,7 @@
     <string name="app_name">CDF Labs</string>
 
     <string name="action_map">Locations</string>
+    <string name="action_refresh">Refresh</string>
     <string name="action_about">About</string>
 
     <string name="title_labs">Computers</string>
@@ -14,9 +15,6 @@
     <string name="website_cats">https://www.imgur.com/r/catgifs/</string>
     <string name="website_me">http://www.echeung.me/</string>
     <string name="website_github">https://github.com/arkon/CDFLabs</string>
-
-    <string name="action_cdf">CDF FAQ</string>
-
     <string name="no_connection">There\'s no network connection right now. Try again later.</string>
     <string name="retry">Retry</string>
 
