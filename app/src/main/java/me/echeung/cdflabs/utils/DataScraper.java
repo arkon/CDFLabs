@@ -1,8 +1,6 @@
 package me.echeung.cdflabs.utils;
 
-import android.content.Context;
 import android.os.AsyncTask;
-import android.support.v4.app.Fragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -12,15 +10,11 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import me.echeung.cdflabs.R;
-import me.echeung.cdflabs.activities.MainActivity;
 import me.echeung.cdflabs.adapters.ViewPagerAdapter;
 import me.echeung.cdflabs.fragments.LabsFragment;
 import me.echeung.cdflabs.fragments.PrintersFragment;
@@ -41,13 +35,13 @@ public class DataScraper extends AsyncTask<Void, Void, Void> {
     private Document doc;
 
     private List<Lab> labs;
-    private List<Printer> printers;
+    private Map<String, Printer> printers;
 
     private String printData;
 
     public DataScraper() {
         this.labs = new ArrayList<>();
-        this.printers = new ArrayList<>();
+        this.printers = new HashMap<>();
     }
 
     @Override
@@ -83,7 +77,7 @@ public class DataScraper extends AsyncTask<Void, Void, Void> {
             PrintersFragment printersFragment = ViewPagerAdapter.getPrintersFragment();
 
             if (printersFragment != null) {
-                printersFragment.updateText(printers.toArray().toString());
+                printersFragment.updateText(printers);
             }
         }
     }
@@ -136,23 +130,23 @@ public class DataScraper extends AsyncTask<Void, Void, Void> {
     }
 
     /**
-     * Parse the JSON data of print queue data and return it as a list of objects.
+     * Parse the JSON data of print queue data and return it as a map of objects.
      * @param printData The JSON data in string format.
-     * @return A list of Printer objects.
+     * @return A map of Printer objects.
      */
-    private List<Printer> parsePrintQueueData(String printData) {
-        List<Printer> printers = null;
+    private Map<String, Printer> parsePrintQueueData(String printData) {
+        Map<String, Printer> printers = null;
 
         try {
             JSONObject jsonObj = new JSONObject(printData);
 
-            printers = new ArrayList<>();
+            printers = new HashMap<>();
 
             String timestamp = jsonObj.getString("timestamp");
 
             for (String printer : PRINTERS) {
                 JSONArray jsonArr = jsonObj.getJSONArray(printer);
-                printers.add(parseQueue(printer, timestamp, jsonArr));
+                printers.put(printer, parseQueue(printer, timestamp, jsonArr));
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -161,6 +155,13 @@ public class DataScraper extends AsyncTask<Void, Void, Void> {
         return printers;
     }
 
+    /**
+     * Parse the JSON array of print queue data and return it as a Printer object.
+     * @param name The name of the printer.
+     * @param timestamp The timestamp of the data.
+     * @param jsonArr The JSON array of data.
+     * @return A Printer object of the data.
+     */
     private Printer parseQueue(String name, String timestamp, JSONArray jsonArr) {
         Printer printer = new Printer(name, timestamp);
 
@@ -184,5 +185,4 @@ public class DataScraper extends AsyncTask<Void, Void, Void> {
 
         return printer;
     }
-
 }

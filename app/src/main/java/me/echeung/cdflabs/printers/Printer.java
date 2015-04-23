@@ -38,4 +38,15 @@ public class Printer {
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sBuilder = new StringBuilder();
+
+        for (PrintQueue p : getPrintQueue()) {
+            sBuilder.append(p.toString());
+        }
+
+        return sBuilder.toString();
+    }
 }

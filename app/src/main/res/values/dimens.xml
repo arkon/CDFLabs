@@ -13,4 +13,6 @@
     <dimen name="free_text_size">12sp</dimen>
     <dimen name="lab_text_size">22sp</dimen>
     <dimen name="stats_text_size">14sp</dimen>
+
+    <dimen name="printer_header_size">22sp</dimen>
 </resources>

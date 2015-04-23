@@ -77,4 +77,11 @@ public class PrintQueue {
     public void setOwner(String owner) {
         this.owner = owner;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s",
+                getRank(), getOwner(), getQueueClass(), getJob(),
+                getFiles(), getSize(), getTime());
+    }
 }
