@@ -1,29 +1,22 @@
 <resources>
     <string name="app_name">CDF Labs</string>
 
-    <string name="action_map">Locations</string>
     <string name="action_refresh">Refresh</string>
     <string name="action_about">About</string>
 
     <string name="title_labs">Computers</string>
     <string name="title_printers">Printers</string>
+    <string name="title_locations">Locations</string>
 
     <string name="title_bahen">Bahen</string>
     <string name="title_online">Online</string>
 
-    <string name="website_faq">http://www.cdf.toronto.edu/faq.html</string>
-    <string name="website_cats">https://www.imgur.com/r/catgifs/</string>
-    <string name="website_me">http://www.echeung.me/</string>
-    <string name="website_github">https://github.com/arkon/CDFLabs</string>
     <string name="no_connection">There\'s no network connection right now. Try again later.</string>
     <string name="retry">Retry</string>
 
     <string name="free_comps">FREE</string>
     <string name="stats" formatted="false">%s computers total (%s%% busy)</string>
     <string name="timestamp">Last updated: %s</string>
-
-    <string name="title_activity_about">About</string>
-    <string name="title_activity_map">Locations</string>
 
     <string name="bahen_name">Bahen Centre for Information Technology</string>
     <string name="bahen_address">40 St George St</string>
@@ -44,4 +37,16 @@ BA 2210, BA 2220, BA 2240, BA 3175, BA 3185, BA 3195 and the Great Hall (BA 3200
     <string name="printer_2210a">BA 2210a</string>
     <string name="printer_2210b">BA 2210b</string>
     <string name="printer_3185">BA 3185</string>
+
+    <string name="about_title">About</string>
+    <string name="about_content"><![CDATA[
+        <b>CDF Labs %1$s</b> by <a href=\'http://echeung.me\'>Eugene Cheung</a><br/>
+        <br/>
+        Report bugs or request features on <a href=\'https://github.com/arkon/CDFLabs\'>GitHub</a>.<br/>
+        <br/>
+        Find out more about CDF in the <a href=\'http://www.cdf.toronto.edu/faq.html\'>CDF FAQ</a><br/>
+        This app is not affiliated with CDF or the University of Toronto in any way.
+    ]]></string>
+    <string name="OK">OK</string>
+
 </resources>

@@ -8,12 +8,14 @@ import android.view.ViewGroup;
 
 import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.fragments.LabsFragment;
+import me.echeung.cdflabs.fragments.LocationsFragment;
 import me.echeung.cdflabs.fragments.PrintersFragment;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     private static LabsFragment labsFragment;
     private static PrintersFragment printersFragment;
+    private static LocationsFragment locationsFragment;
 
     private String[] TITLES;
 
@@ -21,7 +23,8 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         super(fm);
         this.TITLES = new String[]{
                 mContext.getString(R.string.title_labs),
-                mContext.getString(R.string.title_printers)
+                mContext.getString(R.string.title_printers),
+                mContext.getString(R.string.title_locations)
         };
     }
 
@@ -32,6 +35,8 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
                 return LabsFragment.newInstance(1);
             case 1:
                 return PrintersFragment.newInstance(2);
+            case 2:
+                return LocationsFragment.newInstance(3);
             default:
                 return null;
         }
@@ -48,6 +53,9 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
                 break;
             case 1:
                 printersFragment = (PrintersFragment) createdFragment;
+                break;
+            case 2:
+                locationsFragment = (LocationsFragment) createdFragment;
                 break;
         }
         return createdFragment;
@@ -69,5 +77,9 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     public static PrintersFragment getPrintersFragment() {
         return printersFragment;
+    }
+
+    public static LocationsFragment getLocationsFragment() {
+        return locationsFragment;
     }
 }

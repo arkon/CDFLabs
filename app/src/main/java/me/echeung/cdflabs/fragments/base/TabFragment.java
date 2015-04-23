@@ -3,9 +3,6 @@ package me.echeung.cdflabs.fragments.base;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-import me.echeung.cdflabs.utils.LabDataScraper;
-import me.echeung.cdflabs.utils.NetworkUtils;
-
 public abstract class TabFragment extends Fragment implements TabFragmentInterface {
 
     /**

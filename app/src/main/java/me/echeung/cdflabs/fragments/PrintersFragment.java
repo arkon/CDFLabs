@@ -15,7 +15,6 @@ import java.util.Map;
 import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.fragments.base.TabFragment;
 import me.echeung.cdflabs.printers.Printer;
-import me.echeung.cdflabs.utils.LabDataScraper;
 import me.echeung.cdflabs.utils.NetworkUtils;
 import me.echeung.cdflabs.utils.PrinterDataScraper;
 
