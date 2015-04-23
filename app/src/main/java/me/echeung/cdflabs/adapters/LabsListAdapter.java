@@ -21,7 +21,7 @@ public class LabsListAdapter extends RecyclerView.Adapter<LabsListAdapter.LabVie
 
     public LabsListAdapter(Activity context) {
         mContext = context;
-        mLabs = new ArrayList<Lab>();
+        mLabs = new ArrayList<>();
     }
 
     @Override

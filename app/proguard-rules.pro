@@ -1,6 +1,6 @@
 # Add project specific ProGuard rules here.
 # By default, the flags in this file are appended to flags specified
-# in C:\Users\Eugene\AppData\Local\Android\android-studio\sdk/tools/proguard/proguard-android.txt
+# in /home/eugene/Android/Sdk/tools/proguard/proguard-android.txt
 # You can edit the include path and order by changing the proguardFiles
 # directive in build.gradle.
 #
@@ -16,6 +16,6 @@
 #   public *;
 #}
 
--keep public class org.jsoup.** { 
-  public *; 
+-keep public class org.jsoup.** {
+  public *;
 }

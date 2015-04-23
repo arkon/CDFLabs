@@ -2,79 +2,86 @@ package me.echeung.cdflabs.printers;
 
 public class PrintQueue {
 
-    private String pRank;
-    private String pSize;
-    private String pClass;
-    private String pFiles;
-    private String pJob;
-    private String pTime;
-    private String pOwner;
+    private String rank;
+    private String size;
+    private String klass;
+    private String files;
+    private String job;
+    private String time;
+    private String owner;
 
-    public PrintQueue(String pRank, String pSize, String pClass,
-                      String pFiles, String pJob, String pTime,
-                      String pOwner) {
-        this.pRank = pRank;
-        this.pSize = pSize;
-        this.pClass = pClass;
-        this.pFiles = pFiles;
-        this.pJob = pJob;
-        this.pTime = pTime;
-        this.pOwner = pOwner;
+    public PrintQueue(String rank, String size, String klass,
+                      String files, String job, String time,
+                      String owner) {
+        this.rank = rank;
+        this.size = size;
+        this.klass = klass;
+        this.files = files;
+        this.job = job;
+        this.time = time;
+        this.owner = owner;
     }
 
     public String getRank() {
-        return pRank;
+        return rank;
     }
 
-    public void setRank(String pRank) {
-        this.pRank = pRank;
+    public void setRank(String rank) {
+        this.rank = rank;
     }
 
     public String getSize() {
-        return pSize;
+        return size;
     }
 
-    public void setSize(String pSize) {
-        this.pSize = pSize;
+    public void setSize(String size) {
+        this.size = size;
     }
 
     public String getQueueClass() {
-        return pClass;
+        return klass;
     }
 
-    public void setQueueClass(String pClass) {
-        this.pClass = pClass;
+    public void setQueueClass(String klass) {
+        this.klass = klass;
     }
 
     public String getFiles() {
-        return pFiles;
+        return files;
     }
 
-    public void setFiles(String pFiles) {
-        this.pFiles = pFiles;
+    public void setFiles(String files) {
+        this.files = files;
     }
 
     public String getJob() {
-        return pJob;
+        return job;
     }
 
-    public void setJob(String pJob) {
-        this.pJob = pJob;
+    public void setJob(String job) {
+        this.job = job;
     }
 
     public String getTime() {
-        return pTime;
+        return time;
     }
 
-    public void setTime(String pTime) {
-        this.pTime = pTime;
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getOwner() {
-        return pOwner;
+        return owner;
     }
 
-    public void setOwner(String pOwner) {
-        this.pOwner = pOwner;
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s",
+                getRank(), getOwner(), getQueueClass(), getJob(),
+                getFiles(), getSize(), getTime());
     }
 }
