@@ -56,6 +56,7 @@ public class PrinterDataScraper extends AsyncTask<Void, Void, Void> {
 
     /**
      * Parse the JSON data of print queue data and return it as a map of objects.
+     *
      * @param printData The JSON data in string format.
      * @return A map of Printer objects.
      */
@@ -82,9 +83,10 @@ public class PrinterDataScraper extends AsyncTask<Void, Void, Void> {
 
     /**
      * Parse the JSON array of print queue data and return it as a Printer object.
-     * @param name The name of the printer.
+     *
+     * @param name      The name of the printer.
      * @param timestamp The timestamp of the data.
-     * @param jsonArr The JSON array of data.
+     * @param jsonArr   The JSON array of data.
      * @return A Printer object of the data.
      */
     private Printer parseQueue(String name, String timestamp, JSONArray jsonArr) {

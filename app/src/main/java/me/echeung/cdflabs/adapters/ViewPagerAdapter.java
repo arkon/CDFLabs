@@ -28,6 +28,18 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         };
     }
 
+    public static LabsFragment getLabsFragment() {
+        return labsFragment;
+    }
+
+    public static PrintersFragment getPrintersFragment() {
+        return printersFragment;
+    }
+
+    public static LocationsFragment getLocationsFragment() {
+        return locationsFragment;
+    }
+
     @Override
     public Fragment getItem(int position) {
         switch (position) {
@@ -69,17 +81,5 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         return TITLES[position];
-    }
-
-    public static LabsFragment getLabsFragment() {
-        return labsFragment;
-    }
-
-    public static PrintersFragment getPrintersFragment() {
-        return printersFragment;
-    }
-
-    public static LocationsFragment getLocationsFragment() {
-        return locationsFragment;
     }
 }

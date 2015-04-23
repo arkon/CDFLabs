@@ -11,11 +11,11 @@ import me.echeung.cdflabs.fragments.base.TabFragment;
 
 public class LocationsFragment extends Fragment {
 
-    public static Fragment newInstance(int sectionNumber) {
-        return TabFragment.newInstance(sectionNumber, new LocationsFragment());
+    public LocationsFragment() {
     }
 
-    public LocationsFragment() {
+    public static Fragment newInstance(int sectionNumber) {
+        return TabFragment.newInstance(sectionNumber, new LocationsFragment());
     }
 
     @Override

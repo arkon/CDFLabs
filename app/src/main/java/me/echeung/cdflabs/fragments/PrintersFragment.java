@@ -26,11 +26,16 @@ public class PrintersFragment extends TabFragment {
     private ProgressBar mProgress;
     private LinearLayout mEmpty;
 
-    public static Fragment newInstance(int sectionNumber) {
-        return TabFragment.newInstance(sectionNumber, new PrintersFragment());
-    }
+    private TextView p2210a;
+    private TextView p2210b;
+    private TextView p3185;
+    private TextView mTimestamp;
 
     public PrintersFragment() {
+    }
+
+    public static Fragment newInstance(int sectionNumber) {
+        return TabFragment.newInstance(sectionNumber, new PrintersFragment());
     }
 
     @Override
@@ -50,6 +55,12 @@ public class PrintersFragment extends TabFragment {
                 fetchData();
             }
         });
+
+        // TextViews
+        p2210a = (TextView) rootView.findViewById(R.id.printer_2210a_text);
+        p2210b = (TextView) rootView.findViewById(R.id.printer_2210b_text);
+        p3185 = (TextView) rootView.findViewById(R.id.printer_3185_text);
+        mTimestamp = (TextView) rootView.findViewById(R.id.timestamp);
 
         fetchData();
 
@@ -77,10 +88,10 @@ public class PrintersFragment extends TabFragment {
         // Complete pull to refresh
         mPullToRefresh.setRefreshing(false);
 
-        ((TextView) rootView.findViewById(R.id.printer_2210a_text)).setText(printers.get("2210a").toString());
-        ((TextView) rootView.findViewById(R.id.printer_2210b_text)).setText(printers.get("2210b").toString());
-        ((TextView) rootView.findViewById(R.id.printer_3185_text)).setText(printers.get("3185a").toString());
+        p2210a.setText(printers.get("2210a").toString());
+        p2210b.setText(printers.get("2210b").toString());
+        p3185.setText(printers.get("3185a").toString());
 
-        ((TextView) rootView.findViewById(R.id.timestamp)).setText(printers.get("2210a").getTimestamp());
+        mTimestamp.setText(String.format(getString(R.string.timestamp), printers.get("2210a").getTimestamp()));
     }
 }

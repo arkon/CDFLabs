@@ -54,6 +54,7 @@ public class LabDataScraper extends AsyncTask<Void, Void, Void> {
 
     /**
      * Parse the web page document and return it as a list of objects.
+     *
      * @return A list of Lab objects.
      */
     private List<Lab> parseLabData() {
