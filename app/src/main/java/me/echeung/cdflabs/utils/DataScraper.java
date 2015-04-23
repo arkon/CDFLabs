@@ -1,6 +1,8 @@
 package me.echeung.cdflabs.utils;
 
+import android.content.Context;
 import android.os.AsyncTask;
+import android.support.v4.app.Fragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,7 +19,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.echeung.cdflabs.R;
+import me.echeung.cdflabs.activities.MainActivity;
+import me.echeung.cdflabs.adapters.ViewPagerAdapter;
 import me.echeung.cdflabs.fragments.LabsFragment;
+import me.echeung.cdflabs.fragments.PrintersFragment;
 import me.echeung.cdflabs.labs.Lab;
 import me.echeung.cdflabs.printers.PrintQueue;
 import me.echeung.cdflabs.printers.Printer;
@@ -33,15 +39,15 @@ public class DataScraper extends AsyncTask<Void, Void, Void> {
             new String[]{"2210a", "2210b", "3185a"};
 
     private Document doc;
-    private LabsFragment fragment;
+    private Context context;
 
     private List<Lab> labs;
     private List<Printer> printers;
 
     private String printData;
 
-    public DataScraper(LabsFragment fragment) {
-        this.fragment = fragment;
+    public DataScraper(Context context) {
+        this.context = context;
         this.labs = new ArrayList<>();
         this.printers = new ArrayList<>();
     }
@@ -90,12 +96,27 @@ public class DataScraper extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void items) {
         if (doc != null) {
             labs = parseLabData();
-            fragment.updateAdapter(labs);
+
+            LabsFragment labsFragment = ViewPagerAdapter.getLabsFragment();
+
+            if (labsFragment != null) {
+                labsFragment.updateAdapter(labs);
+            }
         }
 
         if (printData != null) {
             printers = parsePrintQueueData(printData);
+
+            PrintersFragment printersFragment = ViewPagerAdapter.getPrintersFragment();
+
+            if (printersFragment != null) {
+                printersFragment.updateText(printers.toArray().toString());
+            }
         }
+    }
+
+    private Fragment getFragment(int id) {
+        return ((MainActivity) context).getSupportFragmentManager().findFragmentById(id);
     }
 
     /**

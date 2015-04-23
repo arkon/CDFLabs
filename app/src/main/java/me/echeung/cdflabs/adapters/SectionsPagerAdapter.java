@@ -8,8 +8,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.Locale;
 
 import me.echeung.cdflabs.R;
-import me.echeung.cdflabs.fragments.LocBahenFragment;
-import me.echeung.cdflabs.fragments.LocNXFragment;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -23,10 +21,10 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            case 0:
-                return new LocBahenFragment();
-            case 1:
-                return new LocNXFragment();
+//            case 0:
+//                return new LocBahenFragment();
+//            case 1:
+//                return new LocNXFragment();
         }
 
         return null;
@@ -42,9 +40,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         Locale l = Locale.getDefault();
         switch (position) {
             case 0:
-                return context.getString(R.string.title_section1).toUpperCase(l);
+                return context.getString(R.string.title_bahen).toUpperCase(l);
             case 1:
-                return context.getString(R.string.title_section2).toUpperCase(l);
+                return context.getString(R.string.title_online).toUpperCase(l);
         }
         return null;
     }

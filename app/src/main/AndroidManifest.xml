@@ -20,9 +20,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.HelpActivity"
-            android:label="@string/title_activity_help"
-            android:parentActivityName=".activities.MainActivity" />
+            android:name=".activities.AboutActivity"
+            android:label="@string/title_activity_about"
+            android:parentActivityName=".activities.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="me.echeung.cdflabs.activities.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
