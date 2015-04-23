@@ -39,52 +39,25 @@ public class DataScraper extends AsyncTask<Void, Void, Void> {
             new String[]{"2210a", "2210b", "3185a"};
 
     private Document doc;
-    private Context context;
 
     private List<Lab> labs;
     private List<Printer> printers;
 
     private String printData;
 
-    public DataScraper(Context context) {
-        this.context = context;
+    public DataScraper() {
         this.labs = new ArrayList<>();
         this.printers = new ArrayList<>();
     }
 
     @Override
     protected Void doInBackground(Void... params) {
-        HttpURLConnection urlConnection;
-        InputStreamReader in;
-        BufferedReader reader;
-
         try {
-            // Usage
+            // Lab machine usage
             doc = Jsoup.connect(USAGE_URL).get();
 
             // Print queue
-            URL url = new URL(PRINT_QUEUE_URL);
-            urlConnection = (HttpURLConnection) url.openConnection();
-
-            urlConnection.setRequestMethod("GET");
-            urlConnection.connect();
-
-            in = new InputStreamReader(urlConnection.getInputStream());
-            reader = new BufferedReader(in);
-
-            StringBuilder sBuilder = new StringBuilder();
-            String line;
-
-            while ((line = reader.readLine()) != null) {
-                sBuilder.append(line);
-                sBuilder.append("\n");
-            }
-
-            printData = sBuilder.toString();
-
-            reader.close();
-            in.close();
-            urlConnection.disconnect();
+            printData = Jsoup.connect(PRINT_QUEUE_URL).ignoreContentType(true).execute().body();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -113,10 +86,6 @@ public class DataScraper extends AsyncTask<Void, Void, Void> {
                 printersFragment.updateText(printers.toArray().toString());
             }
         }
-    }
-
-    private Fragment getFragment(int id) {
-        return ((MainActivity) context).getSupportFragmentManager().findFragmentById(id);
     }
 
     /**

@@ -8,7 +8,7 @@
     <dimen name="navigation_drawer_width">240dp</dimen>
 
     <dimen name="spinner_size">24sp</dimen>
-    <dimen name="free_size">40dp</dimen>
+    <dimen name="free_size">60dp</dimen>
     <dimen name="free_num_size">26sp</dimen>
     <dimen name="free_text_size">12sp</dimen>
     <dimen name="lab_text_size">22sp</dimen>

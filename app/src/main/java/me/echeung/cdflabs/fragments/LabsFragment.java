@@ -103,7 +103,7 @@ public class LabsFragment extends TabFragment {
             mProgress.setVisibility(View.VISIBLE);
 
             // Get lab/printer data
-            new DataScraper(getActivity()).execute();
+            new DataScraper().execute();
         }
     }
 
