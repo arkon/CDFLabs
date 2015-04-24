@@ -85,12 +85,10 @@ public class PrintersFragment extends TabFragment {
         }
     }
 
-    public void updateLists(Map<String, Printer> printers) {
+    public void updateLists(List<Printer> printers) {
         super.updateContent();
 
-        List<Printer> list = new ArrayList<>(printers.values());
-
-        adapter.setPrinters(list);
+        adapter.setPrinters(printers);
         adapter.notifyDataSetChanged();
     }
 }

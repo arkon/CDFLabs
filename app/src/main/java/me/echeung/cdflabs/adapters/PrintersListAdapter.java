@@ -42,6 +42,7 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public int getItemCount() {
+
         return mPrinters.size();
     }
 
