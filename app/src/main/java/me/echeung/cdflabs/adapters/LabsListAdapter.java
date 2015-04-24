@@ -5,13 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import me.echeung.cdflabs.R;
+import me.echeung.cdflabs.holders.LabHolder;
+import me.echeung.cdflabs.holders.TimestampHolder;
 import me.echeung.cdflabs.labs.Lab;
 
 public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -37,7 +37,7 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             return new TimestampHolder(v);
         } else {
             v = LayoutInflater.from(parent.getContext()).inflate(R.layout.lab_list_item, parent, false);
-            return new LabViewHolder(v);
+            return new LabHolder(v);
         }
     }
 
@@ -54,7 +54,7 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             timestampHolder.timestampView.setText(String.format(mContext.getString(R.string.timestamp),
                     mLabs.get(0).getTimestamp()));
         } else {
-            LabViewHolder labHolder = (LabViewHolder) holder;
+            LabHolder labHolder = (LabHolder) holder;
 
             final Lab lab = mLabs.get(index);
 
@@ -85,21 +85,5 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     public void setLabs(List<Lab> labs) {
         this.mLabs = labs;
-    }
-
-    public static class LabViewHolder extends RecyclerView.ViewHolder {
-        LinearLayout compsView;
-        TextView freeView;
-        TextView labView;
-        TextView statsView;
-
-        public LabViewHolder(View itemView) {
-            super(itemView);
-
-            compsView = (LinearLayout) itemView.findViewById(R.id.comps);
-            freeView = (TextView) itemView.findViewById(R.id.free);
-            labView = (TextView) itemView.findViewById(R.id.lab);
-            statsView = (TextView) itemView.findViewById(R.id.stats);
-        }
     }
 }
