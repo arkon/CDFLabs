@@ -28,14 +28,14 @@
             android:gravity="center"
             android:text="@string/no_connection"
             android:textColor="@color/secondary_text"
-            android:textSize="20sp" />
+            android:textSize="@dimen/text_subhead" />
 
         <Button
             android:id="@+id/btn_retry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/retry"
-            android:textSize="20sp" />
+            android:textSize="@dimen/text_subhead" />
 
     </LinearLayout>
 

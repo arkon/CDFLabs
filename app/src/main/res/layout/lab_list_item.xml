@@ -23,7 +23,7 @@
             android:fontFamily="sans-serif-light"
             android:gravity="center"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/free_num_size" />
+            android:textSize="@dimen/text_headline" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
             android:gravity="center"
             android:text="@string/free_comps"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/free_text_size" />
+            android:textSize="@dimen/text_caption" />
 
     </LinearLayout>
 
@@ -50,14 +50,14 @@
             android:fontFamily="sans-serif-light"
             android:paddingBottom="10dp"
             android:textColor="@color/text"
-            android:textSize="@dimen/lab_text_size" />
+            android:textSize="@dimen/text_headline" />
 
         <TextView
             android:id="@+id/stats"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/secondary_text"
-            android:textSize="@dimen/stats_text_size" />
+            android:textSize="@dimen/text_caption" />
 
     </LinearLayout>
 

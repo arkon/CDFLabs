@@ -7,12 +7,10 @@
     <dimen name="toolbar_elevation">4dp</dimen>
     <dimen name="card_elevation">2dp</dimen>
 
-    <dimen name="spinner_size">24sp</dimen>
-    <dimen name="free_size">60dp</dimen>
-    <dimen name="free_num_size">26sp</dimen>
-    <dimen name="free_text_size">12sp</dimen>
-    <dimen name="lab_text_size">22sp</dimen>
-    <dimen name="stats_text_size">14sp</dimen>
+    <dimen name="text_headline">24sp</dimen>
+    <dimen name="text_subhead">16sp</dimen>
+    <dimen name="text_body">14sp</dimen>
+    <dimen name="text_caption">12sp</dimen>
 
-    <dimen name="printer_header_size">22sp</dimen>
+    <dimen name="free_size">60dp</dimen>
 </resources>

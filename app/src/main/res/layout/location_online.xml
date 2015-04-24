@@ -10,7 +10,7 @@
         android:layout_marginBottom="10dp"
         android:text="@string/nx_name"
         android:textColor="@color/text"
-        android:textSize="26sp" />
+        android:textSize="@dimen/text_headline" />
 
     <TextView
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
         android:layout_marginBottom="10dp"
         android:text="@string/nx_info"
         android:textColor="@color/secondary_text"
-        android:textSize="16sp" />
+        android:textSize="@dimen/text_body" />
 
     <Button
         android:id="@+id/more_nx"
