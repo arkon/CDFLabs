@@ -48,7 +48,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="1dip"
                             android:layout_below="@+id/sort"
-                            android:background="@color/list_divider"
+                            android:background="@color/divider"
                             android:orientation="vertical" />
 
                         <android.support.v7.widget.RecyclerView
@@ -58,7 +58,7 @@
                             android:layout_above="@+id/bottom"
                             android:layout_below="@+id/divider1"
                             android:clipToPadding="false"
-                            android:divider="@color/list_divider"
+                            android:divider="@color/divider"
                             android:dividerHeight="1dip"
                             android:scrollbars="vertical" />
 
@@ -72,7 +72,7 @@
                             <LinearLayout
                                 android:layout_width="fill_parent"
                                 android:layout_height="1dip"
-                                android:background="@color/list_divider"
+                                android:background="@color/divider"
                                 android:orientation="vertical" />
 
                             <TextView
@@ -85,7 +85,7 @@
                                 android:paddingLeft="@dimen/activity_vertical_margin"
                                 android:paddingRight="@dimen/activity_vertical_margin"
                                 android:paddingTop="8dp"
-                                android:textColor="@color/grey_text"
+                                android:textColor="@color/secondary_text"
                                 android:textSize="14sp" />
 
                         </LinearLayout>

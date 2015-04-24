@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:text="@string/nx_name"
-        android:textColor="@color/black_text"
+        android:textColor="@color/text"
         android:textSize="26sp" />
 
     <TextView
@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:text="@string/nx_info"
+        android:textColor="@color/secondary_text"
         android:textSize="16sp" />
 
     <Button
@@ -24,6 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:textColor="@color/text"
         android:text="@string/nx_more" />
 
 </LinearLayout>

@@ -3,15 +3,12 @@
 
     <color name="colorPrimary">#FF4693D0</color>
     <color name="colorPrimaryDark">#FF2A6EA3</color>
-    <color name="colorAccent">#FF8BC34A</color>
-    <color name="background">#FFEEEEEE</color>
+    <color name="colorAccent">#FFE91E63</color>
 
-    <color name="black_text">#FF212121</color>
-    <color name="grey_text">#FF424242</color>
+    <color name="text">#FF212121</color>
+    <color name="secondary_text">#FF727272</color>
 
-    <color name="cards_shadow">#FFDFDFDF</color>
-
-    <color name="list_divider">#FFD4D4D4</color>
+    <color name="divider">#FFDADADA</color>
 
     <color name="free_red">#FFE9442B</color>
     <color name="free_orange">#FFF17C37</color>

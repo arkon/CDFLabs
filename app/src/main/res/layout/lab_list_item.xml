@@ -49,13 +49,14 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
             android:paddingBottom="10dp"
-            android:textColor="@color/black_text"
+            android:textColor="@color/text"
             android:textSize="@dimen/lab_text_size" />
 
         <TextView
             android:id="@+id/stats"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/secondary_text"
             android:textSize="@dimen/stats_text_size" />
 
     </LinearLayout>
