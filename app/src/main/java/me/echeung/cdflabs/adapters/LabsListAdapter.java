@@ -16,6 +16,10 @@ import me.echeung.cdflabs.labs.Lab;
 
 public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    // Some constants
+    private static final int LAB = 0;
+    private static final int TIMESTAMP = 1;
+
     private Activity mContext;
     private List<Lab> mLabs;
 
@@ -28,7 +32,7 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v;
 
-        if (viewType == 1) {
+        if (viewType == TIMESTAMP) {
             v = LayoutInflater.from(parent.getContext()).inflate(R.layout.timestamp_item, parent, false);
             return new TimestampHolder(v);
         } else {
@@ -39,7 +43,7 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public int getItemViewType(int position) {
-        return position == getItemCount() - 1 ? 1 : 0;
+        return position == getItemCount() - 1 ? TIMESTAMP : LAB;
     }
 
     @Override
