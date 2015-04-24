@@ -3,15 +3,12 @@ package me.echeung.cdflabs.fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
@@ -30,18 +27,9 @@ import me.echeung.cdflabs.utils.NetworkUtils;
 
 public class LabsFragment extends TabFragment {
 
-    private View rootView;
-
-    private SwipeRefreshLayout mPullToRefresh;
-    private RecyclerView mListLabs;
-    private LabsListAdapter adapter;
-    private RelativeLayout mLabsView;
-    private ProgressBar mProgress;
-    private LinearLayout mEmpty;
     private Spinner mSort;
-
+    private LabsListAdapter adapter;
     private List<Lab> labs;
-
     private Boolean sortAvail = true;
 
     public LabsFragment() {
@@ -54,28 +42,25 @@ public class LabsFragment extends TabFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_labs, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_labs, container, false);
 
-        mProgress = (ProgressBar) rootView.findViewById(R.id.progress);
-        mEmpty = (LinearLayout) rootView.findViewById(R.id.no_connection);
+        // Some references
+        mContent = (RelativeLayout) rootView.findViewById(R.id.labs_list);
+        mSort = (Spinner) rootView.findViewById(R.id.sort);
+
+        // List/adapter
+        mList = (RecyclerView) rootView.findViewById(R.id.labs);
+        adapter = new LabsListAdapter(getActivity());
+        mList.setAdapter(adapter);
 
         // Pull to refresh
         mPullToRefresh = (SwipeRefreshLayout) rootView.findViewById(R.id.labs_container);
-        mPullToRefresh.setColorSchemeResources(R.color.colorAccent);
         mPullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 fetchData();
             }
         });
-
-        // Some references
-        mLabsView = (RelativeLayout) rootView.findViewById(R.id.labs_list);
-        mSort = (Spinner) rootView.findViewById(R.id.sort);
-
-        // List
-        mListLabs = (RecyclerView) rootView.findViewById(R.id.labs);
-        mListLabs.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         // No connection retry button
         Button mRetry = (Button) rootView.findViewById(R.id.btn_retry);
@@ -90,68 +75,44 @@ public class LabsFragment extends TabFragment {
         return initializeView(rootView);
     }
 
-    public void fetchData() {
-        if (!NetworkUtils.isNetworkAvailable(getActivity())) {
-            // No network connection: show retry button
-            mEmpty.setVisibility(View.VISIBLE);
-            mProgress.setVisibility(View.GONE);
-            mLabsView.setVisibility(View.GONE);
-            mPullToRefresh.setEnabled(false);
-            mPullToRefresh.setRefreshing(false);
-        } else {
-            mEmpty.setVisibility(View.GONE);
-            mProgress.setVisibility(View.VISIBLE);
-            mPullToRefresh.setEnabled(true);
-
-            new LabDataScraper().execute();
-        }
-    }
-
-    private View initializeView(View rootView) {
+    @Override
+    protected View initializeView(View rootView) {
+        super.initializeView(rootView);
         fetchData();
 
-        if (NetworkUtils.isNetworkAvailable(getActivity())) {
-            // The list of labs
-            mListLabs.addOnScrollListener(new RecyclerView.OnScrollListener() {
-                @Override
-                public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                    super.onScrollStateChanged(recyclerView, newState);
-                }
-
-                @Override
-                public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                    int topRowVerticalPosition =
-                            (mListLabs == null || mListLabs.getChildCount() == 0) ?
-                                    0 : mListLabs.getChildAt(0).getTop();
-                    mPullToRefresh.setEnabled(topRowVerticalPosition >= 0);
-                }
-            });
-
-            mSort.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parentView, View selectedItemView,
-                                           int position, long id) {
-                    if (labs != null) {
-                        if (position == 0) {
-                            // Labs by availability
-                            Collections.sort(labs, new LabsByAvail());
-                            sortAvail = true;
-                        } else {
-                            // Labs by building
-                            Collections.sort(labs, new LabsByBuilding());
-                            sortAvail = false;
-                        }
-                        updateAdapter(labs);
+        mSort.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView,
+                                       int position, long id) {
+                if (labs != null) {
+                    if (position == 0) {
+                        // Labs by availability
+                        Collections.sort(labs, new LabsByAvail());
+                        sortAvail = true;
+                    } else {
+                        // Labs by building
+                        Collections.sort(labs, new LabsByBuilding());
+                        sortAvail = false;
                     }
+                    updateAdapter(labs);
                 }
+            }
 
-                @Override
-                public void onNothingSelected(AdapterView<?> parentView) {
-                }
-            });
-        }
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
 
         return rootView;
+    }
+
+    @Override
+    public void fetchData() {
+        super.fetchData();
+
+        if (NetworkUtils.isNetworkAvailable(getActivity())) {
+            new LabDataScraper().execute();
+        }
     }
 
     /**
@@ -159,31 +120,15 @@ public class LabsFragment extends TabFragment {
      * @param labs The list of labs to display.
      */
     public void updateAdapter(List<Lab> labs) {
-        // Hide progress spinner, and show the list
-        mProgress.setVisibility(View.GONE);
-        mLabsView.setVisibility(View.VISIBLE);
-
-        // Complete pull to refresh
-        mPullToRefresh.setRefreshing(false);
+        super.updateContent();
 
         // Sort according to what the user has selected
-        if (sortAvail)
-            Collections.sort(labs, new LabsByAvail());
-        else
-            Collections.sort(labs, new LabsByBuilding());
+        Collections.sort(labs, sortAvail ? new LabsByAvail() : new LabsByBuilding());
 
         // Set the list
         this.labs = labs;
 
-        if (adapter == null) {
-            // Initialize adapter for the list of labs
-            adapter = new LabsListAdapter(getActivity());
-            adapter.setLabs(labs);
-            mListLabs.setAdapter(adapter);
-        } else {
-            // Update with new list
-            adapter.setLabs(labs);
-            adapter.notifyDataSetChanged();
-        }
+        adapter.setLabs(labs);
+        adapter.notifyDataSetChanged();
     }
 }

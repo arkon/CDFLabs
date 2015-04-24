@@ -57,8 +57,6 @@
                             android:layout_height="match_parent"
                             android:layout_below="@+id/divider1"
                             android:clipToPadding="false"
-                            android:divider="@color/divider"
-                            android:dividerHeight="1dip"
                             android:scrollbars="vertical" />
 
                     </RelativeLayout>

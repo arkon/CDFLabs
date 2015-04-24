@@ -3,21 +3,19 @@ package me.echeung.cdflabs.fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
-import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import me.echeung.cdflabs.R;
+import me.echeung.cdflabs.adapters.PrintersListAdapter;
 import me.echeung.cdflabs.adapters.ViewPagerAdapter;
 import me.echeung.cdflabs.fragments.base.TabFragment;
 import me.echeung.cdflabs.printers.Printer;
@@ -26,15 +24,7 @@ import me.echeung.cdflabs.utils.PrinterDataScraper;
 
 public class PrintersFragment extends TabFragment {
 
-    private SwipeRefreshLayout mPullToRefresh;
-    private ProgressBar mProgress;
-    private LinearLayout mEmpty;
-    private RelativeLayout mPrintersView;
-    private ScrollView mPrintersScroller;
-    private TextView p2210a;
-    private TextView p2210b;
-    private TextView p3185;
-    private TextView mTimestamp;
+    private PrintersListAdapter adapter;
 
     public PrintersFragment() {
     }
@@ -48,12 +38,8 @@ public class PrintersFragment extends TabFragment {
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_printers, container, false);
 
-        mProgress = (ProgressBar) rootView.findViewById(R.id.progress);
-        mEmpty = (LinearLayout) rootView.findViewById(R.id.no_connection);
-
         // Pull to refresh
         mPullToRefresh = (SwipeRefreshLayout) rootView.findViewById(R.id.printers_container);
-        mPullToRefresh.setColorSchemeResources(R.color.colorAccent);
         mPullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -62,39 +48,12 @@ public class PrintersFragment extends TabFragment {
         });
 
         // Some references
-        mPrintersView = (RelativeLayout) rootView.findViewById(R.id.printers_list);
-        mPrintersScroller = (ScrollView) rootView.findViewById(R.id.printers_scroller);
-        p2210a = (TextView) rootView.findViewById(R.id.printer_2210a_text);
-        p2210b = (TextView) rootView.findViewById(R.id.printer_2210b_text);
-        p3185 = (TextView) rootView.findViewById(R.id.printer_3185_text);
-        mTimestamp = (TextView) rootView.findViewById(R.id.timestamp);
+        mContent = (RelativeLayout) rootView.findViewById(R.id.printers_list);
 
-        // Disable pull to refresh unless at the top
-        final ViewTreeObserver.OnScrollChangedListener onScrollChangedListener = new
-                ViewTreeObserver.OnScrollChangedListener() {
-                    @Override
-                    public void onScrollChanged() {
-                        mPullToRefresh.setEnabled(mPrintersScroller.getScrollY() == 0);
-                    }
-                };
-
-        mPrintersScroller.setOnTouchListener(new View.OnTouchListener() {
-            private ViewTreeObserver observer;
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (observer == null) {
-                    observer = mPrintersScroller.getViewTreeObserver();
-                    observer.addOnScrollChangedListener(onScrollChangedListener);
-                } else if (!observer.isAlive()) {
-                    observer.removeOnScrollChangedListener(onScrollChangedListener);
-                    observer = mPrintersScroller.getViewTreeObserver();
-                    observer.addOnScrollChangedListener(onScrollChangedListener);
-                }
-
-                return false;
-            }
-        });
+        // List/adapter
+        mList = (RecyclerView) rootView.findViewById(R.id.printers);
+        adapter = new PrintersListAdapter(getActivity());
+        mList.setAdapter(adapter);
 
         // No connection retry button
         Button mRetry = (Button) rootView.findViewById(R.id.btn_retry);
@@ -106,40 +65,32 @@ public class PrintersFragment extends TabFragment {
             }
         });
 
+        return initializeView(rootView);
+    }
+
+    @Override
+    protected View initializeView(View rootView) {
+        super.initializeView(rootView);
         fetchData();
 
         return rootView;
     }
 
+    @Override
     public void fetchData() {
-        if (!NetworkUtils.isNetworkAvailable(getActivity())) {
-            // No network connection: show retry button
-            mEmpty.setVisibility(View.VISIBLE);
-            mProgress.setVisibility(View.GONE);
-            mPrintersView.setVisibility(View.GONE);
-            mPullToRefresh.setRefreshing(false);
-            mPullToRefresh.setEnabled(false);
-        } else {
-            mEmpty.setVisibility(View.GONE);
-            mProgress.setVisibility(View.VISIBLE);
-            mPullToRefresh.setEnabled(true);
+        super.fetchData();
 
+        if (NetworkUtils.isNetworkAvailable(getActivity())) {
             new PrinterDataScraper().execute();
         }
     }
 
     public void updateLists(Map<String, Printer> printers) {
-        // Hide progress spinner, and show the list
-        mProgress.setVisibility(View.GONE);
-        mPrintersView.setVisibility(View.VISIBLE);
+        super.updateContent();
 
-        // Complete pull to refresh
-        mPullToRefresh.setRefreshing(false);
+        List<Printer> list = new ArrayList<>(printers.values());
 
-        p2210a.setText(printers.get("2210a").toString());
-        p2210b.setText(printers.get("2210b").toString());
-        p3185.setText(printers.get("3185a").toString());
-
-        mTimestamp.setText(String.format(getString(R.string.timestamp), printers.get("2210a").getTimestamp()));
+        adapter.setPrinters(list);
+        adapter.notifyDataSetChanged();
     }
 }

@@ -36,94 +36,12 @@
                         android:layout_height="match_parent"
                         android:visibility="gone">
 
-                        <ScrollView
-                            android:id="@+id/printers_scroller"
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/printers"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:clipToPadding="false"
-                            android:orientation="vertical"
-                            android:scrollbarStyle="outsideOverlay">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:paddingTop="@dimen/activity_vertical_margin"
-                                android:paddingBottom="32dp"
-                                android:paddingLeft="@dimen/activity_vertical_margin"
-                                android:paddingRight="@dimen/activity_vertical_margin">
-
-                                <TextView
-                                    android:layout_width="fill_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/printer_2210a"
-                                    android:textSize="@dimen/text_headline" />
-
-                                <TextView
-                                    android:id="@+id/printer_2210a_text"
-                                    android:layout_width="fill_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="@dimen/activity_vertical_margin"
-                                    android:fontFamily="monospace" />
-
-                                <TextView
-                                    android:layout_width="fill_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/printer_2210b"
-                                    android:textSize="@dimen/text_headline" />
-
-                                <TextView
-                                    android:id="@+id/printer_2210b_text"
-                                    android:layout_width="fill_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="@dimen/activity_vertical_margin"
-                                    android:fontFamily="monospace" />
-
-                                <TextView
-                                    android:layout_width="fill_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/printer_3185"
-                                    android:textSize="@dimen/text_headline" />
-
-                                <TextView
-                                    android:id="@+id/printer_3185_text"
-                                    android:layout_width="fill_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="@dimen/activity_vertical_margin"
-                                    android:fontFamily="monospace" />
-
-                            </LinearLayout>
-
-                        </ScrollView>
-
-                        <LinearLayout
-                            android:id="@+id/bottom"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
-                            android:orientation="vertical">
-
-                            <LinearLayout
-                                android:layout_width="fill_parent"
-                                android:layout_height="1dip"
-                                android:background="@color/divider"
-                                android:orientation="vertical" />
-
-                            <TextView
-                                android:id="@+id/timestamp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@android:color/white"
-                                android:fontFamily="sans-serif-light"
-                                android:gravity="center"
-                                android:paddingBottom="8dp"
-                                android:paddingLeft="@dimen/activity_vertical_margin"
-                                android:paddingRight="@dimen/activity_vertical_margin"
-                                android:paddingTop="8dp"
-                                android:textColor="@color/secondary_text"
-                                android:textSize="@dimen/text_caption" />
-
-                        </LinearLayout>
+                            android:scrollbars="vertical" />
 
                     </RelativeLayout>
 
