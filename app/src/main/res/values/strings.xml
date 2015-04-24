@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">CDF Labs</string>
 
+    <string name="OK">OK</string>
+
     <string name="action_refresh">Refresh</string>
-    <string name="action_about">About</string>
+    <string name="help_and_feedback">Help &amp; Feedback</string>
 
     <string name="title_labs">Computers</string>
     <string name="title_printers">Printers</string>
@@ -19,10 +21,10 @@
     <string name="timestamp">Last updated: %s</string>
 
     <string name="bahen_name">Bahen Centre for Information Technology</string>
-    <string name="bahen_address">40 St George St</string>
+    <string name="bahen_address">40 St George Street, Toronto, ON M5S 2E4</string>
     <string name="bahen_web">https://www.google.com/maps/place/Bahen+Centre+for+Information+Technology/@43.659489,-79.397613,17z/data=!3m1!4b1!4m2!3m1!1s0x882b34c75165c957:0x6459384147b4b67b?hl=en</string>
     <string name="bahen_info">The Bahen Centre hosts the majority of the CDF labs. The labs are located in the following rooms:
-BA 2210, BA 2220, BA 2240, BA 3175, BA 3185, BA 3195 and the Great Hall (BA 3200).</string>
+BA 2210, BA 2220, BA 2240, BA 3175, BA 3185, BA 3195 and BA 3200.</string>
     <string name="map_bahen_second_alt">Map of Bahen\'s second floor</string>
     <string name="map_bahen_third_alt">Map of Bahen\'s third floor</string>
 
@@ -38,8 +40,7 @@ BA 2210, BA 2220, BA 2240, BA 3175, BA 3185, BA 3195 and the Great Hall (BA 3200
     <string name="printer_2210b">BA 2210b</string>
     <string name="printer_3185">BA 3185</string>
 
-    <string name="about_title">About</string>
-    <string name="about_content"><![CDATA[
+    <string name="help_content"><![CDATA[
         <b>CDF Labs %1$s</b> by <a href=\'http://echeung.me\'>Eugene Cheung</a><br/>
         <br/>
         Report bugs or request features on <a href=\'https://github.com/arkon/CDFLabs\'>GitHub</a>.<br/>
@@ -47,6 +48,5 @@ BA 2210, BA 2220, BA 2240, BA 3175, BA 3185, BA 3195 and the Great Hall (BA 3200
         Find out more about CDF in the <a href=\'http://www.cdf.toronto.edu/faq.html\'>CDF FAQ</a>.<br/>
         This app is not affiliated with CDF or the University of Toronto in any way.
     ]]></string>
-    <string name="OK">OK</string>
 
 </resources>

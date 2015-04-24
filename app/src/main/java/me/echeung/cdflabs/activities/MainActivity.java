@@ -53,15 +53,15 @@ public class MainActivity extends AppCompatActivity {
                 ViewPagerAdapter.getLabsFragment().fetchData();
                 ViewPagerAdapter.getPrintersFragment().fetchData();
                 return true;
-            case R.id.action_about:
-                showAboutDialog();
+            case R.id.action_help:
+                showHelpDialog();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    private void showAboutDialog() {
+    private void showHelpDialog() {
         String version;
         try {
             version = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
@@ -69,9 +69,9 @@ public class MainActivity extends AppCompatActivity {
             version = "";
         }
 
-        final CharSequence content = Html.fromHtml(getString(R.string.about_content, version));
+        final CharSequence content = Html.fromHtml(getString(R.string.help_content, version));
         new MaterialDialog.Builder(this)
-                .title(R.string.about_title)
+                .title(R.string.help_and_feedback)
                 .content(content)
                 .positiveText(R.string.OK)
                 .show();

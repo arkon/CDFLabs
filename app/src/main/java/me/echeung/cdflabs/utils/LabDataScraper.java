@@ -7,8 +7,13 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import me.echeung.cdflabs.adapters.ViewPagerAdapter;
 import me.echeung.cdflabs.fragments.LabsFragment;
@@ -89,6 +94,20 @@ public class LabDataScraper extends AsyncTask<Void, Void, Void> {
                     lab.setPercent(Double.parseDouble(text));
                     break;
                 case 5:
+                    String original = text;
+
+                    // Try to convert the timestamp string to ISO 8601
+                    try {
+                        DateFormat df = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
+                        Date result = df.parse(text.substring(1));
+
+                        DateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+                        text = dfs.format(result);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                        text = original;
+                    }
+
                     lab.setTimestamp(text);
                     labs.add(lab);
                     i = -1;
