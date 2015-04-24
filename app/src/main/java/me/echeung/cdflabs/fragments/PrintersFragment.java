@@ -15,6 +15,7 @@ import android.widget.TextView;
 import java.util.Map;
 
 import me.echeung.cdflabs.R;
+import me.echeung.cdflabs.adapters.ViewPagerAdapter;
 import me.echeung.cdflabs.fragments.base.TabFragment;
 import me.echeung.cdflabs.printers.Printer;
 import me.echeung.cdflabs.utils.NetworkUtils;
@@ -25,7 +26,7 @@ public class PrintersFragment extends TabFragment {
     private SwipeRefreshLayout mPullToRefresh;
     private ProgressBar mProgress;
     private LinearLayout mEmpty;
-    private LinearLayout mPrintersView;
+    private RelativeLayout mPrintersView;
     private TextView p2210a;
     private TextView p2210b;
     private TextView p3185;
@@ -57,7 +58,7 @@ public class PrintersFragment extends TabFragment {
         });
 
         // Some references
-        mPrintersView = (LinearLayout) rootView.findViewById(R.id.printers_list);
+        mPrintersView = (RelativeLayout) rootView.findViewById(R.id.printers_list);
         p2210a = (TextView) rootView.findViewById(R.id.printer_2210a_text);
         p2210b = (TextView) rootView.findViewById(R.id.printer_2210b_text);
         p3185 = (TextView) rootView.findViewById(R.id.printer_3185_text);
@@ -69,6 +70,7 @@ public class PrintersFragment extends TabFragment {
             @Override
             public void onClick(View v) {
                 fetchData();
+                ViewPagerAdapter.getLabsFragment().fetchData();
             }
         });
 
@@ -84,9 +86,11 @@ public class PrintersFragment extends TabFragment {
             mProgress.setVisibility(View.GONE);
             mPrintersView.setVisibility(View.GONE);
             mPullToRefresh.setRefreshing(false);
+            mPullToRefresh.setEnabled(false);
         } else {
             mEmpty.setVisibility(View.GONE);
             mProgress.setVisibility(View.VISIBLE);
+            mPullToRefresh.setEnabled(true);
 
             new PrinterDataScraper().execute();
         }

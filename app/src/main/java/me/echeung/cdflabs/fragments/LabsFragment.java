@@ -21,6 +21,7 @@ import java.util.List;
 
 import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.adapters.LabsListAdapter;
+import me.echeung.cdflabs.adapters.ViewPagerAdapter;
 import me.echeung.cdflabs.fragments.base.TabFragment;
 import me.echeung.cdflabs.labs.Lab;
 import me.echeung.cdflabs.labs.LabsByAvail;
@@ -85,6 +86,7 @@ public class LabsFragment extends TabFragment {
             @Override
             public void onClick(View v) {
                 initializeView(rootView);
+                ViewPagerAdapter.getPrintersFragment().fetchData();
             }
         });
 
@@ -97,10 +99,12 @@ public class LabsFragment extends TabFragment {
             mEmpty.setVisibility(View.VISIBLE);
             mProgress.setVisibility(View.GONE);
             mLabsView.setVisibility(View.GONE);
+            mPullToRefresh.setEnabled(false);
             mPullToRefresh.setRefreshing(false);
         } else {
             mEmpty.setVisibility(View.GONE);
             mProgress.setVisibility(View.VISIBLE);
+            mPullToRefresh.setEnabled(true);
 
             new LabDataScraper().execute();
         }

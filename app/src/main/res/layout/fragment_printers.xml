@@ -30,101 +30,107 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <ScrollView
+                    <RelativeLayout
+                        android:id="@+id/printers_list"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:clipToPadding="false"
-                        android:orientation="vertical"
-                        android:scrollbarStyle="outsideOverlay">
+                        android:layout_height="match_parent">
 
-                        <LinearLayout
+                        <ScrollView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
+                            android:clipToPadding="false"
                             android:orientation="vertical"
-                            android:padding="@dimen/activity_vertical_margin">
+                            android:scrollbarStyle="outsideOverlay">
 
                             <LinearLayout
-                                android:id="@+id/printers_list"
-                                android:layout_width="fill_parent"
-                                android:layout_height="match_parent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
                                 android:orientation="vertical"
-                                android:visibility="gone">
+                                android:padding="@dimen/activity_vertical_margin">
 
-                                <TextView
+                                <LinearLayout
                                     android:layout_width="fill_parent"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="sans-serif-light"
-                                    android:text="@string/printer_2210a"
-                                    android:textSize="@dimen/text_headline" />
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:visibility="gone">
 
-                                <TextView
-                                    android:id="@+id/printer_2210a_text"
-                                    android:layout_width="fill_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="@dimen/activity_vertical_margin"
-                                    android:fontFamily="monospace" />
+                                    <TextView
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="sans-serif-light"
+                                        android:text="@string/printer_2210a"
+                                        android:textSize="@dimen/text_headline" />
 
-                                <TextView
-                                    android:layout_width="fill_parent"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="sans-serif-light"
-                                    android:text="@string/printer_2210b"
-                                    android:textSize="@dimen/text_headline" />
+                                    <TextView
+                                        android:id="@+id/printer_2210a_text"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="@dimen/activity_vertical_margin"
+                                        android:fontFamily="monospace" />
 
-                                <TextView
-                                    android:id="@+id/printer_2210b_text"
-                                    android:layout_width="fill_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="@dimen/activity_vertical_margin"
-                                    android:fontFamily="monospace" />
+                                    <TextView
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="sans-serif-light"
+                                        android:text="@string/printer_2210b"
+                                        android:textSize="@dimen/text_headline" />
 
-                                <TextView
-                                    android:layout_width="fill_parent"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="sans-serif-light"
-                                    android:text="@string/printer_3185"
-                                    android:textSize="@dimen/text_headline" />
+                                    <TextView
+                                        android:id="@+id/printer_2210b_text"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="@dimen/activity_vertical_margin"
+                                        android:fontFamily="monospace" />
 
-                                <TextView
-                                    android:id="@+id/printer_3185_text"
-                                    android:layout_width="fill_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="@dimen/activity_vertical_margin"
-                                    android:fontFamily="monospace" />
+                                    <TextView
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="sans-serif-light"
+                                        android:text="@string/printer_3185"
+                                        android:textSize="@dimen/text_headline" />
+
+                                    <TextView
+                                        android:id="@+id/printer_3185_text"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="@dimen/activity_vertical_margin"
+                                        android:fontFamily="monospace" />
+
+                                </LinearLayout>
 
                             </LinearLayout>
 
-                        </LinearLayout>
-
-                    </ScrollView>
-
-                    <LinearLayout
-                        android:id="@+id/bottom"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:orientation="vertical">
+                        </ScrollView>
 
                         <LinearLayout
+                            android:id="@+id/bottom"
                             android:layout_width="fill_parent"
-                            android:layout_height="1dip"
-                            android:background="@color/divider"
-                            android:orientation="vertical" />
-
-                        <TextView
-                            android:id="@+id/timestamp"
-                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
-                            android:gravity="center"
-                            android:paddingBottom="8dp"
-                            android:paddingLeft="@dimen/activity_vertical_margin"
-                            android:paddingRight="@dimen/activity_vertical_margin"
-                            android:paddingTop="8dp"
-                            android:textColor="@color/secondary_text"
-                            android:textSize="@dimen/text_caption" />
+                            android:layout_alignParentBottom="true"
+                            android:orientation="vertical">
 
-                    </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="1dip"
+                                android:background="@color/divider"
+                                android:orientation="vertical" />
+
+                            <TextView
+                                android:id="@+id/timestamp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-light"
+                                android:gravity="center"
+                                android:paddingBottom="8dp"
+                                android:paddingLeft="@dimen/activity_vertical_margin"
+                                android:paddingRight="@dimen/activity_vertical_margin"
+                                android:paddingTop="8dp"
+                                android:textColor="@color/secondary_text"
+                                android:textSize="@dimen/text_caption" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
 
                     <include layout="@layout/loading" />
 
