@@ -40,7 +40,6 @@ public class LabsFragment extends TabFragment {
     private ProgressBar mProgress;
     private LinearLayout mEmpty;
     private Spinner mSort;
-    private TextView mTimestamp;
 
     private List<Lab> labs;
 
@@ -73,7 +72,6 @@ public class LabsFragment extends TabFragment {
 
         // Some references
         mLabsView = (RelativeLayout) rootView.findViewById(R.id.labs_list);
-        mTimestamp = (TextView) rootView.findViewById(R.id.timestamp);
         mSort = (Spinner) rootView.findViewById(R.id.sort);
 
         // List
@@ -189,7 +187,5 @@ public class LabsFragment extends TabFragment {
             adapter.setLabs(labs);
             adapter.notifyDataSetChanged();
         }
-
-        mTimestamp.setText(String.format(getString(R.string.timestamp), labs.get(0).getTimestamp()));
     }
 }

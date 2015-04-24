@@ -14,7 +14,7 @@ import java.util.List;
 import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.labs.Lab;
 
-public class LabsListAdapter extends RecyclerView.Adapter<LabsListAdapter.LabViewHolder> {
+public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Activity mContext;
     private List<Lab> mLabs;
@@ -25,35 +25,57 @@ public class LabsListAdapter extends RecyclerView.Adapter<LabsListAdapter.LabVie
     }
 
     @Override
-    public LabViewHolder onCreateViewHolder(ViewGroup parent, int index) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.lab_list_item, parent, false);
-        return new LabViewHolder(v);
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v;
+
+        if (viewType == 1) {
+            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.timestamp_item, parent, false);
+            return new TimestampHolder(v);
+        } else {
+            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.lab_list_item, parent, false);
+            return new LabViewHolder(v);
+        }
     }
 
     @Override
-    public void onBindViewHolder(LabViewHolder holder, int index) {
-        final Lab lab = mLabs.get(index);
+    public int getItemViewType(int position) {
+        return position == getItemCount() - 1 ? 1 : 0;
+    }
 
-        // Show available machines and set the square's background colour accordingly
-        int avail = lab.getAvail();
-        holder.freeView.setText(String.valueOf(avail));
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int index) {
+        if (index == getItemCount() - 1) {
+            TimestampHolder timestampHolder = (TimestampHolder) holder;
 
-        if (avail == 0)
-            holder.compsView.setBackgroundColor(mContext.getResources().getColor(R.color.free_red));
-        else if (avail <= 5)
-            holder.compsView.setBackgroundColor(mContext.getResources().getColor(R.color.free_orange));
-        else
-            holder.compsView.setBackgroundColor(mContext.getResources().getColor(R.color.free_green));
+            timestampHolder.timestampView.setText(String.format(mContext.getString(R.string.timestamp),
+                    mLabs.get(0).getTimestamp()));
+        } else {
+            LabViewHolder labHolder = (LabViewHolder) holder;
 
-        // Show lab name and stats
-        holder.labView.setText(lab.getLab());
-        holder.statsView.setText(String.format(mContext.getString(R.string.stats),
-                lab.getTotal(), lab.getPercent()));
+            final Lab lab = mLabs.get(index);
+
+            // Show available machines and set the square's background colour accordingly
+            int avail = lab.getAvail();
+            labHolder.freeView.setText(String.valueOf(avail));
+
+            if (avail == 0)
+                labHolder.compsView.setBackgroundColor(mContext.getResources().getColor(R.color.free_red));
+            else if (avail <= 5)
+                labHolder.compsView.setBackgroundColor(mContext.getResources().getColor(R.color.free_orange));
+            else
+                labHolder.compsView.setBackgroundColor(mContext.getResources().getColor(R.color.free_green));
+
+            // Show lab name and stats
+            labHolder.labView.setText(lab.getLab());
+            labHolder.statsView.setText(String.format(mContext.getString(R.string.stats),
+                    lab.getTotal(), lab.getPercent()));
+
+        }
     }
 
     @Override
     public int getItemCount() {
-        return mLabs.size();
+        return mLabs.size() + 1;
     }
 
     public void setLabs(List<Lab> labs) {
@@ -74,6 +96,17 @@ public class LabsListAdapter extends RecyclerView.Adapter<LabsListAdapter.LabVie
             freeView = (TextView) itemView.findViewById(R.id.free);
             labView = (TextView) itemView.findViewById(R.id.lab);
             statsView = (TextView) itemView.findViewById(R.id.stats);
+        }
+    }
+
+    public static class TimestampHolder extends RecyclerView.ViewHolder {
+        View view;
+        TextView timestampView;
+
+        public TimestampHolder(View itemView) {
+            super(itemView);
+            view = itemView;
+            timestampView = (TextView) itemView.findViewById(R.id.timestamp);
         }
     }
 }
