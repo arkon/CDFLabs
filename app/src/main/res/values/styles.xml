@@ -12,6 +12,7 @@
     </style>
 
     <style name="spinnerItemStyle">
+        <item name="android:background">@drawable/list_selector</item>
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:paddingLeft">@dimen/activity_vertical_margin</item>
         <item name="android:paddingRight">@dimen/activity_vertical_margin</item>

@@ -80,7 +80,7 @@ public class PrintQueue {
 
     @Override
     public String toString() {
-        return String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s",
+        return String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\n",
                 getRank(), getOwner(), getQueueClass(), getJob(),
                 getFiles(), getSize(), getTime());
     }
