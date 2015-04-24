@@ -4,12 +4,15 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.Map;
@@ -27,6 +30,7 @@ public class PrintersFragment extends TabFragment {
     private ProgressBar mProgress;
     private LinearLayout mEmpty;
     private RelativeLayout mPrintersView;
+    private ScrollView mPrintersScroller;
     private TextView p2210a;
     private TextView p2210b;
     private TextView p3185;
@@ -59,10 +63,38 @@ public class PrintersFragment extends TabFragment {
 
         // Some references
         mPrintersView = (RelativeLayout) rootView.findViewById(R.id.printers_list);
+        mPrintersScroller = (ScrollView) rootView.findViewById(R.id.printers_scroller);
         p2210a = (TextView) rootView.findViewById(R.id.printer_2210a_text);
         p2210b = (TextView) rootView.findViewById(R.id.printer_2210b_text);
         p3185 = (TextView) rootView.findViewById(R.id.printer_3185_text);
         mTimestamp = (TextView) rootView.findViewById(R.id.timestamp);
+
+        // Disable pull to refresh unless at the top
+        final ViewTreeObserver.OnScrollChangedListener onScrollChangedListener = new
+                ViewTreeObserver.OnScrollChangedListener() {
+                    @Override
+                    public void onScrollChanged() {
+                        mPullToRefresh.setEnabled(mPrintersScroller.getScrollY() == 0);
+                    }
+                };
+
+        mPrintersScroller.setOnTouchListener(new View.OnTouchListener() {
+            private ViewTreeObserver observer;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (observer == null) {
+                    observer = mPrintersScroller.getViewTreeObserver();
+                    observer.addOnScrollChangedListener(onScrollChangedListener);
+                } else if (!observer.isAlive()) {
+                    observer.removeOnScrollChangedListener(onScrollChangedListener);
+                    observer = mPrintersScroller.getViewTreeObserver();
+                    observer.addOnScrollChangedListener(onScrollChangedListener);
+                }
+
+                return false;
+            }
+        });
 
         // No connection retry button
         Button mRetry = (Button) rootView.findViewById(R.id.btn_retry);
