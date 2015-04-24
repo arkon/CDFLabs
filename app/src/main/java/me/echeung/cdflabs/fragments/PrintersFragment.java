@@ -6,8 +6,10 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.Map;
@@ -20,12 +22,10 @@ import me.echeung.cdflabs.utils.PrinterDataScraper;
 
 public class PrintersFragment extends TabFragment {
 
-    private View rootView;
-
     private SwipeRefreshLayout mPullToRefresh;
     private ProgressBar mProgress;
     private LinearLayout mEmpty;
-
+    private LinearLayout mPrintersView;
     private TextView p2210a;
     private TextView p2210b;
     private TextView p3185;
@@ -41,7 +41,7 @@ public class PrintersFragment extends TabFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_printers, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_printers, container, false);
 
         mProgress = (ProgressBar) rootView.findViewById(R.id.progress);
         mEmpty = (LinearLayout) rootView.findViewById(R.id.no_connection);
@@ -56,11 +56,21 @@ public class PrintersFragment extends TabFragment {
             }
         });
 
-        // TextViews
+        // Some references
+        mPrintersView = (LinearLayout) rootView.findViewById(R.id.printers_list);
         p2210a = (TextView) rootView.findViewById(R.id.printer_2210a_text);
         p2210b = (TextView) rootView.findViewById(R.id.printer_2210b_text);
         p3185 = (TextView) rootView.findViewById(R.id.printer_3185_text);
         mTimestamp = (TextView) rootView.findViewById(R.id.timestamp);
+
+        // No connection retry button
+        Button mRetry = (Button) rootView.findViewById(R.id.btn_retry);
+        mRetry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fetchData();
+            }
+        });
 
         fetchData();
 
@@ -72,6 +82,7 @@ public class PrintersFragment extends TabFragment {
             // No network connection: show retry button
             mEmpty.setVisibility(View.VISIBLE);
             mProgress.setVisibility(View.GONE);
+            mPrintersView.setVisibility(View.GONE);
             mPullToRefresh.setRefreshing(false);
         } else {
             mEmpty.setVisibility(View.GONE);
@@ -84,6 +95,7 @@ public class PrintersFragment extends TabFragment {
     public void updateLists(Map<String, Printer> printers) {
         // Hide progress spinner, and show the list
         mProgress.setVisibility(View.GONE);
+        mPrintersView.setVisibility(View.VISIBLE);
 
         // Complete pull to refresh
         mPullToRefresh.setRefreshing(false);
