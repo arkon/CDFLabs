@@ -62,7 +62,7 @@ public class LabsFragment extends TabFragment {
 
         // Pull to refresh
         mPullToRefresh = (SwipeRefreshLayout) rootView.findViewById(R.id.labs_container);
-        mPullToRefresh.setColorSchemeResources(R.color.colorPrimary);
+        mPullToRefresh.setColorSchemeResources(R.color.colorAccent);
         mPullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

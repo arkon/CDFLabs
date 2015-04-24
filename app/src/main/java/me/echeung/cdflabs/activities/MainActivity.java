@@ -1,6 +1,5 @@
 package me.echeung.cdflabs.activities;
 
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -23,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Set up toolbar
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        // Set up app bar
+        setSupportActionBar((Toolbar) findViewById(R.id.appbar));
 
         // Set up ViewPager and adapter
         final ViewPager mViewPager =
@@ -63,15 +62,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showAboutDialog() {
-        String versionName;
+        String version;
         try {
-            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), 0);
-            versionName = info.versionName;
+            version = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
         } catch (PackageManager.NameNotFoundException e) {
-            versionName = "Unknown";
+            version = "";
         }
 
-        final CharSequence content = Html.fromHtml(getString(R.string.about_content, versionName));
+        final CharSequence content = Html.fromHtml(getString(R.string.about_content, version));
         new MaterialDialog.Builder(this)
                 .title(R.string.about_title)
                 .content(content)
