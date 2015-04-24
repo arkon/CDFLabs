@@ -75,6 +75,7 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public int getItemCount() {
+        // Add 1 for the timestamp "footer"
         return mLabs.size() + 1;
     }
 
@@ -83,7 +84,6 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     public static class LabViewHolder extends RecyclerView.ViewHolder {
-        View view;
         LinearLayout compsView;
         TextView freeView;
         TextView labView;
@@ -91,22 +91,11 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         public LabViewHolder(View itemView) {
             super(itemView);
-            view = itemView;
+
             compsView = (LinearLayout) itemView.findViewById(R.id.comps);
             freeView = (TextView) itemView.findViewById(R.id.free);
             labView = (TextView) itemView.findViewById(R.id.lab);
             statsView = (TextView) itemView.findViewById(R.id.stats);
-        }
-    }
-
-    public static class TimestampHolder extends RecyclerView.ViewHolder {
-        View view;
-        TextView timestampView;
-
-        public TimestampHolder(View itemView) {
-            super(itemView);
-            view = itemView;
-            timestampView = (TextView) itemView.findViewById(R.id.timestamp);
         }
     }
 }

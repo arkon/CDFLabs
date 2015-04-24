@@ -22,13 +22,13 @@
             android:layout_height="fill_parent"
             android:clipToPadding="false"
             android:orientation="vertical"
-            android:padding="@dimen/activity_vertical_margin"
             android:scrollbarStyle="outsideOverlay">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/activity_vertical_margin">
 
                 <include layout="@layout/location_bahen" />
 

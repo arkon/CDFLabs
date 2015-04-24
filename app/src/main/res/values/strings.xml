@@ -22,14 +22,12 @@
 
     <string name="bahen_name">Bahen Centre for Information Technology</string>
     <string name="bahen_address">40 St George Street, Toronto, ON M5S 2E4</string>
-    <string name="bahen_web">https://www.google.com/maps/place/Bahen+Centre+for+Information+Technology/@43.659489,-79.397613,17z/data=!3m1!4b1!4m2!3m1!1s0x882b34c75165c957:0x6459384147b4b67b?hl=en</string>
     <string name="bahen_info">The Bahen Centre hosts the majority of the CDF labs. The labs are located in the following rooms:
 BA 2210, BA 2220, BA 2240, BA 3175, BA 3185, BA 3195 and BA 3200.</string>
     <string name="map_bahen_second_alt">Map of Bahen\'s second floor</string>
     <string name="map_bahen_third_alt">Map of Bahen\'s third floor</string>
 
     <string name="nx_name">NX (Remote Access Server)</string>
-    <string name="nx_web">http://www.cdf.utoronto.ca/using_cdf/remote_access_server.html</string>
     <string name="nx_info">CDF offers an NX server for remote desktop connection from home or from your laptop via the wireless network. The NX technology attempts to greatly improve the experience of remote graphical connection over a slow Internet link by optimising perceived speed of response and allowing one to suspend a graphical session and reconnect to it later. You can also connect to CDF\'s NX server from any CDF workstation or Information Commons workstation using a specially crafted profile.</string>
     <string name="nx_more">More information online</string>
 
