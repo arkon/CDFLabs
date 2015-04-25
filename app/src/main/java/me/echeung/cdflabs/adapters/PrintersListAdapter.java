@@ -25,8 +25,7 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private Activity mContext;
     private List<Printer> mPrinters;
     private List<PrintQueue> mQueue;
-
-    private static int headingCount;
+    private int headingCount;
 
     public PrintersListAdapter(Activity context) {
         this.mContext = context;
@@ -74,7 +73,8 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             PrinterHolder printerHolder = (PrinterHolder) holder;
 
             printerHolder.queueView.setText(
-                    String.format("BA %s", mPrinters.get(headingCount++).getName()));
+                    String.format(mContext.getString(R.string.bahen_room),
+                            mPrinters.get(headingCount++).getName()));
         } else {
             PrinterHolder printerHolder = (PrinterHolder) holder;
 
@@ -85,17 +85,19 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public int getItemCount() {
-        // Add extra items for headings and timestamp "footer"
-        return mQueue.size() + + 1;
+        // Add 1 for the timestamp "footer"
+        return mQueue.size() + 1;
     }
 
     public void setPrinters(List<Printer> printers) {
         this.mPrinters = printers;
 
+        this.mQueue.clear();
         for (Printer p : printers) {
-            this.mQueue.add(null);
-            final List<PrintQueue> queue = p.getPrintQueue();
-            this.mQueue.addAll(queue);
+            this.mQueue.add(null);  // For the heading
+            this.mQueue.addAll(p.getPrintQueue());
         }
+
+        this.headingCount = 0;
     }
 }

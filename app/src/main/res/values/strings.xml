@@ -16,6 +16,7 @@
     <string name="no_connection">There\'s no network connection right now.\nTry again later.</string>
     <string name="retry">Retry</string>
 
+    <string name="bahen_room">BA %s</string>
     <string name="free_comps">FREE</string>
     <string name="stats" formatted="false">%s computers total (%s%% busy)</string>
     <string name="timestamp">Last updated: %s</string>
