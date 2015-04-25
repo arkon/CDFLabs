@@ -11,7 +11,7 @@ import java.util.List;
 
 import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.holders.PrinterHeadingHolder;
-import me.echeung.cdflabs.holders.PrinterHolder;
+import me.echeung.cdflabs.holders.PrinterJobHolder;
 import me.echeung.cdflabs.holders.TimestampHolder;
 import me.echeung.cdflabs.printers.PrintQueue;
 import me.echeung.cdflabs.printers.Printer;
@@ -48,7 +48,7 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 return new PrinterHeadingHolder(v);
             default:
                 v = LayoutInflater.from(parent.getContext()).inflate(R.layout.printer_list_item, parent, false);
-                return new PrinterHolder(v);
+                return new PrinterJobHolder(v);
         }
     }
 
@@ -77,16 +77,17 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                     String.format(mContext.getString(R.string.bahen_room),
                             mPrinters.get(headingCount++).getName()));
         } else {
-            PrinterHolder printerHolder = (PrinterHolder) holder;
+            PrinterJobHolder jobHolder = (PrinterJobHolder) holder;
 
             final PrintQueue job = mQueue.get(index);
 
-            printerHolder.ownerView.setText(job.getOwner());
-            printerHolder.timeView.setText(job.getTime());
-            printerHolder.filesView.setText(String.format("Files: %s", job.getFiles()));
-            printerHolder.rankView.setText(String.format("Rank: %s", job.getRank()));
-            printerHolder.numberView.setText(String.format("Job ID: %s", job.getJob()));
-            printerHolder.sizeView.setText(String.format("%s bytes", job.getSize()));
+            jobHolder.ownerView.setText(job.getOwner());
+            jobHolder.infoView .setText(
+                    String.format("Rank: %s | Job ID: %s | Started at %s",
+                            job.getRank(), job.getJob(), job.getTime()));
+            jobHolder.filesView.setText(
+                    String.format("Files: %s (%s B)",
+                            job.getFiles(), job.getSize()));
         }
     }
 

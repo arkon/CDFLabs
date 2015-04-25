@@ -10,31 +10,22 @@
     <TextView
         android:id="@+id/print_job_owner"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="@color/text"
+        android:textSize="@dimen/text_subhead" />
 
     <TextView
         android:id="@+id/print_job_files"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/text_body" />
 
     <TextView
-        android:id="@+id/print_job_rank"
+        android:id="@+id/print_job_info"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/print_job_time"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/print_job_size"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/print_job_number"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/text_caption" />
 
 </LinearLayout>
