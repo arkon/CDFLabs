@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.echeung.cdflabs.R;
+import me.echeung.cdflabs.holders.PrinterHeadingHolder;
 import me.echeung.cdflabs.holders.PrinterHolder;
 import me.echeung.cdflabs.holders.TimestampHolder;
 import me.echeung.cdflabs.printers.PrintQueue;
@@ -44,7 +45,7 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 return new TimestampHolder(v);
             case HEADING:
                 v = LayoutInflater.from(parent.getContext()).inflate(R.layout.printer_heading_item, parent, false);
-                return new PrinterHolder(v);
+                return new PrinterHeadingHolder(v);
             default:
                 v = LayoutInflater.from(parent.getContext()).inflate(R.layout.printer_list_item, parent, false);
                 return new PrinterHolder(v);
@@ -70,16 +71,22 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             timestampHolder.timestampView.setText(String.format(mContext.getString(R.string.timestamp),
                     mPrinters.get(0).getTimestamp()));
         } else if (mQueue.get(index) == null) {
-            PrinterHolder printerHolder = (PrinterHolder) holder;
+            PrinterHeadingHolder headingHolder = (PrinterHeadingHolder) holder;
 
-            printerHolder.queueView.setText(
+            headingHolder.headingView.setText(
                     String.format(mContext.getString(R.string.bahen_room),
                             mPrinters.get(headingCount++).getName()));
         } else {
             PrinterHolder printerHolder = (PrinterHolder) holder;
 
             final PrintQueue job = mQueue.get(index);
-            printerHolder.queueView.setText(job.toString());
+
+            printerHolder.ownerView.setText(job.getOwner());
+            printerHolder.timeView.setText(job.getTime());
+            printerHolder.filesView.setText(String.format("Files: %s", job.getFiles()));
+            printerHolder.rankView.setText(String.format("Rank: %s", job.getRank()));
+            printerHolder.numberView.setText(String.format("Job ID: %s", job.getJob()));
+            printerHolder.sizeView.setText(String.format("%s bytes", job.getSize()));
         }
     }
 

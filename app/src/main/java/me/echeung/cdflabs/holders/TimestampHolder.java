@@ -7,6 +7,7 @@ import android.widget.TextView;
 import me.echeung.cdflabs.R;
 
 public class TimestampHolder extends RecyclerView.ViewHolder {
+
     public TextView timestampView;
 
     public TimestampHolder(View itemView) {

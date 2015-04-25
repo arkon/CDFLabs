@@ -6,7 +6,7 @@
     android:padding="@dimen/activity_vertical_margin">
 
     <TextView
-        android:id="@+id/printer_text"
+        android:id="@+id/printer_heading"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/text_headline" />

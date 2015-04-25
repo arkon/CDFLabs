@@ -8,6 +8,7 @@ import android.widget.TextView;
 import me.echeung.cdflabs.R;
 
 public class LabHolder extends RecyclerView.ViewHolder {
+
     public LinearLayout compsView;
     public TextView freeView;
     public TextView labView;
