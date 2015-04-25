@@ -20,10 +20,6 @@
     <string name="stats" formatted="false">%s computers total (%s%% busy)</string>
     <string name="timestamp">Last updated: %s</string>
 
-    <string name="printer_2210a">BA 2210a</string>
-    <string name="printer_2210b">BA 2210b</string>
-    <string name="printer_3185">BA 3185</string>
-
     <string name="bahen_name">Bahen Centre for Information Technology</string>
     <string name="bahen_address">40 St George Street, Toronto, ON M5S 2E4</string>
     <string name="bahen_info">The Bahen Centre hosts the majority of the CDF labs. The labs are located in the following rooms:

@@ -8,11 +8,8 @@ import org.json.JSONObject;
 import org.jsoup.Jsoup;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import me.echeung.cdflabs.adapters.ViewPagerAdapter;
 import me.echeung.cdflabs.fragments.PrintersFragment;
@@ -62,6 +59,7 @@ public class PrinterDataScraper extends AsyncTask<Void, Void, Void> {
 
     /**
      * Parse the JSON data of print queue data and return it as a list of objects.
+     *
      * @param printData The JSON data in string format.
      * @return A list of Printer objects.
      */
@@ -88,6 +86,7 @@ public class PrinterDataScraper extends AsyncTask<Void, Void, Void> {
 
     /**
      * Parse the JSON array of print queue data and return it as a Printer object.
+     *
      * @param name      The name of the printer.
      * @param timestamp The timestamp of the data.
      * @param jsonArr   The JSON array of data.
@@ -107,7 +106,8 @@ public class PrinterDataScraper extends AsyncTask<Void, Void, Void> {
                         jsonObj.getString("files"),
                         jsonObj.getString("job"),
                         jsonObj.getString("time"),
-                        jsonObj.getString("owner")
+                        jsonObj.getString("owner"),
+                        name
                 ));
             }
         } catch (JSONException e) {

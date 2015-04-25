@@ -54,7 +54,7 @@
                         <android.support.v7.widget.RecyclerView
                             android:id="@+id/labs"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_below="@+id/divider1"
                             android:clipToPadding="false"
                             android:scrollbars="vertical" />

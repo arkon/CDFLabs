@@ -10,9 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.adapters.PrintersListAdapter;

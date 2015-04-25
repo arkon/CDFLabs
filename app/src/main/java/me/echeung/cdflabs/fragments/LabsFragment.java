@@ -117,6 +117,7 @@ public class LabsFragment extends TabFragment {
 
     /**
      * Update the adapter with the new list of labs.
+     *
      * @param labs The list of labs to display.
      */
     public void updateAdapter(List<Lab> labs) {

@@ -15,6 +15,10 @@ import me.echeung.cdflabs.utils.NetworkUtils;
 
 public abstract class TabFragment extends Fragment implements TabFragmentInterface {
 
+    /**
+     * The fragment argument representing the section number for this fragment.
+     */
+    private static final String ARG_SECTION_NUMBER = "section_number";
     protected ProgressBar mProgress;
     protected LinearLayout mEmpty;
     protected SwipeRefreshLayout mPullToRefresh;
@@ -22,14 +26,10 @@ public abstract class TabFragment extends Fragment implements TabFragmentInterfa
     protected RecyclerView mList;
 
     /**
-     * The fragment argument representing the section number for this fragment.
-     */
-    private static final String ARG_SECTION_NUMBER = "section_number";
-
-    /**
      * Returns a new instance of the fragment for the given section number.
+     *
      * @param sectionNumber The section number (corresponding to the tab).
-     * @param fragment The fragment.
+     * @param fragment      The fragment.
      * @return The fragment with the section number in its arguments.
      */
     public static Fragment newInstance(int sectionNumber, Fragment fragment) {
@@ -42,6 +42,7 @@ public abstract class TabFragment extends Fragment implements TabFragmentInterfa
     /**
      * Initializes common view references and prevent pull to refresh from
      * triggering if not at the top of the list.
+     *
      * @param rootView The view.
      * @return The view.
      */
