@@ -3,13 +3,13 @@ package me.echeung.cdflabs.activities;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.astuetz.PagerSlidingTabStrip;
 
 import me.echeung.cdflabs.R;
@@ -70,10 +70,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         final CharSequence content = Html.fromHtml(getString(R.string.help_content, version));
-        new MaterialDialog.Builder(this)
-                .title(R.string.help_and_feedback)
-                .content(content)
-                .positiveText(R.string.OK)
+        new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle)
+                .setTitle(R.string.help_and_feedback)
+                .setMessage(content)
+                .setPositiveButton(R.string.OK, null)
                 .show();
     }
 }
