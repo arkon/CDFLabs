@@ -7,9 +7,9 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
 
 import me.echeung.cdflabs.R;
-import me.echeung.cdflabs.fragments.LabsFragment;
-import me.echeung.cdflabs.fragments.LocationsFragment;
-import me.echeung.cdflabs.fragments.PrintersFragment;
+import me.echeung.cdflabs.ui.fragments.LabsFragment;
+import me.echeung.cdflabs.ui.fragments.LocationsFragment;
+import me.echeung.cdflabs.ui.fragments.PrintersFragment;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 

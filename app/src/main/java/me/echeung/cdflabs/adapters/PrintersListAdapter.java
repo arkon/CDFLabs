@@ -82,7 +82,7 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             final PrintQueue job = mQueue.get(index);
 
             jobHolder.ownerView.setText(job.getOwner());
-            jobHolder.infoView .setText(
+            jobHolder.infoView.setText(
                     String.format("Rank: %s | Job ID: %s | Started at %s",
                             job.getRank(), job.getJob(), job.getTime()));
             jobHolder.filesView.setText(

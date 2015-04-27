@@ -1,4 +1,4 @@
-package me.echeung.cdflabs.activities;
+package me.echeung.cdflabs.ui.activities;
 
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -75,10 +75,10 @@ public class MainActivity extends AppCompatActivity {
 
         final AlertDialog dialog =
                 new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle)
-                .setTitle(R.string.help_and_feedback)
-                .setMessage(content)
-                .setPositiveButton(R.string.OK, null)
-                .show();
+                        .setTitle(R.string.help_and_feedback)
+                        .setMessage(content)
+                        .setPositiveButton(R.string.OK, null)
+                        .show();
 
         final TextView textContent = (TextView) dialog.findViewById(android.R.id.message);
         textContent.setMovementMethod(LinkMovementMethod.getInstance());

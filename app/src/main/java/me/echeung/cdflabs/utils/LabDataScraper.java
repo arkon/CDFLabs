@@ -16,8 +16,8 @@ import java.util.List;
 import java.util.Locale;
 
 import me.echeung.cdflabs.adapters.ViewPagerAdapter;
-import me.echeung.cdflabs.fragments.LabsFragment;
 import me.echeung.cdflabs.labs.Lab;
+import me.echeung.cdflabs.ui.fragments.LabsFragment;
 
 public class LabDataScraper extends AsyncTask<Void, Void, Void> {
 

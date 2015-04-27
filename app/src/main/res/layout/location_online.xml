@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/text"
-        android:text="@string/nx_more" />
+        android:text="@string/nx_more"
+        android:textColor="@color/text" />
 
 </LinearLayout>

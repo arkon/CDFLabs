@@ -1,4 +1,4 @@
-package me.echeung.cdflabs.fragments;
+package me.echeung.cdflabs.ui.fragments;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import me.echeung.cdflabs.R;
-import me.echeung.cdflabs.fragments.base.TabFragment;
+import me.echeung.cdflabs.ui.fragments.base.TabFragment;
 
 public class LocationsFragment extends Fragment {
 

@@ -1,4 +1,4 @@
-package me.echeung.cdflabs.fragments;
+package me.echeung.cdflabs.ui.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,8 +15,8 @@ import java.util.List;
 import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.adapters.PrintersListAdapter;
 import me.echeung.cdflabs.adapters.ViewPagerAdapter;
-import me.echeung.cdflabs.fragments.base.TabFragment;
 import me.echeung.cdflabs.printers.Printer;
+import me.echeung.cdflabs.ui.fragments.base.TabFragment;
 import me.echeung.cdflabs.utils.NetworkUtils;
 import me.echeung.cdflabs.utils.PrinterDataScraper;
 

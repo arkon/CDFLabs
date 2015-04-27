@@ -1,4 +1,4 @@
-package me.echeung.cdflabs.fragments.base;
+package me.echeung.cdflabs.ui.fragments.base;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,7 +13,7 @@ import android.widget.RelativeLayout;
 import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.utils.NetworkUtils;
 
-public abstract class TabFragment extends Fragment implements TabFragmentInterface {
+public abstract class TabFragment extends Fragment implements ITabFragment {
 
     /**
      * The fragment argument representing the section number for this fragment.

@@ -12,10 +12,10 @@ import java.util.Collections;
 import java.util.List;
 
 import me.echeung.cdflabs.adapters.ViewPagerAdapter;
-import me.echeung.cdflabs.fragments.PrintersFragment;
 import me.echeung.cdflabs.printers.PrintQueue;
 import me.echeung.cdflabs.printers.Printer;
 import me.echeung.cdflabs.printers.PrintersByName;
+import me.echeung.cdflabs.ui.fragments.PrintersFragment;
 
 public class PrinterDataScraper extends AsyncTask<Void, Void, Void> {
 

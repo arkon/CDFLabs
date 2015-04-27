@@ -1,4 +1,4 @@
-package me.echeung.cdflabs.fragments;
+package me.echeung.cdflabs.ui.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,10 +18,10 @@ import java.util.List;
 import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.adapters.LabsListAdapter;
 import me.echeung.cdflabs.adapters.ViewPagerAdapter;
-import me.echeung.cdflabs.fragments.base.TabFragment;
 import me.echeung.cdflabs.labs.Lab;
 import me.echeung.cdflabs.labs.LabsByAvail;
 import me.echeung.cdflabs.labs.LabsByBuilding;
+import me.echeung.cdflabs.ui.fragments.base.TabFragment;
 import me.echeung.cdflabs.utils.LabDataScraper;
 import me.echeung.cdflabs.utils.NetworkUtils;
 
