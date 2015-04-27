@@ -7,8 +7,10 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.astuetz.PagerSlidingTabStrip;
 
@@ -70,10 +72,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
         final CharSequence content = Html.fromHtml(getString(R.string.help_content, version));
-        new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle)
+
+        final AlertDialog dialog =
+                new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle)
                 .setTitle(R.string.help_and_feedback)
                 .setMessage(content)
                 .setPositiveButton(R.string.OK, null)
                 .show();
+
+        final TextView textContent = (TextView) dialog.findViewById(android.R.id.message);
+        textContent.setMovementMethod(LinkMovementMethod.getInstance());
     }
 }
