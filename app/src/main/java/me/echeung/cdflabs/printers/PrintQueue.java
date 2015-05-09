@@ -9,10 +9,11 @@ public class PrintQueue {
     private String job;
     private String time;
     private String owner;
+    private String raw;
 
     public PrintQueue(String rank, String size, String klass,
                       String files, String job, String time,
-                      String owner) {
+                      String owner, String raw) {
         this.rank = rank;
         this.size = size;
         this.klass = klass;
@@ -20,6 +21,7 @@ public class PrintQueue {
         this.job = job;
         this.time = time;
         this.owner = owner;
+        this.raw = raw;
     }
 
     public String getRank() {
@@ -50,10 +52,12 @@ public class PrintQueue {
         return owner;
     }
 
+    public String getRaw() {
+        return raw;
+    }
+
     @Override
     public String toString() {
-        return String.format("%s\t%s\t%s\t%s\t%s\t%s\t%s",
-                getRank(), getOwner(), getQueueClass(), getJob(),
-                getFiles(), getSize(), getTime());
+        return getRaw();
     }
 }

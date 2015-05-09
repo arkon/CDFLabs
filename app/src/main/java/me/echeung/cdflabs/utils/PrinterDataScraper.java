@@ -106,7 +106,8 @@ public class PrinterDataScraper extends AsyncTask<Void, Void, Void> {
                         jsonObj.getString("files"),
                         jsonObj.getString("job"),
                         jsonObj.getString("time"),
-                        jsonObj.getString("owner")
+                        jsonObj.getString("owner"),
+                        jsonObj.getString("raw")
                 ));
             }
         } catch (JSONException e) {
