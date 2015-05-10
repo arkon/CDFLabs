@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:text="@string/nx_name"
         android:textColor="@color/text"
         android:textSize="@dimen/text_headline" />
@@ -15,7 +15,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:text="@string/nx_info"
         android:textColor="@color/secondary_text"
         android:textSize="@dimen/text_body" />
