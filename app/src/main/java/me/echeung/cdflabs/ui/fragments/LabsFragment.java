@@ -27,7 +27,6 @@ public class LabsFragment extends TabFragment {
 
     private Spinner mSort;
     private LabsListAdapter adapter;
-    private List<Lab> labs;
 
     public LabsFragment() {
     }
@@ -81,10 +80,8 @@ public class LabsFragment extends TabFragment {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView,
                                        int position, long id) {
-                if (labs != null) {
-                    adapter.setSortingCriteria(position == 0 ?
-                            LabSortEnum.AVAIL : LabSortEnum.BUILDING);
-                }
+                adapter.setSortingCriteria(position == 0 ?
+                        LabSortEnum.AVAIL : LabSortEnum.BUILDING);
             }
 
             @Override
@@ -111,9 +108,6 @@ public class LabsFragment extends TabFragment {
      */
     public void updateAdapter(List<Lab> labs) {
         super.updateContent();
-
-        // Set the list
-        this.labs = labs;
 
         adapter.setLabs(labs);
     }

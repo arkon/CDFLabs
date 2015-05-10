@@ -1,13 +1,13 @@
 package me.echeung.cdflabs.adapters;
 
 import android.app.Activity;
-import android.support.v7.util.SortedList;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.util.SortedListAdapterCallback;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -26,28 +26,13 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private static final int TIMESTAMP = 1;
 
     private Activity mContext;
-    private SortedList<Lab> mLabs;
+    private List<Lab> mLabs;
     private Comparator<Lab> mComparator;
 
     public LabsListAdapter(Activity context) {
         this.mContext = context;
         this.mComparator = new LabsByAvail();
-        this.mLabs = new SortedList<>(Lab.class, new SortedListAdapterCallback<Lab>(this) {
-            @Override
-            public int compare(Lab t0, Lab t1) {
-                return mComparator.compare(t0, t1);
-            }
-
-            @Override
-            public boolean areContentsTheSame(Lab oldItem, Lab newItem) {
-                return oldItem.getLab().equals(newItem.getLab());
-            }
-
-            @Override
-            public boolean areItemsTheSame(Lab item1, Lab item2) {
-                return item1 == item2;
-            }
-        });
+        this.mLabs = new ArrayList<>();
     }
 
     @Override
@@ -106,39 +91,30 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     public void setLabs(List<Lab> labs) {
-        clearList();
+        mLabs.clear();
+        if (labs != null)
+            mLabs.addAll(labs);
 
-        mLabs.beginBatchedUpdates();
-
-        for (Lab lab : labs) {
-            mLabs.add(lab);
-        }
-
-        mLabs.endBatchedUpdates();
-
-        this.notifyDataSetChanged();
+        sortLabs(labs);
     }
 
     public void setSortingCriteria(int type) {
         switch (type) {
             case LabSortEnum.BUILDING:
                 this.mComparator = new LabsByBuilding();
+                break;
             case LabSortEnum.AVAIL:
             default:
                 this.mComparator = new LabsByAvail();
+                break;
         }
 
-        this.notifyDataSetChanged();
+        sortLabs(mLabs);
     }
 
-    private void clearList() {
-        mLabs.beginBatchedUpdates();
-
-        while (mLabs.size() > 0) {
-            mLabs.remove(mLabs.get(0));
-        }
-
-        mLabs.endBatchedUpdates();
+    private void sortLabs(List<Lab> labs) {
+        Collections.sort(labs, this.mComparator);
+        notifyDataSetChanged();
     }
 
     private int getColor(int name) {
