@@ -112,5 +112,7 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
 
         this.headingCount = 0;
+
+        this.notifyDataSetChanged();
     }
 }

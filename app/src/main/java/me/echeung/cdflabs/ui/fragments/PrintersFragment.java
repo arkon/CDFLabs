@@ -87,6 +87,5 @@ public class PrintersFragment extends TabFragment {
         super.updateContent();
 
         adapter.setPrinters(printers);
-        adapter.notifyDataSetChanged();
     }
 }

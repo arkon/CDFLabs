@@ -23,6 +23,7 @@ import me.echeung.cdflabs.labs.LabsByAvail;
 import me.echeung.cdflabs.labs.LabsByBuilding;
 import me.echeung.cdflabs.ui.fragments.base.TabFragment;
 import me.echeung.cdflabs.utils.LabDataScraper;
+import me.echeung.cdflabs.utils.LabSortEnum;
 import me.echeung.cdflabs.utils.NetworkUtils;
 
 public class LabsFragment extends TabFragment {
@@ -30,7 +31,6 @@ public class LabsFragment extends TabFragment {
     private Spinner mSort;
     private LabsListAdapter adapter;
     private List<Lab> labs;
-    private Boolean sortAvail = true;
 
     public LabsFragment() {
     }
@@ -87,12 +87,10 @@ public class LabsFragment extends TabFragment {
                 if (labs != null) {
                     if (position == 0) {
                         // Labs by availability
-                        Collections.sort(labs, new LabsByAvail());
-                        sortAvail = true;
+                        adapter.setSortingCriteria(LabSortEnum.AVAIL);
                     } else {
                         // Labs by building
-                        Collections.sort(labs, new LabsByBuilding());
-                        sortAvail = false;
+                        adapter.setSortingCriteria(LabSortEnum.BUILDING);
                     }
                     updateAdapter(labs);
                 }
@@ -123,13 +121,9 @@ public class LabsFragment extends TabFragment {
     public void updateAdapter(List<Lab> labs) {
         super.updateContent();
 
-        // Sort according to what the user has selected
-        Collections.sort(labs, sortAvail ? new LabsByAvail() : new LabsByBuilding());
-
         // Set the list
         this.labs = labs;
 
         adapter.setLabs(labs);
-        adapter.notifyDataSetChanged();
     }
 }
