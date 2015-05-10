@@ -85,11 +85,11 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             labHolder.freeView.setText(String.valueOf(avail));
 
             if (avail == 0)
-                labHolder.compsView.setBackgroundColor(mContext.getResources().getColor(R.color.free_red));
+                labHolder.compsView.setBackgroundColor(getColor(R.color.free_red));
             else if (avail <= 5)
-                labHolder.compsView.setBackgroundColor(mContext.getResources().getColor(R.color.free_orange));
+                labHolder.compsView.setBackgroundColor(getColor(R.color.free_orange));
             else
-                labHolder.compsView.setBackgroundColor(mContext.getResources().getColor(R.color.free_green));
+                labHolder.compsView.setBackgroundColor(getColor(R.color.free_green));
 
             // Show lab name and stats
             labHolder.labView.setText(lab.getLab());
@@ -139,5 +139,9 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
 
         mLabs.endBatchedUpdates();
+    }
+
+    private int getColor(int name) {
+        return mContext.getResources().getColor(name);
     }
 }
