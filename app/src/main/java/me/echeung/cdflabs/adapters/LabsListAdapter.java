@@ -114,6 +114,7 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private void sortLabs(List<Lab> labs) {
         Collections.sort(labs, this.mComparator);
+        this.mLabs = labs;
         notifyDataSetChanged();
     }
 
