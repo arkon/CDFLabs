@@ -19,6 +19,7 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
      * The fragment argument representing the section number for this fragment.
      */
     private static final String ARG_SECTION_NUMBER = "section_number";
+
     protected ProgressBar mProgress;
     protected LinearLayout mEmpty;
     protected SwipeRefreshLayout mPullToRefresh;
@@ -51,6 +52,12 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
         mEmpty = (LinearLayout) rootView.findViewById(R.id.no_connection);
 
         mPullToRefresh.setColorSchemeResources(R.color.colorAccent);
+        mPullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                fetchData();
+            }
+        });
 
         mList.setLayoutManager(new LinearLayoutManager(getActivity()));
         mList.addOnScrollListener(new RecyclerView.OnScrollListener() {

@@ -38,12 +38,6 @@ public class PrintersFragment extends TabFragment {
 
         // Pull to refresh
         mPullToRefresh = (SwipeRefreshLayout) rootView.findViewById(R.id.printers_container);
-        mPullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                fetchData();
-            }
-        });
 
         // Some references
         mContent = (RelativeLayout) rootView.findViewById(R.id.printers_list);

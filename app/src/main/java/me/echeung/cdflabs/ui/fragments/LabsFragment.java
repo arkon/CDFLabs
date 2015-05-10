@@ -51,12 +51,6 @@ public class LabsFragment extends TabFragment {
 
         // Pull to refresh
         mPullToRefresh = (SwipeRefreshLayout) rootView.findViewById(R.id.labs_container);
-        mPullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                fetchData();
-            }
-        });
 
         // No connection retry button
         Button mRetry = (Button) rootView.findViewById(R.id.btn_retry);
