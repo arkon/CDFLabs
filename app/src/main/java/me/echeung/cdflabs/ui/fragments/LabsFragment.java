@@ -12,15 +12,12 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
-import java.util.Collections;
 import java.util.List;
 
 import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.adapters.LabsListAdapter;
 import me.echeung.cdflabs.adapters.ViewPagerAdapter;
 import me.echeung.cdflabs.labs.Lab;
-import me.echeung.cdflabs.labs.LabsByAvail;
-import me.echeung.cdflabs.labs.LabsByBuilding;
 import me.echeung.cdflabs.ui.fragments.base.TabFragment;
 import me.echeung.cdflabs.utils.LabDataScraper;
 import me.echeung.cdflabs.utils.LabSortEnum;
@@ -85,14 +82,8 @@ public class LabsFragment extends TabFragment {
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView,
                                        int position, long id) {
                 if (labs != null) {
-                    if (position == 0) {
-                        // Labs by availability
-                        adapter.setSortingCriteria(LabSortEnum.AVAIL);
-                    } else {
-                        // Labs by building
-                        adapter.setSortingCriteria(LabSortEnum.BUILDING);
-                    }
-                    updateAdapter(labs);
+                    adapter.setSortingCriteria(position == 0 ?
+                            LabSortEnum.AVAIL : LabSortEnum.BUILDING);
                 }
             }
 

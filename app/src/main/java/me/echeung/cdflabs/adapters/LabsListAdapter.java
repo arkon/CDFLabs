@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -31,19 +30,16 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private Comparator<Lab> mComparator;
 
     public LabsListAdapter(Activity context) {
-        mContext = context;
-
-        setSortingCriteria(LabSortEnum.AVAIL);
-
-        mLabs = new SortedList<>(Lab.class, new SortedListAdapterCallback<Lab>(this) {
+        this.mContext = context;
+        this.mComparator = new LabsByAvail();
+        this.mLabs = new SortedList<>(Lab.class, new SortedListAdapterCallback<Lab>(this) {
             @Override
             public int compare(Lab t0, Lab t1) {
                 return mComparator.compare(t0, t1);
             }
 
             @Override
-            public boolean areContentsTheSame(Lab oldItem,
-                                              Lab newItem) {
+            public boolean areContentsTheSame(Lab oldItem, Lab newItem) {
                 return oldItem.getLab().equals(newItem.getLab());
             }
 
@@ -110,6 +106,8 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     public void setLabs(List<Lab> labs) {
+        clearList();
+
         mLabs.beginBatchedUpdates();
 
         for (Lab lab : labs) {
@@ -122,14 +120,22 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     public void setSortingCriteria(int type) {
-        mLabs.beginBatchedUpdates();
-
         switch (type) {
             case LabSortEnum.BUILDING:
                 this.mComparator = new LabsByBuilding();
             case LabSortEnum.AVAIL:
             default:
                 this.mComparator = new LabsByAvail();
+        }
+
+        this.notifyDataSetChanged();
+    }
+
+    private void clearList() {
+        mLabs.beginBatchedUpdates();
+
+        while (mLabs.size() > 0) {
+            mLabs.remove(mLabs.get(0));
         }
 
         mLabs.endBatchedUpdates();
