@@ -20,6 +20,7 @@
     <string name="free_comps">FREE</string>
     <string name="stats" formatted="false">%s computers total (%s%% busy)</string>
     <string name="timestamp">Last updated: %s</string>
+    <string name="no_data">No data to display</string>
 
     <string name="bahen_name">Bahen Centre for Information Technology</string>
     <string name="bahen_address">40 St George Street, Toronto, ON M5S 2E4</string>

@@ -84,14 +84,14 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             jobHolder.ownerView.setText(job.getOwner());
 
             if (job.getRaw().contains("ERROR")) {
-                jobHolder.infoView.setText(job.getRaw());
+                jobHolder.filesView.setText(job.getRaw());
             } else {
-                jobHolder.infoView.setText(
-                        String.format("Rank: %s | Job ID: %s | Started at %s",
-                                job.getRank(), job.getJob(), job.getTime()));
                 jobHolder.filesView.setText(
                         String.format("Files: %s (%s B)",
                                 job.getFiles(), job.getSize()));
+                jobHolder.infoView.setText(
+                        String.format("Rank: %s | Job ID: %s | Started at %s",
+                                job.getRank(), job.getJob(), job.getTime()));
             }
         }
     }

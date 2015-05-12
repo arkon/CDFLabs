@@ -58,8 +58,12 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         if (index == getItemCount() - 1) {
             TimestampHolder timestampHolder = (TimestampHolder) holder;
 
-            timestampHolder.timestampView.setText(String.format(mContext.getString(R.string.timestamp),
-                    mLabs.get(0).getTimestamp()));
+            if (mLabs.size() > 0) {
+                timestampHolder.timestampView.setText(String.format(mContext.getString(R.string.timestamp),
+                        mLabs.get(0).getTimestamp()));
+            } else {
+                timestampHolder.timestampView.setText(mContext.getString(R.string.no_data));
+            }
         } else {
             LabHolder labHolder = (LabHolder) holder;
 

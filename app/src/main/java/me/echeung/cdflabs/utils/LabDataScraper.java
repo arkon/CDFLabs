@@ -65,55 +65,57 @@ public class LabDataScraper extends AsyncTask<Void, Void, Void> {
     private List<Lab> parseLabData() {
         Elements links = doc.select("td");
 
-        int i = 0;
-        Lab lab = null;
+        if (links != null) {
+            int i = 0;
+            Lab lab = null;
 
-        // Each lab has 6 elements:
-        // name, avail, busy, total, % busy, timestamp
-        for (Element link : links) {
-            String text = link.text();
-            switch (i) {
-                case 0:
-                    lab = new Lab();
+            // Each lab has 6 elements:
+            // name, avail, busy, total, % busy, timestamp
+            for (Element link : links) {
+                String text = link.text();
+                switch (i) {
+                    case 0:
+                        lab = new Lab();
 
-                    if (!text.equals("NX"))
-                        text = "BA " + text;
+                        if (!text.equals("NX"))
+                            text = "BA " + text;
 
-                    lab.setLab(text);
-                    break;
-                case 1:
-                    lab.setAvail(Integer.parseInt(text));
-                    break;
-                case 2:
-                    lab.setBusy(Integer.parseInt(text));
-                    break;
-                case 3:
-                    lab.setTotal(Integer.parseInt(text));
-                    break;
-                case 4:
-                    lab.setPercent(Double.parseDouble(text));
-                    break;
-                case 5:
-                    String original = text;
+                        lab.setLab(text);
+                        break;
+                    case 1:
+                        lab.setAvail(Integer.parseInt(text));
+                        break;
+                    case 2:
+                        lab.setBusy(Integer.parseInt(text));
+                        break;
+                    case 3:
+                        lab.setTotal(Integer.parseInt(text));
+                        break;
+                    case 4:
+                        lab.setPercent(Double.parseDouble(text));
+                        break;
+                    case 5:
+                        String original = text;
 
-                    // Try to convert the timestamp string to ISO 8601
-                    try {
-                        DateFormat df = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
-                        Date result = df.parse(text.substring(1));
+                        // Try to convert the timestamp string to ISO 8601
+                        try {
+                            DateFormat df = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
+                            Date result = df.parse(text.substring(1));
 
-                        DateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
-                        text = dfs.format(result);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                        text = original;
-                    }
+                            DateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+                            text = dfs.format(result);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                            text = original;
+                        }
 
-                    lab.setTimestamp(text);
-                    labs.add(lab);
-                    i = -1;
-                    break;
+                        lab.setTimestamp(text);
+                        labs.add(lab);
+                        i = -1;
+                        break;
+                }
+                i++;
             }
-            i++;
         }
 
         return labs;
