@@ -1,5 +1,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -18,38 +17,22 @@
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin">
 
-            <android.support.v7.widget.CardView
+            <RelativeLayout
+                android:id="@+id/printers_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                card_view:cardCornerRadius="4dp"
-                card_view:cardElevation="@dimen/card_elevation"
-                card_view:cardUseCompatPadding="true">
+                android:visibility="gone">
 
-                <RelativeLayout
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/printers"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:scrollbars="vertical" />
 
-                    <RelativeLayout
-                        android:id="@+id/printers_list"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone">
+            </RelativeLayout>
 
-                        <android.support.v7.widget.RecyclerView
-                            android:id="@+id/printers"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:clipToPadding="false"
-                            android:scrollbars="vertical" />
-
-                    </RelativeLayout>
-
-                    <include layout="@layout/loading" />
-
-                </RelativeLayout>
-
-            </android.support.v7.widget.CardView>
+            <include layout="@layout/loading" />
 
         </RelativeLayout>
 

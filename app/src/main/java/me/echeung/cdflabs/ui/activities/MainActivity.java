@@ -2,6 +2,7 @@ package me.echeung.cdflabs.ui.activities;
 
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -11,8 +12,6 @@ import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-
-import com.astuetz.PagerSlidingTabStrip;
 
 import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.adapters.ViewPagerAdapter;
@@ -35,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setAdapter(mViewPagerAdapter);
 
         // Set up tabs
-        final PagerSlidingTabStrip mTabs =
-                (PagerSlidingTabStrip) this.findViewById(R.id.tabs);
-        mTabs.setViewPager(mViewPager);
+        final TabLayout mTabLayout = (TabLayout) findViewById(R.id.tabs);
+        mTabLayout.setupWithViewPager(mViewPager);
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
     }
 
     @Override
