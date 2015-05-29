@@ -9,16 +9,14 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:text="@string/nx_name"
-        android:textColor="@color/text"
-        android:textSize="@dimen/text_headline" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:text="@string/nx_info"
-        android:textColor="@color/secondary_text"
-        android:textSize="@dimen/text_body" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <Button
         android:id="@+id/more_nx"
@@ -26,6 +24,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/nx_more"
-        android:textColor="@color/text" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Button" />
 
 </LinearLayout>

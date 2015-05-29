@@ -49,15 +49,13 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
             android:paddingBottom="8dp"
-            android:textColor="@color/text"
-            android:textSize="@dimen/text_headline" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
         <TextView
             android:id="@+id/stats"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/secondary_text"
-            android:textSize="@dimen/text_caption" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
     </LinearLayout>
 

@@ -9,6 +9,6 @@
         android:id="@+id/printer_heading"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_headline" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
 </LinearLayout>

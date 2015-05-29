@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -11,21 +12,22 @@
         android:id="@+id/print_job_owner"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/text"
-        android:textSize="@dimen/text_subhead" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        tools:text="Owner" />
 
     <TextView
         android:id="@+id/print_job_files"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/secondary_text"
-        android:textSize="@dimen/text_body" />
+        android:textSize="@dimen/text_body"
+        tools:text="Files" />
 
     <TextView
         android:id="@+id/print_job_info"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/secondary_text"
-        android:textSize="@dimen/text_caption" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        tools:text="Information" />
 
 </LinearLayout>

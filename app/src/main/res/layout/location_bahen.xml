@@ -15,8 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/small_margin"
             android:text="@string/bahen_name"
-            android:textColor="@color/text"
-            android:textSize="@dimen/text_headline" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
         <TextView
             android:layout_width="match_parent"
@@ -27,8 +26,7 @@
             android:drawableStart="@drawable/ic_place"
             android:gravity="center_vertical"
             android:text="@string/bahen_address"
-            android:textColor="@color/secondary_text"
-            android:textSize="@dimen/text_subhead" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
     </LinearLayout>
 
@@ -36,8 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/bahen_info"
-        android:textColor="@color/secondary_text"
-        android:textSize="@dimen/text_body" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
         android:layout_width="match_parent"
@@ -45,8 +42,7 @@
         android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/floor_second"
-        android:textColor="@color/text"
-        android:textSize="@dimen/text_headline" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -62,8 +58,7 @@
         android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/floor_third"
-        android:textColor="@color/text"
-        android:textSize="@dimen/text_headline" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     <ImageView
         android:layout_width="wrap_content"
