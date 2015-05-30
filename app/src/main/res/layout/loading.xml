@@ -1,51 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:gravity="center"
+    android:orientation="vertical">
 
-    <RelativeLayout
+    <ProgressBar
+        android:id="@+id/progress"
+        style="?android:progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminateOnly="true" />
+
+    <LinearLayout
+        android:id="@+id/no_connection"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
-        <ProgressBar
-            android:id="@+id/progress"
-            style="?android:progressBarStyle"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:indeterminateOnly="true" />
-
-        <LinearLayout
-            android:id="@+id/no_connection"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:fontFamily="sans-serif-light"
             android:gravity="center"
-            android:orientation="vertical"
-            android:visibility="gone">
+            android:lineSpacingExtra="@dimen/small_margin"
+            android:text="@string/no_connection"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/text_subhead" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
-                android:fontFamily="sans-serif-light"
-                android:gravity="center"
-                android:lineSpacingExtra="@dimen/small_margin"
-                android:text="@string/no_connection"
-                android:textColor="@color/secondary_text"
-                android:textSize="@dimen/text_subhead" />
+        <Button
+            android:id="@+id/btn_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/retry"
+            android:textSize="@dimen/text_subhead" />
 
-            <Button
-                android:id="@+id/btn_retry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/retry"
-                android:textSize="@dimen/text_subhead" />
+    </LinearLayout>
 
-        </LinearLayout>
-
-    </RelativeLayout>
-
-</android.support.v4.widget.NestedScrollView>
+</RelativeLayout>
