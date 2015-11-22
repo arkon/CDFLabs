@@ -6,8 +6,14 @@ import java.util.List;
 import java.util.Map;
 
 public class PrintQueue {
+
     private Map<String, Printer> printers;
     private String timestamp;
+
+    public PrintQueue(Map<String, Printer> printers, String timestamp) {
+        this.printers = printers;
+        this.timestamp = timestamp;
+    }
 
     public int getLength() {
         return printers.size();

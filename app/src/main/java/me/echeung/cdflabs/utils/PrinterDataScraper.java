@@ -18,7 +18,8 @@ public class PrinterDataScraper extends AsyncTask<Void, Void, Void> {
     private PrintQueue queue;
     private String response;
 
-    public PrinterDataScraper() {}
+    public PrinterDataScraper() {
+    }
 
     @Override
     protected Void doInBackground(Void... params) {

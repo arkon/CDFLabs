@@ -1,16 +1,15 @@
 package me.echeung.cdflabs.printers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Printer {
 
     private String name;
-    private List<PrintJob> printQueue;
+    private List<PrintJob> jobs;
 
-    public Printer(String name, String timestamp) {
+    public Printer(String name, List<PrintJob> jobs) {
         this.name = name;
-        this.printQueue = new ArrayList<>();
+        this.jobs = jobs;
     }
 
     public String getName() {
@@ -21,19 +20,19 @@ public class Printer {
         this.name = name;
     }
 
-    public List<PrintJob> getPrintQueue() {
-        return printQueue;
+    public List<PrintJob> getJobs() {
+        return jobs;
     }
 
-    public void addToQueue(PrintJob queueItem) {
-        this.printQueue.add(queueItem);
+    public void addToJobs(PrintJob job) {
+        this.jobs.add(job);
     }
 
     @Override
     public String toString() {
         StringBuilder sBuilder = new StringBuilder();
 
-        for (PrintJob p : getPrintQueue()) {
+        for (PrintJob p : getJobs()) {
             sBuilder.append(p.toString());
         }
 

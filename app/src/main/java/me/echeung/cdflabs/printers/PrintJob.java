@@ -14,8 +14,7 @@ public class PrintJob {
     private String owner;
     private String raw;
 
-    public PrintJob(String rank, String size, String klass,
-                    String files, String job, String time,
+    public PrintJob(String rank, String size, String klass, String files, String job, String time,
                     String owner, String raw) {
         this.rank = rank;
         this.size = size;
@@ -35,7 +34,7 @@ public class PrintJob {
         return size;
     }
 
-    public String getQueueClass() {
+    public String getJobClass() {
         return klass;
     }
 
