@@ -6,10 +6,12 @@ public class Printer {
 
     private String name;
     private List<PrintJob> jobs;
+    private String description;
 
-    public Printer(String name, List<PrintJob> jobs) {
+    public Printer(String name, List<PrintJob> jobs, String description) {
         this.name = name;
         this.jobs = jobs;
+        this.description = description;
     }
 
     public String getName() {
@@ -24,8 +26,12 @@ public class Printer {
         return jobs;
     }
 
-    public void addToJobs(PrintJob job) {
-        this.jobs.add(job);
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
