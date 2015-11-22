@@ -12,11 +12,11 @@ import java.util.Comparator;
 import java.util.List;
 
 import me.echeung.cdflabs.R;
+import me.echeung.cdflabs.comparators.LabsByAvail;
+import me.echeung.cdflabs.comparators.LabsByBuilding;
 import me.echeung.cdflabs.holders.LabHolder;
 import me.echeung.cdflabs.holders.TimestampHolder;
 import me.echeung.cdflabs.labs.Lab;
-import me.echeung.cdflabs.labs.LabsByAvail;
-import me.echeung.cdflabs.labs.LabsByBuilding;
 import me.echeung.cdflabs.utils.LabSortEnum;
 
 public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {

@@ -10,12 +10,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
-import java.util.List;
-
 import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.adapters.PrintersListAdapter;
 import me.echeung.cdflabs.adapters.ViewPagerAdapter;
-import me.echeung.cdflabs.printers.Printer;
+import me.echeung.cdflabs.printers.PrintQueue;
 import me.echeung.cdflabs.ui.fragments.base.TabFragment;
 import me.echeung.cdflabs.utils.NetworkUtils;
 import me.echeung.cdflabs.utils.PrinterDataScraper;
@@ -77,9 +75,9 @@ public class PrintersFragment extends TabFragment {
         }
     }
 
-    public void updateLists(List<Printer> printers) {
+    public void updateQueue(PrintQueue queue) {
         super.updateContent();
 
-        adapter.setPrinters(printers);
+        adapter.setPrintQueue(queue);
     }
 }

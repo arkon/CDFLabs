@@ -13,8 +13,8 @@ import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.holders.PrinterHeadingHolder;
 import me.echeung.cdflabs.holders.PrinterJobHolder;
 import me.echeung.cdflabs.holders.TimestampHolder;
+import me.echeung.cdflabs.printers.PrintJob;
 import me.echeung.cdflabs.printers.PrintQueue;
-import me.echeung.cdflabs.printers.Printer;
 
 public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -24,13 +24,13 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private static final int TIMESTAMP = 2;
 
     private Activity mContext;
-    private List<Printer> mPrinters;
-    private List<PrintQueue> mQueue;
+    private PrintQueue mPrintQueue;
+    private List<PrintJob> mQueue;
     private int headingCount;
 
     public PrintersListAdapter(Activity context) {
         this.mContext = context;
-        this.mPrinters = new ArrayList<>();
+        this.mPrintQueue = null;
         this.mQueue = new ArrayList<>();
         this.headingCount = 0;
     }
@@ -41,13 +41,16 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         switch (viewType) {
             case TIMESTAMP:
-                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.timestamp_item, parent, false);
+                v = LayoutInflater.from(parent.getContext()).inflate(
+                        R.layout.timestamp_item, parent, false);
                 return new TimestampHolder(v);
             case HEADING:
-                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.printer_heading_item, parent, false);
+                v = LayoutInflater.from(parent.getContext()).inflate(
+                        R.layout.printer_heading_item, parent, false);
                 return new PrinterHeadingHolder(v);
             default:
-                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.printer_list_item, parent, false);
+                v = LayoutInflater.from(parent.getContext()).inflate(
+                        R.layout.printer_list_item, parent, false);
                 return new PrinterJobHolder(v);
         }
     }
@@ -68,18 +71,19 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         if (index == getItemCount() - 1) {
             TimestampHolder timestampHolder = (TimestampHolder) holder;
 
-            timestampHolder.timestampView.setText(String.format(mContext.getString(R.string.timestamp),
-                    mPrinters.get(0).getTimestamp()));
+            if (mPrintQueue != null) {
+                timestampHolder.timestampView.setText(
+                        String.format(mContext.getString(R.string.timestamp),
+                                mPrintQueue.getTimestamp()));
+            }
         } else if (mQueue.get(index) == null) {
             PrinterHeadingHolder headingHolder = (PrinterHeadingHolder) holder;
 
-            headingHolder.headingView.setText(
-                    String.format(mContext.getString(R.string.bahen_room),
-                            mPrinters.get(headingCount++).getName()));
+            headingHolder.headingView.setText("Printer");
         } else {
             PrinterJobHolder jobHolder = (PrinterJobHolder) holder;
 
-            final PrintQueue job = mQueue.get(index);
+            final PrintJob job = mQueue.get(index);
 
             jobHolder.ownerView.setText(job.getOwner());
 
@@ -87,10 +91,10 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 jobHolder.filesView.setText(job.getRaw());
             } else {
                 jobHolder.filesView.setText(
-                        String.format("Files: %s (%s B)",
+                        String.format(mContext.getString(R.string.print_files),
                                 job.getFiles(), job.getSize()));
                 jobHolder.infoView.setText(
-                        String.format("Rank: %s | Job ID: %s | Started at %s",
+                        String.format(mContext.getString(R.string.print_info),
                                 job.getRank(), job.getJob(), job.getTime()));
             }
         }
@@ -102,14 +106,18 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         return mQueue.size() + 1;
     }
 
-    public void setPrinters(List<Printer> printers) {
-        this.mPrinters = printers;
+    public void setPrintQueue(PrintQueue queue) {
+        /*this.mPrintQueue = queue;
 
         this.mQueue.clear();
-        for (Printer p : printers) {
+
+        Map<String, Printer> printers = queue.getPrinters();
+
+        for (String key : queue.getSortedKeys()) {
             this.mQueue.add(null);  // For the heading
-            this.mQueue.addAll(p.getPrintQueue());
+            this.mQueue.addAll(printers.get(key).getPrintQueue());
         }
+        */
 
         this.headingCount = 0;
 

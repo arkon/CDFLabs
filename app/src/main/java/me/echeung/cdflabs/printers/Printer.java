@@ -6,13 +6,11 @@ import java.util.List;
 public class Printer {
 
     private String name;
-    private List<PrintQueue> printQueue;
-    private String timestamp;
+    private List<PrintJob> printQueue;
 
     public Printer(String name, String timestamp) {
         this.name = name;
         this.printQueue = new ArrayList<>();
-        this.timestamp = timestamp;
     }
 
     public String getName() {
@@ -23,27 +21,19 @@ public class Printer {
         this.name = name;
     }
 
-    public List<PrintQueue> getPrintQueue() {
+    public List<PrintJob> getPrintQueue() {
         return printQueue;
     }
 
-    public void addToQueue(PrintQueue queueItem) {
+    public void addToQueue(PrintJob queueItem) {
         this.printQueue.add(queueItem);
-    }
-
-    public String getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
     }
 
     @Override
     public String toString() {
         StringBuilder sBuilder = new StringBuilder();
 
-        for (PrintQueue p : getPrintQueue()) {
+        for (PrintJob p : getPrintQueue()) {
             sBuilder.append(p.toString());
         }
 

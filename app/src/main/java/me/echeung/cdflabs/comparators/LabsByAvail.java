@@ -1,6 +1,8 @@
-package me.echeung.cdflabs.labs;
+package me.echeung.cdflabs.comparators;
 
 import java.util.Comparator;
+
+import me.echeung.cdflabs.labs.Lab;
 
 public class LabsByAvail implements Comparator<Lab> {
 

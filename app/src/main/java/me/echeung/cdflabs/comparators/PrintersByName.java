@@ -1,6 +1,8 @@
-package me.echeung.cdflabs.printers;
+package me.echeung.cdflabs.comparators;
 
 import java.util.Comparator;
+
+import me.echeung.cdflabs.printers.Printer;
 
 public class PrintersByName implements Comparator<Printer> {
 

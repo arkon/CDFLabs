@@ -1,63 +1,37 @@
 package me.echeung.cdflabs.printers;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
 public class PrintQueue {
+    private Map<String, Printer> printers;
+    private String timestamp;
 
-    private String rank;
-    private String size;
-    private String klass;
-    private String files;
-    private String job;
-    private String time;
-    private String owner;
-    private String raw;
-
-    public PrintQueue(String rank, String size, String klass,
-                      String files, String job, String time,
-                      String owner, String raw) {
-        this.rank = rank;
-        this.size = size;
-        this.klass = klass;
-        this.files = files;
-        this.job = job;
-        this.time = time;
-        this.owner = owner;
-        this.raw = raw;
+    public int getLength() {
+        return printers.size();
     }
 
-    public String getRank() {
-        return rank;
+    public List<String> getSortedKeys() {
+        List keys = new ArrayList(printers.keySet());
+        Collections.sort(keys);
+        return keys;
     }
 
-    public String getSize() {
-        return size;
+    public Map<String, Printer> getPrinters() {
+        return printers;
     }
 
-    public String getQueueClass() {
-        return klass;
+    public void setPrinters(Map<String, Printer> printers) {
+        this.printers = printers;
     }
 
-    public String getFiles() {
-        return files;
+    public String getTimestamp() {
+        return timestamp;
     }
 
-    public String getJob() {
-        return job;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public String getOwner() {
-        return owner;
-    }
-
-    public String getRaw() {
-        return raw;
-    }
-
-    @Override
-    public String toString() {
-        return getRaw();
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 }
