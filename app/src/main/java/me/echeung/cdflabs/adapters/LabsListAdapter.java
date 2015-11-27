@@ -1,6 +1,7 @@
 package me.echeung.cdflabs.adapters;
 
 import android.app.Activity;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -131,6 +132,6 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     private int getColor(int name) {
-        return mContext.getResources().getColor(name);
+        return ContextCompat.getColor(mContext, name);
     }
 }
