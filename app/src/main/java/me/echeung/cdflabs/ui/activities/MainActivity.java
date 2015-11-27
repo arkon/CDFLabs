@@ -47,16 +47,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        switch (id) {
+        switch (item.getItemId()) {
             case R.id.action_refresh:
                 ViewPagerAdapter.getLabsFragment().fetchData();
                 ViewPagerAdapter.getPrintersFragment().fetchData();
                 return true;
+
             case R.id.action_help:
                 showHelpDialog();
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

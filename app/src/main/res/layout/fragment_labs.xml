@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -20,25 +21,10 @@
                 android:orientation="vertical"
                 android:visibility="gone">
 
-                <Spinner
-                    android:id="@+id/sort"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/sort_array" />
-
-                <LinearLayout
-                    android:id="@+id/divider1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dip"
-                    android:layout_below="@+id/sort"
-                    android:background="@color/divider"
-                    android:orientation="vertical" />
-
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/labs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/divider1"
                     android:clipToPadding="false"
                     android:scrollbars="vertical" />
 

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CDF Labs</string>
 
@@ -15,6 +16,10 @@
 
     <string name="no_connection">There\'s no network connection right now.\nTry again later.</string>
     <string name="retry">Retry</string>
+
+    <string name="sort">Sort</string>
+    <string name="sort_avail">Availability</string>
+    <string name="sort_name">Name</string>
 
     <string name="bahen_room">BA %s</string>
     <string name="free_comps">FREE</string>

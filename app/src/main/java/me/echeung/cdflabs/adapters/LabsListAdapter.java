@@ -27,10 +27,12 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private Activity mContext;
     private List<Lab> mLabs;
+    private int sortingCriteria;
     private Comparator<Lab> mComparator;
 
     public LabsListAdapter(Activity context) {
         this.mContext = context;
+        this.sortingCriteria = LabSortEnum.AVAIL;
         this.mComparator = new LabsByAvail();
         this.mLabs = new ArrayList<>();
     }
@@ -103,8 +105,10 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     public void setSortingCriteria(int type) {
+        this.sortingCriteria = type;
+
         switch (type) {
-            case LabSortEnum.BUILDING:
+            case LabSortEnum.NAME:
                 this.mComparator = new LabsByBuilding();
                 break;
             case LabSortEnum.AVAIL:
@@ -120,6 +124,10 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         Collections.sort(labs, this.mComparator);
         this.mLabs = labs;
         notifyDataSetChanged();
+    }
+
+    public int getSortingCriteria() {
+        return sortingCriteria;
     }
 
     private int getColor(int name) {

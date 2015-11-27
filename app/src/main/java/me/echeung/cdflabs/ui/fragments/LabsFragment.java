@@ -5,12 +5,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 
 import java.util.List;
 
@@ -25,7 +26,6 @@ import me.echeung.cdflabs.utils.NetworkUtils;
 
 public class LabsFragment extends TabFragment {
 
-    private Spinner mSort;
     private LabsListAdapter adapter;
 
     public LabsFragment() {
@@ -36,13 +36,53 @@ public class LabsFragment extends TabFragment {
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_labs, menu);
+
+        switch (adapter.getSortingCriteria()) {
+            case LabSortEnum.NAME:
+                menu.findItem(R.id.sortName).setChecked(true);
+                break;
+
+            case LabSortEnum.AVAIL:
+            default:
+                menu.findItem(R.id.sortAvail).setChecked(true);
+                break;
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.sortAvail:
+                setSortMode(LabSortEnum.AVAIL);
+                return true;
+
+            case R.id.sortName:
+                setSortMode(LabSortEnum.NAME);
+                return true;
+
+            default:
+                break;
+        }
+
+        return false;
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_labs, container, false);
 
         // Some references
         mContent = (RelativeLayout) rootView.findViewById(R.id.labs_list);
-        mSort = (Spinner) rootView.findViewById(R.id.sort);
 
         // List/adapter
         mList = (RecyclerView) rootView.findViewById(R.id.labs);
@@ -70,19 +110,6 @@ public class LabsFragment extends TabFragment {
         super.initializeView(rootView);
         fetchData();
 
-        mSort.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView,
-                                       int position, long id) {
-                adapter.setSortingCriteria(position == 0 ?
-                        LabSortEnum.AVAIL : LabSortEnum.BUILDING);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-            }
-        });
-
         return rootView;
     }
 
@@ -104,5 +131,10 @@ public class LabsFragment extends TabFragment {
         super.updateContent();
 
         adapter.setLabs(labs);
+    }
+
+    private void setSortMode(int type) {
+        adapter.setSortingCriteria(type);
+        getActivity().invalidateOptionsMenu();
     }
 }
