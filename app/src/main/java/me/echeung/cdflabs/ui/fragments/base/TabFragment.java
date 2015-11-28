@@ -20,7 +20,6 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
      */
     private static final String ARG_SECTION_NUMBER = "section_number";
 
-    protected ProgressBar mProgress;
     protected LinearLayout mEmpty;
     protected SwipeRefreshLayout mPullToRefresh;
     protected RelativeLayout mContent;
@@ -48,7 +47,6 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
      * @return The view.
      */
     protected View initializeView(View rootView) {
-        mProgress = (ProgressBar) rootView.findViewById(R.id.progress);
         mEmpty = (LinearLayout) rootView.findViewById(R.id.no_connection);
 
         mPullToRefresh.setColorSchemeResources(R.color.colorAccent);
@@ -86,13 +84,14 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
     public void fetchData() {
         if (!NetworkUtils.isNetworkAvailable(getActivity())) {
             mEmpty.setVisibility(View.VISIBLE);
-            mProgress.setVisibility(View.GONE);
             mContent.setVisibility(View.GONE);
+
             mPullToRefresh.setRefreshing(false);
             mPullToRefresh.setEnabled(false);
         } else {
             mEmpty.setVisibility(View.GONE);
-            mProgress.setVisibility(View.VISIBLE);
+
+            mPullToRefresh.setRefreshing(true);
             mPullToRefresh.setEnabled(true);
         }
     }
@@ -102,8 +101,7 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
      * content data.
      */
     public void updateContent() {
-        // Hide progress spinner, and show the content
-        mProgress.setVisibility(View.GONE);
+        // Show the content
         mContent.setVisibility(View.VISIBLE);
 
         // Complete pull to refresh
