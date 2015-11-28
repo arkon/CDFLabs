@@ -18,6 +18,8 @@ import me.echeung.cdflabs.adapters.ViewPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
+    private AlertDialog mHelpDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +39,20 @@ public class MainActivity extends AppCompatActivity {
         final TabLayout mTabLayout = (TabLayout) findViewById(R.id.tabs);
         mTabLayout.setupWithViewPager(mViewPager);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
+
+        // App version number for help dialog
+        String version;
+        try {
+            version = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            version = "";
+        }
+
+        mHelpDialog = new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle)
+                .setTitle(R.string.help_and_feedback)
+                .setMessage(Html.fromHtml(getString(R.string.help_content, version)))
+                .setPositiveButton(R.string.OK, null)
+                .create();
     }
 
     @Override
@@ -63,23 +79,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showHelpDialog() {
-        String version;
-        try {
-            version = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
-        } catch (PackageManager.NameNotFoundException e) {
-            version = "";
-        }
+        mHelpDialog.show();
 
-        final CharSequence content = Html.fromHtml(getString(R.string.help_content, version));
-
-        final AlertDialog dialog =
-                new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle)
-                        .setTitle(R.string.help_and_feedback)
-                        .setMessage(content)
-                        .setPositiveButton(R.string.OK, null)
-                        .show();
-
-        final TextView textContent = (TextView) dialog.findViewById(android.R.id.message);
+        final TextView textContent = (TextView) mHelpDialog.findViewById(android.R.id.message);
         textContent.setMovementMethod(LinkMovementMethod.getInstance());
     }
 }
