@@ -18,6 +18,7 @@ import me.echeung.cdflabs.comparators.LabsByBuilding;
 import me.echeung.cdflabs.holders.LabHolder;
 import me.echeung.cdflabs.holders.TimestampHolder;
 import me.echeung.cdflabs.labs.Lab;
+import me.echeung.cdflabs.ui.AppState;
 import me.echeung.cdflabs.utils.LabSortEnum;
 
 public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -28,14 +29,13 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private Activity mContext;
     private List<Lab> mLabs;
-    private int sortingCriteria;
     private Comparator<Lab> mComparator;
 
     public LabsListAdapter(Activity context) {
         this.mContext = context;
-        this.sortingCriteria = LabSortEnum.AVAIL;
-        this.mComparator = new LabsByAvail();
         this.mLabs = new ArrayList<>();
+
+        updateSortingCriteria();
     }
 
     @Override
@@ -105,10 +105,8 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         sortLabs(labs);
     }
 
-    public void setSortingCriteria(int type) {
-        this.sortingCriteria = type;
-
-        switch (type) {
+    public void updateSortingCriteria() {
+        switch (AppState.getLabSort()) {
             case LabSortEnum.NAME:
                 this.mComparator = new LabsByBuilding();
                 break;
@@ -125,10 +123,6 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         Collections.sort(labs, this.mComparator);
         this.mLabs = labs;
         notifyDataSetChanged();
-    }
-
-    public int getSortingCriteria() {
-        return sortingCriteria;
     }
 
     private int getColor(int name) {

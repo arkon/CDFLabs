@@ -19,6 +19,7 @@ import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.adapters.LabsListAdapter;
 import me.echeung.cdflabs.adapters.ViewPagerAdapter;
 import me.echeung.cdflabs.labs.Lab;
+import me.echeung.cdflabs.ui.AppState;
 import me.echeung.cdflabs.ui.fragments.base.TabFragment;
 import me.echeung.cdflabs.utils.LabDataScraper;
 import me.echeung.cdflabs.utils.LabSortEnum;
@@ -46,7 +47,7 @@ public class LabsFragment extends TabFragment {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_labs, menu);
 
-        switch (adapter.getSortingCriteria()) {
+        switch (AppState.getLabSort()) {
             case LabSortEnum.NAME:
                 menu.findItem(R.id.sortName).setChecked(true);
                 break;
@@ -134,7 +135,8 @@ public class LabsFragment extends TabFragment {
     }
 
     private void setSortMode(int type) {
-        adapter.setSortingCriteria(type);
+        AppState.setLabSort(type);
+        adapter.updateSortingCriteria();
         getActivity().invalidateOptionsMenu();
     }
 }
