@@ -106,5 +106,8 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
 
         // Complete pull to refresh
         mPullToRefresh.setRefreshing(false);
+
+        // Scroll list back to top
+        mList.smoothScrollToPosition(0);
     }
 }
