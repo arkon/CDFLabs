@@ -7,11 +7,13 @@ public class Printer {
     private String name;
     private List<PrintJob> jobs;
     private String description;
+    private int length;
 
-    public Printer(String name, List<PrintJob> jobs, String description) {
+    public Printer(String name, List<PrintJob> jobs, String description, int length) {
         this.name = name;
         this.jobs = jobs;
         this.description = description;
+        this.length = length;
     }
 
     public String getName() {
@@ -26,6 +28,10 @@ public class Printer {
         return jobs;
     }
 
+    public void setJobs(List<PrintJob> jobs) {
+        this.jobs = jobs;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -34,12 +40,20 @@ public class Printer {
         this.description = description;
     }
 
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
     @Override
     public String toString() {
-        StringBuilder sBuilder = new StringBuilder();
+        final StringBuilder sBuilder = new StringBuilder();
 
-        for (PrintJob p : getJobs()) {
-            sBuilder.append(p.toString());
+        for (PrintJob job : getJobs()) {
+            sBuilder.append(job.toString());
         }
 
         return sBuilder.toString();
