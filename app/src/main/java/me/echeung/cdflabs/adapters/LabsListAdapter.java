@@ -19,7 +19,7 @@ import me.echeung.cdflabs.holders.LabHolder;
 import me.echeung.cdflabs.holders.TimestampHolder;
 import me.echeung.cdflabs.labs.Lab;
 import me.echeung.cdflabs.ui.AppState;
-import me.echeung.cdflabs.utils.LabSortEnum;
+import me.echeung.cdflabs.enums.LabSortEnum;
 
 public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 

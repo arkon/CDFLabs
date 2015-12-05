@@ -17,13 +17,9 @@ import me.echeung.cdflabs.holders.TimestampHolder;
 import me.echeung.cdflabs.printers.PrintJob;
 import me.echeung.cdflabs.printers.PrintQueue;
 import me.echeung.cdflabs.printers.Printer;
+import me.echeung.cdflabs.enums.PrintersListEnum;
 
 public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
-    // Some constants
-    private static final int JOB = 0;
-    private static final int HEADING = 1;
-    private static final int TIMESTAMP = 2;
 
     private Activity mContext;
     private String mTimestamp;
@@ -44,11 +40,11 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         View v;
 
         switch (viewType) {
-            case TIMESTAMP:
+            case PrintersListEnum.TIMESTAMP:
                 v = LayoutInflater.from(parent.getContext()).inflate(
                         R.layout.timestamp_item, parent, false);
                 return new TimestampHolder(v);
-            case HEADING:
+            case PrintersListEnum.HEADING:
                 v = LayoutInflater.from(parent.getContext()).inflate(
                         R.layout.printer_heading_item, parent, false);
                 return new PrinterHeadingHolder(v);
@@ -62,31 +58,29 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public int getItemViewType(int position) {
         if (position == getItemCount() - 1)
-            return TIMESTAMP;
+            return PrintersListEnum.TIMESTAMP;
 
         if (mQueue.get(position) == null)
-            return HEADING;
+            return PrintersListEnum.HEADING;
 
-        return JOB;
+        return PrintersListEnum.JOB;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int index) {
         if (index == getItemCount() - 1) {
-            TimestampHolder timestampHolder = (TimestampHolder) holder;
+            final TimestampHolder timestampHolder = (TimestampHolder) holder;
 
             timestampHolder.timestampView.setText(
                     String.format(mContext.getString(R.string.timestamp), mTimestamp));
         } else if (mQueue.get(index) == null) {
-            PrinterHeadingHolder headingHolder = (PrinterHeadingHolder) holder;
-
-            int headerIndex = getSectionHeaderIndex(index);
+            final PrinterHeadingHolder headingHolder = (PrinterHeadingHolder) holder;
+            final int headerIndex = getSectionHeaderIndex(index);
 
             headingHolder.headingView.setText(mPrinterNames.get(headerIndex));
             headingHolder.descriptionView.setText(mPrinterDescriptions.get(headerIndex));
         } else {
-            PrinterJobHolder jobHolder = (PrinterJobHolder) holder;
-
+            final PrinterJobHolder jobHolder = (PrinterJobHolder) holder;
             final PrintJob job = mQueue.get(index);
 
             jobHolder.ownerView.setText(job.getOwner());
@@ -119,7 +113,7 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         Map<String, Printer> printers = queue.getPrinters();
 
         for (final String key : this.mPrinterNames) {
-            Printer printer = printers.get(key);
+            final Printer printer = printers.get(key);
 
             this.mQueue.add(null);  // For the heading
             this.mPrinterDescriptions.add(printer.getDescription());

@@ -2,7 +2,7 @@ package me.echeung.cdflabs.ui;
 
 import android.app.Application;
 
-import me.echeung.cdflabs.utils.LabSortEnum;
+import me.echeung.cdflabs.enums.LabSortEnum;
 
 public class AppState extends Application {
 

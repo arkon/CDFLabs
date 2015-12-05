@@ -1,4 +1,4 @@
-package me.echeung.cdflabs.utils;
+package me.echeung.cdflabs.enums;
 
 public class LabSortEnum {
     public static final int AVAIL = 1;
