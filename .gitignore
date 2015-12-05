@@ -12,16 +12,17 @@ $RECYCLE.BIN/
 .DS_Store
 
 # IDE things
-.idea
-.gradle
-build/
-.classpath
-.project
-local.properties
-bin/
-gen/
+*.ap_
+*.apk
 *.class
 *.dex
-*.apk
-*.ap_
 *.iml
+*.log
+.classpath
+.gradle/
+.idea/
+.project/
+bin/
+build/
+gen/
+local.properties
