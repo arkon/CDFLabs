@@ -30,7 +30,6 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private List<String> mPrinterNames;
     private List<String> mPrinterDescriptions;
     private List<PrintJob> mQueue;
-    private int headingCount;
 
     public PrintersListAdapter(Activity context) {
         this.mContext = context;
@@ -38,7 +37,6 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         this.mPrinterNames = new ArrayList<>();
         this.mPrinterDescriptions = new ArrayList<>();
         this.mQueue = new ArrayList<>();
-        this.headingCount = 0;
     }
 
     @Override
@@ -82,10 +80,10 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         } else if (mQueue.get(index) == null) {
             PrinterHeadingHolder headingHolder = (PrinterHeadingHolder) holder;
 
-            headingHolder.headingView.setText(mPrinterNames.get(headingCount));
-            headingHolder.descriptionView.setText(mPrinterDescriptions.get(headingCount));
+            int headerIndex = getSectionHeaderIndex(index);
 
-            headingCount++;
+            headingHolder.headingView.setText(mPrinterNames.get(headerIndex));
+            headingHolder.descriptionView.setText(mPrinterDescriptions.get(headerIndex));
         } else {
             PrinterJobHolder jobHolder = (PrinterJobHolder) holder;
 
@@ -120,7 +118,7 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         Map<String, Printer> printers = queue.getPrinters();
 
-        for (String key : this.mPrinterNames) {
+        for (final String key : this.mPrinterNames) {
             Printer printer = printers.get(key);
 
             this.mQueue.add(null);  // For the heading
@@ -128,8 +126,18 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             this.mQueue.addAll(printer.getJobs());
         }
 
-        this.headingCount = 0;
-
         notifyDataSetChanged();
+    }
+
+    private int getSectionHeaderIndex(int queueItemPosition) {
+        int headerIndex = 0;
+
+        for (int i = 0; i < queueItemPosition; i++) {
+            if (this.mQueue.get(i) == null) {
+               headerIndex++;
+            }
+        }
+
+        return headerIndex;
     }
 }
