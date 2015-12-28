@@ -11,6 +11,7 @@ android {
         versionCode 22
         versionName "2.3.0"
     }
+
     buildTypes {
         release {
             minifyEnabled true

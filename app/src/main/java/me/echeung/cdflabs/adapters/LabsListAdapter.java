@@ -73,7 +73,7 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             final Lab lab = mLabs.get(index);
 
             // Show available machines and set the square's background colour accordingly
-            int avail = lab.getAvail();
+            final int avail = lab.getAvail();
             labHolder.freeView.setText(String.valueOf(avail));
 
             if (avail == 0)
@@ -110,6 +110,7 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             case LabSortEnum.NAME:
                 this.mComparator = new LabsByBuilding();
                 break;
+
             case LabSortEnum.AVAIL:
             default:
                 this.mComparator = new LabsByAvail();
@@ -122,6 +123,7 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private void sortLabs(List<Lab> labs) {
         Collections.sort(labs, this.mComparator);
         this.mLabs = labs;
+
         notifyDataSetChanged();
     }
 
