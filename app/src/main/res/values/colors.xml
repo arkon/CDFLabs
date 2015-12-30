@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <color name="colorPrimary">#FF4693D0</color>
     <color name="colorPrimaryDark">#FF2A6EA3</color>
     <color name="colorAccent">#FF8BC34A</color>
@@ -15,5 +13,4 @@
     <color name="free_red">#FFE9442B</color>
     <color name="free_orange">#FFF17C37</color>
     <color name="free_green">#FF00BF76</color>
-
 </resources>

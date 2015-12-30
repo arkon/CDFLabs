@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CDF Labs</string>
 
@@ -51,5 +50,4 @@ BA 2210, BA 2220, BA 2240, BA 3175, BA 3185, BA 3195 and BA 3200.</string>
         Find out more about CDF in the <a href=\'http://www.cdf.toronto.edu/faq.html\'>CDF FAQ</a>.<br/>
         This app is not affiliated with CDF or the University of Toronto in any way.
     ]]></string>
-
 </resources>
