@@ -11,27 +11,26 @@ import java.util.List;
 import java.util.Map;
 
 import me.echeung.cdflabs.R;
+import me.echeung.cdflabs.enums.PrintersListEnum;
+import me.echeung.cdflabs.holders.PrinterEmptyHolder;
 import me.echeung.cdflabs.holders.PrinterHeadingHolder;
 import me.echeung.cdflabs.holders.PrinterJobHolder;
 import me.echeung.cdflabs.holders.TimestampHolder;
 import me.echeung.cdflabs.printers.PrintJob;
 import me.echeung.cdflabs.printers.PrintQueue;
 import me.echeung.cdflabs.printers.Printer;
-import me.echeung.cdflabs.enums.PrintersListEnum;
+import me.echeung.cdflabs.printers.PrintersListHeading;
+import me.echeung.cdflabs.printers.PrintersListItem;
 
 public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Activity mContext;
+    private List<PrintersListItem> mQueue;
     private String mTimestamp;
-    private List<String> mPrinterNames;
-    private List<String> mPrinterDescriptions;
-    private List<PrintJob> mQueue;
 
     public PrintersListAdapter(Activity context) {
         this.mContext = context;
         this.mTimestamp = "";
-        this.mPrinterNames = new ArrayList<>();
-        this.mPrinterDescriptions = new ArrayList<>();
         this.mQueue = new ArrayList<>();
     }
 
@@ -44,10 +43,17 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 v = LayoutInflater.from(parent.getContext()).inflate(
                         R.layout.timestamp_item, parent, false);
                 return new TimestampHolder(v);
+
             case PrintersListEnum.HEADING:
                 v = LayoutInflater.from(parent.getContext()).inflate(
                         R.layout.printer_heading_item, parent, false);
                 return new PrinterHeadingHolder(v);
+
+            case PrintersListEnum.EMPTY:
+                v = LayoutInflater.from(parent.getContext()).inflate(
+                        R.layout.printer_empty_item, parent, false);
+                return new PrinterEmptyHolder(v);
+
             default:
                 v = LayoutInflater.from(parent.getContext()).inflate(
                         R.layout.printer_list_item, parent, false);
@@ -60,10 +66,7 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         if (position == getItemCount() - 1)
             return PrintersListEnum.TIMESTAMP;
 
-        if (mQueue.get(position) == null)
-            return PrintersListEnum.HEADING;
-
-        return PrintersListEnum.JOB;
+        return mQueue.get(position).getType();
     }
 
     @Override
@@ -73,27 +76,36 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
             timestampHolder.timestampView.setText(
                     String.format(mContext.getString(R.string.timestamp), mTimestamp));
-        } else if (mQueue.get(index) == null) {
-            final PrinterHeadingHolder headingHolder = (PrinterHeadingHolder) holder;
-            final int headerIndex = getSectionHeaderIndex(index);
-
-            headingHolder.headingView.setText(mPrinterNames.get(headerIndex));
-            headingHolder.descriptionView.setText(mPrinterDescriptions.get(headerIndex));
         } else {
-            final PrinterJobHolder jobHolder = (PrinterJobHolder) holder;
-            final PrintJob job = mQueue.get(index);
+            switch (mQueue.get(index).getType()) {
+                case PrintersListEnum.HEADING:
+                    final PrinterHeadingHolder headingHolder = (PrinterHeadingHolder) holder;
+                    final PrintersListHeading heading = (PrintersListHeading) mQueue.get(index).getItem();
 
-            jobHolder.ownerView.setText(job.getOwner());
+                    headingHolder.headingView.setText(heading.getName());
+                    headingHolder.descriptionView.setText(heading.getDescription());
+                    break;
 
-            if (job.getRaw().contains("ERROR")) {
-                jobHolder.filesView.setText(job.getRaw());
-            } else {
-                jobHolder.filesView.setText(
-                        String.format(mContext.getString(R.string.print_files),
-                                job.getFiles(), job.getSize()));
-                jobHolder.infoView.setText(
-                        String.format(mContext.getString(R.string.print_info),
-                                job.getRank(), job.getJob(), job.getTime()));
+                case PrintersListEnum.JOB:
+                    final PrinterJobHolder jobHolder = (PrinterJobHolder) holder;
+                    final PrintJob job = (PrintJob) mQueue.get(index).getItem();
+
+                    jobHolder.ownerView.setText(job.getOwner());
+
+                    if (job.getRaw().contains("ERROR")) {
+                        jobHolder.filesView.setText(job.getRaw());
+                    } else {
+                        jobHolder.filesView.setText(
+                                String.format(mContext.getString(R.string.print_files),
+                                        job.getFiles(), job.getSize()));
+                        jobHolder.infoView.setText(
+                                String.format(mContext.getString(R.string.print_info),
+                                        job.getRank(), job.getJob(), job.getTime()));
+                    }
+                    break;
+
+                case PrintersListEnum.EMPTY:
+                    break;
             }
         }
     }
@@ -105,33 +117,30 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     public void setPrintQueue(PrintQueue queue) {
-        this.mTimestamp = queue.getTimestamp();
-        this.mPrinterNames = queue.getSortedKeys();
+        final List<String> printerNames = queue.getSortedKeys();
+        final Map<String, Printer> printers = queue.getPrinters();
 
         this.mQueue.clear();
+        this.mTimestamp = queue.getTimestamp();
 
-        Map<String, Printer> printers = queue.getPrinters();
-
-        for (final String key : this.mPrinterNames) {
+        for (final String key : printerNames) {
             final Printer printer = printers.get(key);
 
-            this.mQueue.add(null);  // For the heading
-            this.mPrinterDescriptions.add(printer.getDescription());
-            this.mQueue.addAll(printer.getJobs());
-        }
+            // Printer heading
+            this.mQueue.add(new PrintersListItem(PrintersListEnum.HEADING,
+                    new PrintersListHeading(key, printer.getDescription())));
 
-        notifyDataSetChanged();
-    }
-
-    private int getSectionHeaderIndex(int queueItemPosition) {
-        int headerIndex = 0;
-
-        for (int i = 0; i < queueItemPosition; i++) {
-            if (this.mQueue.get(i) == null) {
-               headerIndex++;
+            if (printer.getLength() == 0) {
+                // Empty job queue
+                this.mQueue.add(new PrintersListItem(PrintersListEnum.EMPTY, null));
+            } else {
+                // Printer job queue
+                for (PrintJob job : printer.getJobs()) {
+                    this.mQueue.add(new PrintersListItem(PrintersListEnum.JOB, job));
+                }
             }
         }
 
-        return headerIndex;
+        notifyDataSetChanged();
     }
 }

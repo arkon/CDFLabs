@@ -18,11 +18,11 @@ import java.util.List;
 import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.adapters.LabsListAdapter;
 import me.echeung.cdflabs.adapters.ViewPagerAdapter;
+import me.echeung.cdflabs.enums.LabSortEnum;
 import me.echeung.cdflabs.labs.Lab;
 import me.echeung.cdflabs.ui.AppState;
 import me.echeung.cdflabs.ui.fragments.base.TabFragment;
 import me.echeung.cdflabs.utils.LabDataScraper;
-import me.echeung.cdflabs.enums.LabSortEnum;
 import me.echeung.cdflabs.utils.NetworkUtils;
 
 public class LabsFragment extends TabFragment {
