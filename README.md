@@ -1,10 +1,7 @@
 CDFLabs
 =======
 
-<a href="https://play.google.com/store/apps/details?id=me.echeung.cdflabs">
-  <img alt="Get it on Google Play"
-       src="https://developer.android.com/images/brand/en_generic_rgb_wo_60.png" />
-</a>
+[![Get it on Google Play](http://i.imgur.com/MIXbzVC.png)](https://play.google.com/store/apps/details?id=me.echeung.cdflabs)
 
 CDF Labs is a simple and lightweight Android app (requires Android 4.1+) that allows Computer Science students at University of Toronto St George to quickly check the availability of CDF computers and the printer queues.
 
