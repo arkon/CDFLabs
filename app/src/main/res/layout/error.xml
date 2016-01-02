@@ -2,11 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:gravity="center">
 
     <LinearLayout
-        android:id="@+id/no_connection"
+        android:id="@+id/error"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
@@ -14,13 +13,14 @@
         android:visibility="gone">
 
         <TextView
+            android:id="@+id/error_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:fontFamily="sans-serif-light"
             android:gravity="center"
             android:lineSpacingExtra="@dimen/small_margin"
-            android:text="@string/no_connection"
+            android:text="@string/error"
             android:textColor="@color/secondary_text"
             android:textSize="@dimen/text_subhead" />
 

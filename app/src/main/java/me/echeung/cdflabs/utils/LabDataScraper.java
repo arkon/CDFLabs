@@ -35,7 +35,6 @@ public class LabDataScraper extends AsyncTask<Void, Void, Void> {
     @Override
     protected Void doInBackground(Void... params) {
         try {
-            // Lab machine usage
             doc = Jsoup.connect(USAGE_URL).get();
         } catch (Exception e) {
             e.printStackTrace();
@@ -46,14 +45,16 @@ public class LabDataScraper extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected void onPostExecute(Void items) {
+        final LabsFragment labsFragment = ViewPagerAdapter.getLabsFragment();
+
         if (doc != null) {
             labs = parseLabData();
-
-            LabsFragment labsFragment = ViewPagerAdapter.getLabsFragment();
 
             if (labsFragment != null) {
                 labsFragment.updateAdapter(labs);
             }
+        } else {
+            labsFragment.showFetchError();
         }
     }
 
@@ -63,7 +64,7 @@ public class LabDataScraper extends AsyncTask<Void, Void, Void> {
      * @return A list of Lab objects.
      */
     private List<Lab> parseLabData() {
-        Elements links = doc.select("td");
+        final Elements links = doc.select("td");
 
         if (links != null) {
             int i = 0;
@@ -73,6 +74,7 @@ public class LabDataScraper extends AsyncTask<Void, Void, Void> {
             // name, avail, busy, total, % busy, timestamp
             for (Element link : links) {
                 String text = link.text();
+
                 switch (i) {
                     case 0:
                         lab = new Lab();
@@ -114,6 +116,7 @@ public class LabDataScraper extends AsyncTask<Void, Void, Void> {
                         i = -1;
                         break;
                 }
+
                 i++;
             }
         }

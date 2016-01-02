@@ -8,6 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.utils.NetworkUtils;
@@ -19,7 +22,8 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
      */
     private static final String ARG_SECTION_NUMBER = "section_number";
 
-    protected LinearLayout mEmpty;
+    protected LinearLayout mError;
+    protected TextView mErrorMsg;
     protected SwipeRefreshLayout mPullToRefresh;
     protected RelativeLayout mContent;
     protected RecyclerView mList;
@@ -46,7 +50,8 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
      * @return The view.
      */
     protected View initializeView(View rootView) {
-        mEmpty = (LinearLayout) rootView.findViewById(R.id.no_connection);
+        mError = (LinearLayout) rootView.findViewById(R.id.error);
+        mErrorMsg = (TextView) rootView.findViewById(R.id.error_msg);
 
         mPullToRefresh.setColorSchemeResources(R.color.colorAccent);
         mPullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -82,13 +87,9 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
      */
     public void fetchData() {
         if (!NetworkUtils.isNetworkAvailable(getActivity())) {
-            mEmpty.setVisibility(View.VISIBLE);
-            mContent.setVisibility(View.GONE);
-
-            mPullToRefresh.setRefreshing(false);
-            mPullToRefresh.setEnabled(false);
+            showConnectionError();
         } else {
-            mEmpty.setVisibility(View.GONE);
+            mError.setVisibility(View.GONE);
 
             mPullToRefresh.setRefreshing(true);
             mPullToRefresh.setEnabled(true);
@@ -108,5 +109,25 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
 
         // Scroll list back to top
         mList.smoothScrollToPosition(0);
+    }
+
+    private void showError() {
+        mError.setVisibility(View.VISIBLE);
+        mContent.setVisibility(View.GONE);
+
+        mPullToRefresh.setRefreshing(false);
+        mPullToRefresh.setEnabled(false);
+    }
+
+    public void showConnectionError() {
+        showError();
+
+        mErrorMsg.setText(getString(R.string.no_connection));
+    }
+
+    public void showFetchError() {
+        showError();
+
+        mErrorMsg.setText(getString(R.string.error));
     }
 }

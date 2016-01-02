@@ -29,7 +29,7 @@
 
             </RelativeLayout>
 
-            <include layout="@layout/loading" />
+            <include layout="@layout/error" />
 
         </RelativeLayout>
 

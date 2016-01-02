@@ -34,15 +34,17 @@ public class PrinterDataScraper extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected void onPostExecute(Void items) {
+        final PrintersFragment printersFragment = ViewPagerAdapter.getPrintersFragment();
+
         if (response != null) {
             Gson gson = new Gson();
             queue = gson.fromJson(response, PrintQueue.class);
 
-            PrintersFragment printersFragment = ViewPagerAdapter.getPrintersFragment();
-
             if (printersFragment != null) {
                 printersFragment.updateQueue(queue);
             }
+        } else {
+            printersFragment.showFetchError();
         }
     }
 }

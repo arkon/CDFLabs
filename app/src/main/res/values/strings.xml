@@ -14,6 +14,7 @@
     <string name="title_online">Online</string>
 
     <string name="no_connection">There\'s no network connection right now.\nTry again later.</string>
+    <string name="error">Whoops!\nWe ran into an issue fetching the data.</string>
     <string name="retry">Retry</string>
 
     <string name="sort">Sort</string>
@@ -32,8 +33,7 @@
 
     <string name="bahen_name">Bahen Centre for Information Technology</string>
     <string name="bahen_address">40 St George Street, Toronto, ON M5S 2E4</string>
-    <string name="bahen_info">The Bahen Centre hosts the majority of the CDF labs. The labs are located in the following rooms:
-BA 2210, BA 2220, BA 2240, BA 3175, BA 3185, BA 3195 and BA 3200.</string>
+    <string name="bahen_info">The Bahen Centre hosts the majority of the CDF labs. The labs are located in the following rooms: BA 2210, BA 2220, BA 2240, BA 3175, BA 3185, BA 3195 and BA 3200.</string>
     <string name="floor_second">Second floor</string>
     <string name="floor_third">Third floor</string>
     <string name="map_bahen_second_alt">Map of Bahen\'s second floor</string>
