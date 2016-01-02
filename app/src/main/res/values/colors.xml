@@ -8,8 +8,6 @@
 
     <color name="divider">#FFDADADA</color>
 
-    <color name="activated_selected" type="color">#3E000000</color>
-
     <color name="free_red">#FFE9442B</color>
     <color name="free_orange">#FFF17C37</color>
     <color name="free_green">#FF00BF76</color>
