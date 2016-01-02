@@ -4,31 +4,25 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/bahen_address"
-        android:layout_width="fill_parent"
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginBottom="@dimen/small_margin"
+        android:text="@string/bahen_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/small_margin"
-            android:text="@string/bahen_name"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:background="@drawable/list_selector"
-            android:drawableLeft="@drawable/ic_place"
-            android:drawableStart="@drawable/ic_place"
-            android:gravity="center_vertical"
-            android:text="@string/bahen_address"
-            android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/bahen_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:foreground="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:drawableLeft="@drawable/ic_place"
+        android:drawableStart="@drawable/ic_place"
+        android:gravity="center_vertical"
+        android:text="@string/bahen_address"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
     <TextView
         android:layout_width="match_parent"

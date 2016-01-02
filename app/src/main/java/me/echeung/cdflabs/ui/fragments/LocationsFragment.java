@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.ui.fragments.base.TabFragment;
@@ -34,7 +34,7 @@ public class LocationsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_locations, container, false);
 
         // Google Maps for Bahen address
-        final LinearLayout bahenAddress = (LinearLayout) rootView.findViewById(R.id.bahen_address);
+        final TextView bahenAddress = (TextView) rootView.findViewById(R.id.bahen_address);
         bahenAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
