@@ -19,6 +19,12 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     private String[] TITLES;
 
+    final public int[] ICONS = new int[]{
+            R.drawable.ic_desktop,
+            R.drawable.ic_print,
+            R.drawable.ic_explore
+    };
+
     public ViewPagerAdapter(FragmentManager fm, Context mContext) {
         super(fm);
         this.TITLES = new String[]{
@@ -80,6 +86,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return TITLES[position];
+//        return TITLES[position];
+        return null;
     }
 }

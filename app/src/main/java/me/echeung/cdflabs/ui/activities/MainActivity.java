@@ -40,6 +40,12 @@ public class MainActivity extends AppCompatActivity {
         mTabLayout.setupWithViewPager(mViewPager);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
 
+        // Tab icons
+        final int tabCount = mTabLayout.getTabCount();
+        for (int i = 0; i < tabCount; i++) {
+            mTabLayout.getTabAt(i).setIcon(mViewPagerAdapter.ICONS[i]);
+        }
+
         // App version number for help dialog
         String version;
         try {
