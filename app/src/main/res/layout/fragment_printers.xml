@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -11,8 +12,9 @@
         android:layout_height="wrap_content">
 
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/small_margin">
 
             <RelativeLayout
                 android:id="@+id/printers_list"
@@ -20,12 +22,21 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/printers"
+                <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:clipToPadding="false"
-                    android:scrollbars="vertical" />
+                    card_view:cardUseCompatPadding="true"
+                    card_view:cardBackgroundColor="@android:color/white"
+                    card_view:cardCornerRadius="4dp">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/printers"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:scrollbars="vertical" />
+
+                </android.support.v7.widget.CardView>
 
             </RelativeLayout>
 
