@@ -22,9 +22,9 @@ import me.echeung.cdflabs.enums.LabSortEnum;
 import me.echeung.cdflabs.labs.Lab;
 import me.echeung.cdflabs.ui.AppState;
 import me.echeung.cdflabs.ui.fragments.base.TabFragment;
+import me.echeung.cdflabs.utils.DividerItemDecoration;
 import me.echeung.cdflabs.utils.LabDataScraper;
 import me.echeung.cdflabs.utils.NetworkUtils;
-import me.echeung.cdflabs.utils.DividerItemDecoration;
 
 public class LabsFragment extends TabFragment {
 

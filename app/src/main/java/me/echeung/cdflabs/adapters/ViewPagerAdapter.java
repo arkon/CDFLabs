@@ -27,6 +27,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     public ViewPagerAdapter(FragmentManager fm, Context mContext) {
         super(fm);
+
         this.TITLES = new String[]{
                 mContext.getString(R.string.title_labs),
                 mContext.getString(R.string.title_printers),
@@ -40,10 +41,6 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     public static PrintersFragment getPrintersFragment() {
         return printersFragment;
-    }
-
-    public static LocationsFragment getLocationsFragment() {
-        return locationsFragment;
     }
 
     @Override
@@ -76,6 +73,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
                 locationsFragment = (LocationsFragment) createdFragment;
                 break;
         }
+
         return createdFragment;
     }
 
@@ -86,7 +84,6 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-//        return TITLES[position];
         return null;
     }
 }
