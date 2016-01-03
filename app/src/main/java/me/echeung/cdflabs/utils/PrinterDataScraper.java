@@ -13,8 +13,8 @@ import me.echeung.cdflabs.ui.fragments.PrintersFragment;
 public class PrinterDataScraper extends AsyncTask<Void, Void, Void> {
 
     private static final String PRINT_QUEUE_URL =
-            "https://raw.githubusercontent.com/arkon/cdf-scrapers/testdata/cdfprinters.json";
-//            "http://www.cdf.toronto.edu/~g3cheunh/cdfprinters.json";
+            "http://www.cdf.toronto.edu/~g3cheunh/cdfprinters.json";
+//            "https://raw.githubusercontent.com/arkon/cdf-scrapers/testdata/cdfprinters.json";
 
     private PrintQueue queue;
     private String response;

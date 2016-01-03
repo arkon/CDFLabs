@@ -22,8 +22,8 @@ import me.echeung.cdflabs.ui.fragments.LabsFragment;
 public class LabDataScraper extends AsyncTask<Void, Void, Void> {
 
     private static final String USAGE_URL =
-            "https://raw.githubusercontent.com/arkon/cdf-scrapers/testdata/usage.html";
-//            "http://www.cdf.toronto.edu/usage/usage.html";
+            "http://www.cdf.toronto.edu/usage/usage.html";
+//            "https://raw.githubusercontent.com/arkon/cdf-scrapers/testdata/usage.html";
 
     private Document doc;
 
