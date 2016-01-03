@@ -109,6 +109,10 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
         mList.smoothScrollToPosition(0);
     }
 
+    /**
+     * Displays the error message view and hides the content.
+     * Also disables pull to refresh.
+     */
     private void showError() {
         mError.setVisibility(View.VISIBLE);
         mContent.setVisibility(View.GONE);
@@ -117,12 +121,18 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
         mPullToRefresh.setEnabled(false);
     }
 
+    /**
+     * Shows a network connection error.
+     */
     public void showConnectionError() {
         showError();
 
         mErrorMsg.setText(getString(R.string.no_connection));
     }
 
+    /**
+     * Shows a data fetching error.
+     */
     public void showFetchError() {
         showError();
 

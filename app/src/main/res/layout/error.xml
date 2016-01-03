@@ -20,7 +20,6 @@
             android:fontFamily="sans-serif-light"
             android:gravity="center"
             android:lineSpacingExtra="@dimen/small_margin"
-            android:text="@string/error"
             android:textColor="@color/secondary_text"
             android:textSize="@dimen/text_subhead" />
 

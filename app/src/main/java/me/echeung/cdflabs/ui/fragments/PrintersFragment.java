@@ -75,6 +75,11 @@ public class PrintersFragment extends TabFragment {
         }
     }
 
+    /**
+     * Updates the printer queue list.
+     *
+     * @param queue The queue information.
+     */
     public void updateQueue(PrintQueue queue) {
         super.updateContent();
 

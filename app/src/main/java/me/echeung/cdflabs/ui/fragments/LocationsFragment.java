@@ -54,6 +54,11 @@ public class LocationsFragment extends Fragment {
         return rootView;
     }
 
+    /**
+     * Opens a web link.
+     *
+     * @param link The website URL.
+     */
     private void openLink(String link) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(link));

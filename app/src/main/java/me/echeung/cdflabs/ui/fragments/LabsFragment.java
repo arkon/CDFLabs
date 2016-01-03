@@ -136,6 +136,11 @@ public class LabsFragment extends TabFragment {
         adapter.setLabs(labs);
     }
 
+    /**
+     * Sets the sorting mode, updating the options menu and list.
+     *
+     * @param type The sorting mode, which is from LabSortEnum.
+     */
     private void setSortMode(int type) {
         AppState.setLabSort(type);
         adapter.updateSortingCriteria();
