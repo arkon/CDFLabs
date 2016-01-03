@@ -28,23 +28,8 @@ public class MainActivity extends AppCompatActivity {
         // Set up app bar
         setSupportActionBar((Toolbar) findViewById(R.id.appbar));
 
-        // Set up ViewPager and adapter
-        final ViewPager mViewPager =
-                (ViewPager) findViewById(R.id.pager);
-        final ViewPagerAdapter mViewPagerAdapter =
-                new ViewPagerAdapter(getSupportFragmentManager(), this);
-        mViewPager.setAdapter(mViewPagerAdapter);
-
-        // Set up tabs
-        final TabLayout mTabLayout = (TabLayout) findViewById(R.id.tabs);
-        mTabLayout.setupWithViewPager(mViewPager);
-        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
-
-        // Tab icons
-        final int tabCount = mTabLayout.getTabCount();
-        for (int i = 0; i < tabCount; i++) {
-            mTabLayout.getTabAt(i).setIcon(mViewPagerAdapter.ICONS[i]);
-        }
+        // Set up tab bar
+        setupTabs();
 
         // App version number for help dialog
         String version;
@@ -84,6 +69,51 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Initializes everything for the tabs: the adapter, icons, and title handler
+     */
+    private void setupTabs() {
+        // Set up ViewPager and adapter
+        final ViewPager mViewPager = (ViewPager) findViewById(R.id.pager);
+        final ViewPagerAdapter mViewPagerAdapter =
+                new ViewPagerAdapter(getSupportFragmentManager(), this);
+        mViewPager.setAdapter(mViewPagerAdapter);
+
+        // Set up tabs
+        final TabLayout mTabLayout = (TabLayout) findViewById(R.id.tabs);
+        mTabLayout.setupWithViewPager(mViewPager);
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
+
+        // App bar title
+        getSupportActionBar().setTitle(mViewPagerAdapter.getTitle(0));
+
+        // Change app bar title on tab change
+        mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                mViewPager.setCurrentItem(tab.getPosition());
+                getSupportActionBar().setTitle(mViewPagerAdapter.getTitle(tab.getPosition()));
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
+
+        // Tab icons
+        final int tabCount = mTabLayout.getTabCount();
+        for (int i = 0; i < tabCount; i++) {
+            mTabLayout.getTabAt(i).setIcon(mViewPagerAdapter.getIcon(i));
+        }
+    }
+
+    /**
+     * Displays the help dialog and activates the anchor links.
+     */
     private void showHelpDialog() {
         mHelpDialog.show();
 

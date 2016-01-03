@@ -19,7 +19,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     private String[] TITLES;
 
-    final public int[] ICONS = new int[]{
+    final private int[] ICONS = new int[]{
             R.drawable.ic_desktop,
             R.drawable.ic_print,
             R.drawable.ic_explore
@@ -85,5 +85,25 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         return null;
+    }
+
+    /**
+     * Gets the tab's title.
+     *
+     * @param position The tab index.
+     * @return The tab's title.
+     */
+    public CharSequence getTitle(int position) {
+        return TITLES[position];
+    }
+
+    /**
+     * Gets the tab's icon.
+     *
+     * @param position The tab index.
+     * @return The resource ID for the tab's icon.
+     */
+    public int getIcon(int position) {
+        return ICONS[position];
     }
 }
