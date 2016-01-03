@@ -98,6 +98,8 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     public void setLabs(List<Lab> labs) {
+        if (labs == null) return;
+
         mLabs.clear();
         if (labs != null)
             mLabs.addAll(labs);

@@ -114,6 +114,8 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     public void setPrintQueue(PrintQueue queue) {
+        if (queue == null) return;
+
         final List<String> printerNames = queue.getSortedKeys();
         final Map<String, Printer> printers = queue.getPrinters();
 
