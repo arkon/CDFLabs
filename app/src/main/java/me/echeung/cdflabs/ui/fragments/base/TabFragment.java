@@ -127,7 +127,9 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
     public void showConnectionError() {
         showError();
 
-        mErrorMsg.setText(getString(R.string.no_connection));
+        if (isAdded()) {
+            mErrorMsg.setText(getString(R.string.no_connection));
+        }
     }
 
     /**
@@ -136,6 +138,8 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
     public void showFetchError() {
         showError();
 
-        mErrorMsg.setText(getString(R.string.error));
+        if (isAdded()) {
+            mErrorMsg.setText(getString(R.string.error));
+        }
     }
 }
