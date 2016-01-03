@@ -6,7 +6,7 @@
     android:baselineAligned="false"
     android:gravity="fill_horizontal"
     android:orientation="horizontal"
-    android:padding="@dimen/activity_vertical_margin">
+    android:padding="@dimen/regular_margin">
 
     <LinearLayout
         android:id="@+id/comps"
@@ -39,8 +39,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_vertical_margin"
-        android:layout_marginStart="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/regular_margin"
+        android:layout_marginStart="@dimen/regular_margin"
         android:orientation="vertical">
 
         <TextView

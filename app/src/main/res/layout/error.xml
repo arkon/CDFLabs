@@ -16,7 +16,7 @@
             android:id="@+id/error_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/regular_margin"
             android:fontFamily="sans-serif-light"
             android:gravity="center"
             android:lineSpacingExtra="@dimen/small_margin"

@@ -14,7 +14,10 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/small_margin">
+            android:paddingBottom="@dimen/small_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/small_margin">
 
             <RelativeLayout
                 android:id="@+id/labs_list"

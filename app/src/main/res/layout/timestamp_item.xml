@@ -20,8 +20,8 @@
         android:fontFamily="sans-serif-light"
         android:gravity="center"
         android:paddingBottom="@dimen/small_margin"
-        android:paddingLeft="@dimen/activity_vertical_margin"
-        android:paddingRight="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/regular_margin"
+        android:paddingRight="@dimen/regular_margin"
         android:paddingTop="@dimen/small_margin"
         android:textColor="@color/secondary_text"
         android:textSize="@dimen/text_caption" />
