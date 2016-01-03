@@ -60,7 +60,6 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
         });
 
         mList.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mList.setHasFixedSize(true);
         mList.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {

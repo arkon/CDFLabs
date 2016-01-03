@@ -26,8 +26,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     card_view:cardUseCompatPadding="true"
-                    card_view:cardBackgroundColor="@android:color/white"
-                    card_view:cardCornerRadius="4dp">
+                    card_view:cardBackgroundColor="@android:color/white">
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/printers"
