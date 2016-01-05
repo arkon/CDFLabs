@@ -59,7 +59,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        Fragment createdFragment = (Fragment) super.instantiateItem(container, position);
+        final Fragment createdFragment = (Fragment) super.instantiateItem(container, position);
 
         // Save fragment references depending on position
         switch (position) {
