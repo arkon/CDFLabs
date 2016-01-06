@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         mTabLayout.setupWithViewPager(mViewPager);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
 
-        // App bar title
+        // App bar title defaults to first tab's title
         getSupportActionBar().setTitle(mViewPagerAdapter.getTitle(0));
 
         final int darkColor = ContextCompat.getColor(this, R.color.colorPrimaryDark);
@@ -100,13 +100,17 @@ public class MainActivity extends AppCompatActivity {
                 final int position = tab.getPosition();
 
                 mViewPager.setCurrentItem(position);
+
+                // Set app bar title
                 getSupportActionBar().setTitle(mViewPagerAdapter.getTitle(tab.getPosition()));
 
+                // Tint icon white
                 tintTabIcon(tab, Color.WHITE);
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
+                // Tint icon back to dark blue
                 tintTabIcon(tab, darkColor);
             }
 
@@ -119,11 +123,12 @@ public class MainActivity extends AppCompatActivity {
         final int tabCount = mTabLayout.getTabCount();
         for (int i = 0; i < tabCount; i++) {
             mTabLayout.getTabAt(i).setIcon(mViewPagerAdapter.getIcon(i));
-            tintTabIcon(mTabLayout.getTabAt(i), darkColor);
-        }
 
-        // Selected first tab icon
-        tintTabIcon(mTabLayout.getTabAt(0), Color.WHITE);
+            // Don't tint the first (default selected) tab's icon
+            if (i > 0) {
+                tintTabIcon(mTabLayout.getTabAt(i), darkColor);
+            }
+        }
     }
 
     /**
@@ -136,6 +141,12 @@ public class MainActivity extends AppCompatActivity {
         textContent.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
+    /**
+     * Tints the given tab's icon with the given color.
+     *
+     * @param tab A tab from the tab bar.
+     * @param color A color value to tint the tab's icon with.
+     */
     private void tintTabIcon(TabLayout.Tab tab, int color) {
         final Drawable icon = DrawableCompat.wrap(tab.getIcon());
         DrawableCompat.setTint(icon.mutate(), color);
