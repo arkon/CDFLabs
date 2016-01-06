@@ -116,17 +116,13 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public void setPrintQueue(PrintQueue queue) {
         if (queue == null) return;
 
-        final List<String> printerNames = queue.getSortedKeys();
-        final Map<String, Printer> printers = queue.getPrinters();
-
         this.mQueue.clear();
 
-        for (final String key : printerNames) {
-            final Printer printer = printers.get(key);
-
+        final List<Printer> printers = queue.getPrinters();
+        for (final Printer printer : printers) {
             // Printer heading
             this.mQueue.add(new PrintersListItem(PrintersListEnum.HEADING,
-                    new PrintersListHeading(key, printer.getDescription())));
+                    new PrintersListHeading(printer.getName(), printer.getDescription())));
 
             if (printer.getLength() == 0) {
                 // Empty job queue

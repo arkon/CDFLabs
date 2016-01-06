@@ -5,12 +5,15 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import me.echeung.cdflabs.comparators.PrintersByName;
+
 public class PrintQueue {
 
-    private Map<String, Printer> printers;
+    private List<Printer> printers;
     private String timestamp;
 
-    public PrintQueue(Map<String, Printer> printers, String timestamp) {
+    public PrintQueue(List<Printer> printers, String timestamp) {
+        Collections.sort(printers, new PrintersByName());
         this.printers = printers;
         this.timestamp = timestamp;
     }
@@ -19,17 +22,12 @@ public class PrintQueue {
         return printers.size();
     }
 
-    public List<String> getSortedKeys() {
-        List keys = new ArrayList(printers.keySet());
-        Collections.sort(keys);
-        return keys;
-    }
-
-    public Map<String, Printer> getPrinters() {
+    public List<Printer> getPrinters() {
         return printers;
     }
 
-    public void setPrinters(Map<String, Printer> printers) {
+    public void setPrinters(List<Printer> printers) {
+        Collections.sort(printers, new PrintersByName());
         this.printers = printers;
     }
 
