@@ -1,8 +1,12 @@
 package me.echeung.cdflabs.ui.activities;
 
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -87,16 +91,23 @@ public class MainActivity extends AppCompatActivity {
         // App bar title
         getSupportActionBar().setTitle(mViewPagerAdapter.getTitle(0));
 
+        final int darkColor = ContextCompat.getColor(this, R.color.colorPrimaryDark);
+
         // Change app bar title on tab change
         mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                mViewPager.setCurrentItem(tab.getPosition());
+                final int position = tab.getPosition();
+
+                mViewPager.setCurrentItem(position);
                 getSupportActionBar().setTitle(mViewPagerAdapter.getTitle(tab.getPosition()));
+
+                tintTabIcon(tab, Color.WHITE);
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
+                tintTabIcon(tab, darkColor);
             }
 
             @Override
@@ -108,7 +119,11 @@ public class MainActivity extends AppCompatActivity {
         final int tabCount = mTabLayout.getTabCount();
         for (int i = 0; i < tabCount; i++) {
             mTabLayout.getTabAt(i).setIcon(mViewPagerAdapter.getIcon(i));
+            tintTabIcon(mTabLayout.getTabAt(i), darkColor);
         }
+
+        // Selected first tab icon
+        tintTabIcon(mTabLayout.getTabAt(0), Color.WHITE);
     }
 
     /**
@@ -119,5 +134,12 @@ public class MainActivity extends AppCompatActivity {
 
         final TextView textContent = (TextView) mHelpDialog.findViewById(android.R.id.message);
         textContent.setMovementMethod(LinkMovementMethod.getInstance());
+    }
+
+    private void tintTabIcon(TabLayout.Tab tab, int color) {
+        final Drawable icon = DrawableCompat.wrap(tab.getIcon());
+        DrawableCompat.setTint(icon.mutate(), color);
+
+        tab.setIcon(icon);
     }
 }
