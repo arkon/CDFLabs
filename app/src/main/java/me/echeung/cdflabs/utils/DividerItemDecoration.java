@@ -11,14 +11,18 @@ import me.echeung.cdflabs.R;
 
 public class DividerItemDecoration extends RecyclerView.ItemDecoration {
     private Drawable mDivider;
+    private int mPaddingLeft;
 
     public DividerItemDecoration(Context context) {
         this.mDivider = ContextCompat.getDrawable(context, R.drawable.line_divider);
+
+        this.mPaddingLeft = 2 * (int) context.getResources().getDimension(R.dimen.regular_margin)
+            + (int) context.getResources().getDimension(R.dimen.free_size);
     }
 
     @Override
     public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
-        final int left = parent.getPaddingLeft();
+        final int left = parent.getPaddingLeft() + this.mPaddingLeft;
         final int right = parent.getWidth() - parent.getPaddingRight();
 
         // Avoid last item and footer
