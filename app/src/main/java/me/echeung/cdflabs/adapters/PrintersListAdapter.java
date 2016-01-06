@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.enums.PrintersListEnum;
@@ -20,12 +19,12 @@ import me.echeung.cdflabs.printers.PrintJob;
 import me.echeung.cdflabs.printers.PrintQueue;
 import me.echeung.cdflabs.printers.Printer;
 import me.echeung.cdflabs.printers.PrintersListHeading;
-import me.echeung.cdflabs.printers.PrintersListItem;
+import me.echeung.cdflabs.utils.ListItem;
 
 public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Activity mContext;
-    private List<PrintersListItem> mQueue;
+    private List<ListItem> mQueue;
 
     public PrintersListAdapter(Activity context) {
         this.mContext = context;
@@ -121,22 +120,22 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         final List<Printer> printers = queue.getPrinters();
         for (final Printer printer : printers) {
             // Printer heading
-            this.mQueue.add(new PrintersListItem(PrintersListEnum.HEADING,
+            this.mQueue.add(new ListItem(PrintersListEnum.HEADING,
                     new PrintersListHeading(printer.getName(), printer.getDescription())));
 
             if (printer.getLength() == 0) {
                 // Empty job queue
-                this.mQueue.add(new PrintersListItem(PrintersListEnum.EMPTY, null));
+                this.mQueue.add(new ListItem(PrintersListEnum.EMPTY, null));
             } else {
                 // Printer job queue
                 for (PrintJob job : printer.getJobs()) {
-                    this.mQueue.add(new PrintersListItem(PrintersListEnum.JOB, job));
+                    this.mQueue.add(new ListItem(PrintersListEnum.JOB, job));
                 }
             }
         }
 
         // Timestamp
-        this.mQueue.add(new PrintersListItem(PrintersListEnum.TIMESTAMP, queue.getTimestamp()));
+        this.mQueue.add(new ListItem(PrintersListEnum.TIMESTAMP, queue.getTimestamp()));
 
         notifyDataSetChanged();
     }

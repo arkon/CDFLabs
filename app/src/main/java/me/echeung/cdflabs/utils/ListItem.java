@@ -1,10 +1,10 @@
-package me.echeung.cdflabs.printers;
+package me.echeung.cdflabs.utils;
 
-public class PrintersListItem<T> {
+public class ListItem<T> {
     private int type;
     private T item;
 
-    public PrintersListItem(int type, T item) {
+    public ListItem(int type, T item) {
         this.type = type;
         this.item = item;
     }

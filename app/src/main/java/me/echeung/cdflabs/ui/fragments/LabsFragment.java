@@ -13,13 +13,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
-import java.util.List;
-
 import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.adapters.LabsListAdapter;
 import me.echeung.cdflabs.adapters.ViewPagerAdapter;
 import me.echeung.cdflabs.enums.LabSortEnum;
-import me.echeung.cdflabs.labs.Lab;
+import me.echeung.cdflabs.labs.Labs;
 import me.echeung.cdflabs.ui.AppState;
 import me.echeung.cdflabs.ui.fragments.base.TabFragment;
 import me.echeung.cdflabs.utils.DividerItemDecoration;
@@ -128,9 +126,9 @@ public class LabsFragment extends TabFragment {
     /**
      * Update the adapter with the new list of labs.
      *
-     * @param labs The list of labs to display.
+     * @param labs The labs data to display.
      */
-    public void updateAdapter(List<Lab> labs) {
+    public void updateAdapter(Labs labs) {
         super.updateContent();
 
         adapter.setLabs(labs);

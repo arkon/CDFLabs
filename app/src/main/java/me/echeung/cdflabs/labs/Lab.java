@@ -2,41 +2,34 @@ package me.echeung.cdflabs.labs;
 
 public class Lab {
 
-    private String lab, timestamp;
-    private int avail, busy, total;
+    private String name;
+    private int available;
+    private int busy;
+    private int total;
     private double percent;
 
     public Lab() {
-        this.lab = null;
-        this.avail = 0;
+        this.name = "";
+        this.available = 0;
         this.busy = 0;
         this.total = 0;
         this.percent = 0;
-        this.timestamp = null;
     }
 
-    public String getLab() {
-        return lab;
+    public String getName() {
+        return name;
     }
 
-    public void setLab(String lab) {
-        this.lab = lab;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getTimestamp() {
-        return timestamp;
+    public int getAvailable() {
+        return available;
     }
 
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    public int getAvail() {
-        return avail;
-    }
-
-    public void setAvail(int avail) {
-        this.avail = avail;
+    public void setAvailable(int available) {
+        this.available = available;
     }
 
     public int getBusy() {

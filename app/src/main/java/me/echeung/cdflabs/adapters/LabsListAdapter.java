@@ -16,19 +16,19 @@ import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.comparators.LabsByAvail;
 import me.echeung.cdflabs.comparators.LabsByBuilding;
 import me.echeung.cdflabs.enums.LabSortEnum;
+import me.echeung.cdflabs.enums.LabsListEnum;
 import me.echeung.cdflabs.holders.LabHolder;
 import me.echeung.cdflabs.holders.TimestampHolder;
 import me.echeung.cdflabs.labs.Lab;
+import me.echeung.cdflabs.labs.Labs;
 import me.echeung.cdflabs.ui.AppState;
+import me.echeung.cdflabs.utils.ListItem;
 
 public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    // Some constants
-    private static final int LAB = 0;
-    private static final int TIMESTAMP = 1;
-
     private Activity mContext;
-    private List<Lab> mLabs;
+    private Labs mLabsData;
+    private List<ListItem> mLabs;
     private Comparator<Lab> mComparator;
 
     public LabsListAdapter(Activity context) {
@@ -42,69 +42,71 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v;
 
-        if (viewType == TIMESTAMP) {
-            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.timestamp_item, parent, false);
-            return new TimestampHolder(v);
-        } else {
-            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.lab_list_item, parent, false);
-            return new LabHolder(v);
+        switch (viewType) {
+            case LabsListEnum.LAB:
+                v = LayoutInflater.from(parent.getContext()).inflate(
+                        R.layout.lab_list_item, parent, false);
+                return new LabHolder(v);
+
+            case LabsListEnum.TIMESTAMP:
+                v = LayoutInflater.from(parent.getContext()).inflate(
+                        R.layout.timestamp_item, parent, false);
+                return new TimestampHolder(v);
         }
+
+        return null;
     }
 
     @Override
     public int getItemViewType(int position) {
-        return position == getItemCount() - 1 ? TIMESTAMP : LAB;
+        return mLabs.get(position).getType();
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int index) {
-        if (index == getItemCount() - 1) {
-            TimestampHolder timestampHolder = (TimestampHolder) holder;
+        switch (mLabs.get(index).getType()) {
+            case LabsListEnum.LAB:
+                final LabHolder labHolder = (LabHolder) holder;
+                final Lab lab = (Lab) mLabs.get(index).getItem();
 
-            if (mLabs.size() > 0) {
-                timestampHolder.timestampView.setText(String.format(mContext.getString(R.string.timestamp),
-                        mLabs.get(0).getTimestamp()));
-            } else {
-                timestampHolder.timestampView.setText(mContext.getString(R.string.no_data));
-            }
-        } else {
-            LabHolder labHolder = (LabHolder) holder;
+                // Show available machines and set the square's background colour accordingly
+                final int avail = lab.getAvailable();
+                labHolder.freeView.setText(String.valueOf(avail));
 
-            final Lab lab = mLabs.get(index);
+                if (avail == 0)
+                    labHolder.compsView.setBackgroundColor(getColor(R.color.free_red));
+                else if (avail <= 5)
+                    labHolder.compsView.setBackgroundColor(getColor(R.color.free_orange));
+                else
+                    labHolder.compsView.setBackgroundColor(getColor(R.color.free_green));
 
-            // Show available machines and set the square's background colour accordingly
-            final int avail = lab.getAvail();
-            labHolder.freeView.setText(String.valueOf(avail));
+                // Show lab name and stats
+                labHolder.labView.setText(lab.getName());
+                labHolder.statsView.setText(String.format(mContext.getString(R.string.stats),
+                        lab.getTotal(), lab.getPercent()));
+                break;
 
-            if (avail == 0)
-                labHolder.compsView.setBackgroundColor(getColor(R.color.free_red));
-            else if (avail <= 5)
-                labHolder.compsView.setBackgroundColor(getColor(R.color.free_orange));
-            else
-                labHolder.compsView.setBackgroundColor(getColor(R.color.free_green));
+            case LabsListEnum.TIMESTAMP:
+                final TimestampHolder timestampHolder = (TimestampHolder) holder;
+                final String timestamp = (String) mLabs.get(index).getItem();
 
-            // Show lab name and stats
-            labHolder.labView.setText(lab.getLab());
-            labHolder.statsView.setText(String.format(mContext.getString(R.string.stats),
-                    lab.getTotal(), lab.getPercent()));
-
+                timestampHolder.timestampView.setText(
+                        String.format(mContext.getString(R.string.timestamp), timestamp));
+                break;
         }
     }
 
     @Override
     public int getItemCount() {
-        // Add 1 for the timestamp "footer"
-        return mLabs.size() + 1;
+        return mLabs.size();
     }
 
-    public void setLabs(List<Lab> labs) {
+    public void setLabs(Labs labs) {
         if (labs == null) return;
 
-        mLabs.clear();
-        if (labs != null)
-            mLabs.addAll(labs);
+        this.mLabsData = labs;
 
-        sortLabs(labs);
+        sortLabs();
     }
 
     public void updateSortingCriteria() {
@@ -114,17 +116,28 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 break;
 
             case LabSortEnum.AVAIL:
-            default:
                 this.mComparator = new LabsByAvail();
                 break;
         }
 
-        sortLabs(mLabs);
+        sortLabs();
     }
 
-    private void sortLabs(List<Lab> labs) {
-        Collections.sort(labs, this.mComparator);
-        this.mLabs = labs;
+    private void sortLabs() {
+        if (this.mLabsData == null) return;
+
+        this.mLabs.clear();
+
+        // Sort labs
+        List<Lab> sortedLabs = this.mLabsData.getLabs();
+        Collections.sort(sortedLabs, this.mComparator);
+
+        for (final Lab lab : sortedLabs) {
+            this.mLabs.add(new ListItem(LabsListEnum.LAB, lab));
+        }
+
+        // Timestamp
+        this.mLabs.add(new ListItem(LabsListEnum.TIMESTAMP, this.mLabsData.getTimestamp()));
 
         notifyDataSetChanged();
     }

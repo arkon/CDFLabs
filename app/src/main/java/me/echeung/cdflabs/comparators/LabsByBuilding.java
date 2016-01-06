@@ -8,6 +8,6 @@ public class LabsByBuilding implements Comparator<Lab> {
 
     @Override
     public int compare(Lab x, Lab y) {
-        return x.getLab().compareTo(y.getLab());
+        return x.getName().compareTo(y.getName());
     }
 }
