@@ -13,7 +13,7 @@ import android.widget.RelativeLayout;
 import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.adapters.PrintersListAdapter;
 import me.echeung.cdflabs.adapters.ViewPagerAdapter;
-import me.echeung.cdflabs.printers.PrintQueue;
+import me.echeung.cdflabs.printers.Printers;
 import me.echeung.cdflabs.ui.fragments.base.TabFragment;
 import me.echeung.cdflabs.utils.NetworkUtils;
 import me.echeung.cdflabs.utils.PrinterDataScraper;
@@ -80,7 +80,7 @@ public class PrintersFragment extends TabFragment {
      *
      * @param queue The queue information.
      */
-    public void updateQueue(PrintQueue queue) {
+    public void updateQueue(Printers queue) {
         super.updateContent();
 
         adapter.setPrintQueue(queue);

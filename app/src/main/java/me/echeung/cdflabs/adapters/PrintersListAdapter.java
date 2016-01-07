@@ -16,8 +16,8 @@ import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.enums.ListEnum;
 import me.echeung.cdflabs.holders.ListItemHolder;
 import me.echeung.cdflabs.holders.TimestampHolder;
-import me.echeung.cdflabs.printers.PrintQueue;
 import me.echeung.cdflabs.printers.Printer;
+import me.echeung.cdflabs.printers.Printers;
 import me.echeung.cdflabs.printers.PrintersListItem;
 import me.echeung.cdflabs.utils.ListItem;
 
@@ -125,7 +125,7 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         return mQueue.size();
     }
 
-    public void setPrintQueue(PrintQueue queue) {
+    public void setPrintQueue(Printers queue) {
         if (queue == null) return;
 
         this.mQueue.clear();

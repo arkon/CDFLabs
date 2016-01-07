@@ -10,8 +10,8 @@
 
     <LinearLayout
         android:id="@+id/status"
-        android:layout_width="@dimen/free_size"
-        android:layout_height="@dimen/free_size"
+        android:layout_width="@dimen/status_size"
+        android:layout_height="@dimen/status_size"
         android:layout_gravity="center"
         android:gravity="center"
         android:orientation="vertical">

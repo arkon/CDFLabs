@@ -13,5 +13,5 @@
     <dimen name="text_body">14sp</dimen>
     <dimen name="text_caption">12sp</dimen>
 
-    <dimen name="free_size">60dp</dimen>
+    <dimen name="status_size">60dp</dimen>
 </resources>

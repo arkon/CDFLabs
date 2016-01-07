@@ -7,7 +7,7 @@ import com.google.gson.Gson;
 import org.jsoup.Jsoup;
 
 import me.echeung.cdflabs.adapters.ViewPagerAdapter;
-import me.echeung.cdflabs.printers.PrintQueue;
+import me.echeung.cdflabs.printers.Printers;
 import me.echeung.cdflabs.ui.fragments.PrintersFragment;
 
 public class PrinterDataScraper extends AsyncTask<Void, Void, Void> {
@@ -15,7 +15,7 @@ public class PrinterDataScraper extends AsyncTask<Void, Void, Void> {
     private static final String PRINT_QUEUE_URL =
             "http://www.cdf.toronto.edu/~g3cheunh/cdfprinters.json";
 
-    private PrintQueue queue;
+    private Printers queue;
     private String response;
 
     public PrinterDataScraper() {
@@ -38,7 +38,7 @@ public class PrinterDataScraper extends AsyncTask<Void, Void, Void> {
 
         if (response != null) {
             Gson gson = new Gson();
-            queue = gson.fromJson(response, PrintQueue.class);
+            queue = gson.fromJson(response, Printers.class);
 
             if (printersFragment != null) {
                 printersFragment.updateQueue(queue);

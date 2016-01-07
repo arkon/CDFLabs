@@ -5,12 +5,12 @@ import java.util.List;
 
 import me.echeung.cdflabs.comparators.PrintersByName;
 
-public class PrintQueue {
+public class Printers {
 
     private List<Printer> printers;
     private String timestamp;
 
-    public PrintQueue(List<Printer> printers, String timestamp) {
+    public Printers(List<Printer> printers, String timestamp) {
         Collections.sort(printers, new PrintersByName());
         this.printers = printers;
         this.timestamp = timestamp;
