@@ -45,7 +45,7 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         switch (viewType) {
             case ListEnum.ITEM:
                 v = LayoutInflater.from(parent.getContext()).inflate(
-                        R.layout.lab_list_item, parent, false);
+                        R.layout.lab_item, parent, false);
                 return new LabHolder(v);
 
             case ListEnum.TIMESTAMP:

@@ -40,11 +40,11 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         // Show list in dialog
         final View dialogView = LayoutInflater.from(context).inflate(
-                R.layout.fragment_printer_dialog, null);
+                R.layout.fragment_queue_dialog, null);
         this.mQueueDialog.setView(dialogView);
 
         // Set dialog list adapter
-        this.mQueueAdapter = new PrinterQueueListAdapter(context, R.layout.printer_list_item);
+        this.mQueueAdapter = new PrinterQueueListAdapter(context, R.layout.queue_job_item);
         final ListView listView = (ListView) dialogView.findViewById(R.id.printer_queue);
         listView.setAdapter(mQueueAdapter);
     }
@@ -56,7 +56,7 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         switch (viewType) {
             case ListEnum.ITEM:
                 v = LayoutInflater.from(parent.getContext()).inflate(
-                        R.layout.printer_heading_item, parent, false);
+                        R.layout.printer_item, parent, false);
                 return new PrinterHolder(v);
 
             case ListEnum.TIMESTAMP:

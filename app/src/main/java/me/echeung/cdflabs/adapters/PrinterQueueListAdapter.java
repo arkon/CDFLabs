@@ -19,14 +19,14 @@ public class PrinterQueueListAdapter extends ArrayAdapter<PrintJob> {
     public View getView(int position, View itemView, ViewGroup parent) {
         if (itemView == null) {
             LayoutInflater vi = LayoutInflater.from(getContext());
-            itemView = vi.inflate(R.layout.printer_list_item, null);
+            itemView = vi.inflate(R.layout.queue_job_item, null);
         }
 
         final PrintJobHolder holder = new PrintJobHolder(itemView);
         final PrintJob job = getItem(position);
 
 //        v = LayoutInflater.from(parent.getContext()).inflate(
-//                R.layout.printer_empty_item, parent, false);
+//                R.layout.queue_empty_item, parent, false);
 
         holder.ownerView.setText(job.getOwner());
 
