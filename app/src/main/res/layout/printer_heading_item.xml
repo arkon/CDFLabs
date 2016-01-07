@@ -14,7 +14,7 @@
         tools:text="Printer name" />
 
     <TextView
-        android:id="@+id/print_description"
+        android:id="@+id/printer_description"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"

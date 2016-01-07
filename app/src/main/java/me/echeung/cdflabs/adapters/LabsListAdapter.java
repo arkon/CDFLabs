@@ -1,6 +1,6 @@
 package me.echeung.cdflabs.adapters;
 
-import android.app.Activity;
+import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,7 +16,7 @@ import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.comparators.LabsByAvail;
 import me.echeung.cdflabs.comparators.LabsByBuilding;
 import me.echeung.cdflabs.enums.LabSortEnum;
-import me.echeung.cdflabs.enums.LabsListEnum;
+import me.echeung.cdflabs.enums.ListEnum;
 import me.echeung.cdflabs.holders.LabHolder;
 import me.echeung.cdflabs.holders.TimestampHolder;
 import me.echeung.cdflabs.labs.Lab;
@@ -26,12 +26,12 @@ import me.echeung.cdflabs.utils.ListItem;
 
 public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private Activity mContext;
+    private Context mContext;
     private Labs mLabsData;
     private List<ListItem> mLabs;
     private Comparator<Lab> mComparator;
 
-    public LabsListAdapter(Activity context) {
+    public LabsListAdapter(Context context) {
         this.mContext = context;
         this.mLabs = new ArrayList<>();
 
@@ -43,12 +43,12 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         View v;
 
         switch (viewType) {
-            case LabsListEnum.LAB:
+            case ListEnum.ITEM:
                 v = LayoutInflater.from(parent.getContext()).inflate(
                         R.layout.lab_list_item, parent, false);
                 return new LabHolder(v);
 
-            case LabsListEnum.TIMESTAMP:
+            case ListEnum.TIMESTAMP:
                 v = LayoutInflater.from(parent.getContext()).inflate(
                         R.layout.timestamp_item, parent, false);
                 return new TimestampHolder(v);
@@ -65,7 +65,7 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int index) {
         switch (mLabs.get(index).getType()) {
-            case LabsListEnum.LAB:
+            case ListEnum.ITEM:
                 final LabHolder labHolder = (LabHolder) holder;
                 final Lab lab = (Lab) mLabs.get(index).getItem();
 
@@ -86,7 +86,7 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                         lab.getTotal(), lab.getPercent()));
                 break;
 
-            case LabsListEnum.TIMESTAMP:
+            case ListEnum.TIMESTAMP:
                 final TimestampHolder timestampHolder = (TimestampHolder) holder;
                 final String timestamp = (String) mLabs.get(index).getItem();
 
@@ -133,11 +133,11 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         Collections.sort(sortedLabs, this.mComparator);
 
         for (final Lab lab : sortedLabs) {
-            this.mLabs.add(new ListItem(LabsListEnum.LAB, lab));
+            this.mLabs.add(new ListItem(ListEnum.ITEM, lab));
         }
 
         // Timestamp
-        this.mLabs.add(new ListItem(LabsListEnum.TIMESTAMP, this.mLabsData.getTimestamp()));
+        this.mLabs.add(new ListItem(ListEnum.TIMESTAMP, this.mLabsData.getTimestamp()));
 
         notifyDataSetChanged();
     }

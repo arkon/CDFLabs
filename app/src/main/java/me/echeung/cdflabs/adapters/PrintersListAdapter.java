@@ -1,34 +1,52 @@
 package me.echeung.cdflabs.adapters;
 
-import android.app.Activity;
+import android.content.Context;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import me.echeung.cdflabs.R;
-import me.echeung.cdflabs.enums.PrintersListEnum;
-import me.echeung.cdflabs.holders.PrinterEmptyHolder;
-import me.echeung.cdflabs.holders.PrinterHeadingHolder;
-import me.echeung.cdflabs.holders.PrinterJobHolder;
+import me.echeung.cdflabs.enums.ListEnum;
+import me.echeung.cdflabs.holders.PrinterHolder;
 import me.echeung.cdflabs.holders.TimestampHolder;
-import me.echeung.cdflabs.printers.PrintJob;
 import me.echeung.cdflabs.printers.PrintQueue;
 import me.echeung.cdflabs.printers.Printer;
-import me.echeung.cdflabs.printers.PrintersListHeading;
+import me.echeung.cdflabs.printers.PrintersListItem;
 import me.echeung.cdflabs.utils.ListItem;
 
 public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private Activity mContext;
+    private Context mContext;
     private List<ListItem> mQueue;
 
-    public PrintersListAdapter(Activity context) {
+    private AlertDialog mQueueDialog;
+    private PrinterQueueListAdapter mQueueAdapter;
+
+    public PrintersListAdapter(Context context) {
         this.mContext = context;
         this.mQueue = new ArrayList<>();
+
+        // Set up job queue dialog
+        this.mQueueDialog = new AlertDialog.Builder(context, R.style.AppCompatAlertDialogStyle)
+                .setTitle(context.getString(R.string.print_queue))
+                .setPositiveButton(context.getString(R.string.close), null)
+                .create();
+
+        // Show list in dialog
+        final View dialogView = LayoutInflater.from(context).inflate(
+                R.layout.fragment_printer_dialog, null);
+        this.mQueueDialog.setView(dialogView);
+
+        // Set dialog list adapter
+        this.mQueueAdapter = new PrinterQueueListAdapter(context, R.layout.printer_list_item);
+        final ListView listView = (ListView) dialogView.findViewById(R.id.printer_queue);
+        listView.setAdapter(mQueueAdapter);
     }
 
     @Override
@@ -36,22 +54,12 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         View v;
 
         switch (viewType) {
-            case PrintersListEnum.HEADING:
+            case ListEnum.ITEM:
                 v = LayoutInflater.from(parent.getContext()).inflate(
                         R.layout.printer_heading_item, parent, false);
-                return new PrinterHeadingHolder(v);
+                return new PrinterHolder(v);
 
-            case PrintersListEnum.JOB:
-                v = LayoutInflater.from(parent.getContext()).inflate(
-                        R.layout.printer_list_item, parent, false);
-                return new PrinterJobHolder(v);
-
-            case PrintersListEnum.EMPTY:
-                v = LayoutInflater.from(parent.getContext()).inflate(
-                        R.layout.printer_empty_item, parent, false);
-                return new PrinterEmptyHolder(v);
-
-            case PrintersListEnum.TIMESTAMP:
+            case ListEnum.TIMESTAMP:
                 v = LayoutInflater.from(parent.getContext()).inflate(
                         R.layout.timestamp_item, parent, false);
                 return new TimestampHolder(v);
@@ -68,36 +76,28 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int index) {
         switch (mQueue.get(index).getType()) {
-            case PrintersListEnum.HEADING:
-                final PrinterHeadingHolder headingHolder = (PrinterHeadingHolder) holder;
-                final PrintersListHeading heading = (PrintersListHeading) mQueue.get(index).getItem();
+            case ListEnum.ITEM:
+                final PrinterHolder printerHolder = (PrinterHolder) holder;
+                final PrintersListItem printer = (PrintersListItem) mQueue.get(index).getItem();
 
-                headingHolder.headingView.setText(heading.getName());
-                headingHolder.descriptionView.setText(heading.getDescription());
+                printerHolder.headingView.setText(printer.getName());
+                printerHolder.descriptionView.setText(printer.getDescription());
+
+                // Show queue in dialog on click
+                printerHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mQueueAdapter.clear();
+                        mQueueAdapter.addAll(printer.getQueue());
+                        mQueueAdapter.notifyDataSetChanged();
+
+                        mQueueDialog.show();
+                    }
+                });
+
                 break;
 
-            case PrintersListEnum.JOB:
-                final PrinterJobHolder jobHolder = (PrinterJobHolder) holder;
-                final PrintJob job = (PrintJob) mQueue.get(index).getItem();
-
-                jobHolder.ownerView.setText(job.getOwner());
-
-                if (job.getRaw().contains("ERROR")) {
-                    jobHolder.filesView.setText(job.getRaw());
-                } else {
-                    jobHolder.filesView.setText(
-                            String.format(mContext.getString(R.string.print_files),
-                                    job.getFiles(), job.getSize()));
-                    jobHolder.infoView.setText(
-                            String.format(mContext.getString(R.string.print_info),
-                                    job.getRank(), job.getJob(), job.getTime()));
-                }
-                break;
-
-            case PrintersListEnum.EMPTY:
-                break;
-
-            case PrintersListEnum.TIMESTAMP:
+            case ListEnum.TIMESTAMP:
                 final TimestampHolder timestampHolder = (TimestampHolder) holder;
                 final String timestamp = (String) mQueue.get(index).getItem();
 
@@ -119,23 +119,13 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         final List<Printer> printers = queue.getPrinters();
         for (final Printer printer : printers) {
-            // Printer heading
-            this.mQueue.add(new ListItem(PrintersListEnum.HEADING,
-                    new PrintersListHeading(printer.getName(), printer.getDescription())));
-
-            if (printer.getLength() == 0) {
-                // Empty job queue
-                this.mQueue.add(new ListItem(PrintersListEnum.EMPTY, null));
-            } else {
-                // Printer job queue
-                for (PrintJob job : printer.getJobs()) {
-                    this.mQueue.add(new ListItem(PrintersListEnum.JOB, job));
-                }
-            }
+            this.mQueue.add(new ListItem(ListEnum.ITEM,
+                    new PrintersListItem(printer.getName(), printer.getDescription(),
+                            printer.getJobs())));
         }
 
         // Timestamp
-        this.mQueue.add(new ListItem(PrintersListEnum.TIMESTAMP, queue.getTimestamp()));
+        this.mQueue.add(new ListItem(ListEnum.TIMESTAMP, queue.getTimestamp()));
 
         notifyDataSetChanged();
     }

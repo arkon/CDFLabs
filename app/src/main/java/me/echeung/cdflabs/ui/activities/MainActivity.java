@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         mHelpDialog = new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle)
                 .setTitle(R.string.help_and_feedback)
                 .setMessage(Html.fromHtml(getString(R.string.help_content, version)))
-                .setPositiveButton(R.string.OK, null)
+                .setPositiveButton(R.string.close, null)
                 .create();
     }
 
@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Tints the given tab's icon with the given color.
      *
-     * @param tab A tab from the tab bar.
+     * @param tab   A tab from the tab bar.
      * @param color A color value to tint the tab's icon with.
      */
     private void tintTabIcon(TabLayout.Tab tab, int color) {

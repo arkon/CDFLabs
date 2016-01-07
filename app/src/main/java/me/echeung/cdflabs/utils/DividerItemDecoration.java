@@ -17,7 +17,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
         this.mDivider = ContextCompat.getDrawable(context, R.drawable.line_divider);
 
         this.mPaddingLeft = 2 * (int) context.getResources().getDimension(R.dimen.regular_margin)
-            + (int) context.getResources().getDimension(R.dimen.free_size);
+                + (int) context.getResources().getDimension(R.dimen.free_size);
     }
 
     @Override

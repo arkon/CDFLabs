@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">CDF Labs</string>
 
-    <string name="OK">OK</string>
+    <string name="close">Close</string>
 
     <string name="action_refresh">Refresh</string>
     <string name="help_and_feedback">Help &amp; Feedback</string>
@@ -27,6 +27,7 @@
     <string name="timestamp">Last updated: %s</string>
     <string name="no_data">No data to display</string>
 
+    <string name="print_queue">Printer queue</string>
     <string name="print_empty">Empty queue</string>
     <string name="print_files" formatted="false">Files: %s (%s B)</string>
     <string name="print_info" formatted="false">Rank: %s | Job ID: %s | Started at %s</string>
