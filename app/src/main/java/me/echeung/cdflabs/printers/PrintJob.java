@@ -57,9 +57,4 @@ public class PrintJob {
     public String getRaw() {
         return raw;
     }
-
-    @Override
-    public String toString() {
-        return getRaw();
-    }
 }

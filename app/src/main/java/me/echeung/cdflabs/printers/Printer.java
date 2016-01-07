@@ -8,12 +8,15 @@ public class Printer {
     private List<PrintJob> jobs;
     private String description;
     private int length;
+    private int queued;
 
     public Printer(String name, List<PrintJob> jobs, String description, int length) {
         this.name = name;
         this.jobs = jobs;
         this.description = description;
         this.length = length;
+
+        calculateQueued();
     }
 
     public String getName() {
@@ -30,6 +33,8 @@ public class Printer {
 
     public void setJobs(List<PrintJob> jobs) {
         this.jobs = jobs;
+
+        calculateQueued();
     }
 
     public String getDescription() {
@@ -48,14 +53,18 @@ public class Printer {
         this.length = length;
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder sBuilder = new StringBuilder();
+    public int getQueued() {
+        return queued;
+    }
 
-        for (PrintJob job : getJobs()) {
-            sBuilder.append(job.toString());
+    private void calculateQueued() {
+        int queued = 0;
+        for (final PrintJob job : jobs) {
+            if (!job.getRaw().contains("ERROR") && !job.getRank().equals("done")) {
+                queued++;
+            }
         }
 
-        return sBuilder.toString();
+        this.queued = queued;
     }
 }

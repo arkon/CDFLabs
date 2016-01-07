@@ -27,6 +27,7 @@
     <string name="timestamp">Last updated: %s</string>
     <string name="no_data">No data to display</string>
 
+    <string name="printer_queued" formatted="false">%s jobs queued</string>
     <string name="print_queue">Printer queue</string>
     <string name="print_empty">Empty queue</string>
     <string name="print_files" formatted="false">Files: %s (%s B)</string>

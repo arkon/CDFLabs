@@ -21,4 +21,27 @@
         android:textColor="@color/secondary_text"
         tools:text="Printer description" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BUSY"
+            android:textColor="@android:color/white"
+            android:layout_marginRight="@dimen/small_margin"
+            android:padding="@dimen/small_margin"
+            android:background="@color/free_orange" />
+
+        <TextView
+            android:id="@+id/printer_queued"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            tools:text="Queued" />
+
+    </LinearLayout>
+
 </LinearLayout>

@@ -82,6 +82,9 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
                 printerHolder.headingView.setText(printer.getName());
                 printerHolder.descriptionView.setText(printer.getDescription());
+                printerHolder.queuedView.setText(
+                        String.format(mContext.getString(R.string.printer_queued),
+                                printer.getQueued()));
 
                 // Show queue in dialog on click
                 printerHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -121,7 +124,7 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         for (final Printer printer : printers) {
             this.mQueue.add(new ListItem(ListEnum.ITEM,
                     new PrintersListItem(printer.getName(), printer.getDescription(),
-                            printer.getJobs())));
+                            printer.getJobs(), printer.getQueued())));
         }
 
         // Timestamp
