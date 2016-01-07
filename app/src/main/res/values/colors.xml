@@ -8,7 +8,7 @@
 
     <color name="divider">#FFDADADA</color>
 
-    <color name="free_red">#FFE9442B</color>
-    <color name="free_orange">#FFF17C37</color>
-    <color name="free_green">#FF00BF76</color>
+    <color name="status_red">#FFE9442B</color>
+    <color name="status_orange">#FFF17C37</color>
+    <color name="status_green">#FF00BF76</color>
 </resources>

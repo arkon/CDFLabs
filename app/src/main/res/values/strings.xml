@@ -1,45 +1,43 @@
 <resources>
     <string name="app_name">CDF Labs</string>
 
+    <string name="refresh">Refresh</string>
     <string name="close">Close</string>
-
-    <string name="action_refresh">Refresh</string>
     <string name="help_and_feedback">Help &amp; Feedback</string>
 
     <string name="title_labs">Computers</string>
     <string name="title_printers">Printers</string>
     <string name="title_locations">Locations</string>
 
-    <string name="title_bahen">Bahen</string>
-    <string name="title_online">Online</string>
-
-    <string name="no_connection">There\'s no network connection right now.\nTry again later.</string>
-    <string name="error">Whoops!\nWe ran into an issue fetching the data.</string>
+    <string name="error_connection">There\'s no network connection right now.\nTry again later.</string>
+    <string name="error_fetch">Whoops!\nWe ran into an issue fetching the data.</string>
     <string name="retry">Retry</string>
 
     <string name="sort">Sort</string>
     <string name="sort_avail">Availability</string>
     <string name="sort_name">Name</string>
 
-    <string name="bahen_room">BA %s</string>
-    <string name="free_comps">FREE</string>
-    <string name="stats" formatted="false">%s computers total (%s%% busy)</string>
     <string name="timestamp">Last updated: %s</string>
     <string name="no_data">No data to display</string>
 
-    <string name="printer_queued" formatted="false">%s jobs queued</string>
-    <string name="print_queue">Printer queue</string>
-    <string name="print_empty">Empty queue</string>
-    <string name="print_files" formatted="false">Files: %s (%s B)</string>
-    <string name="print_info" formatted="false">Rank: %s | Job ID: %s | Started at %s</string>
+    <string name="lab_bahen">BA %s</string>
+    <string name="lab_free">Free</string>
+    <string name="lab_stats" formatted="false">%s computers total (%s%% busy)</string>
+
+    <string name="printer_queued">Queued</string>
+
+    <string name="queue">Printer queue</string>
+    <string name="queue_empty">Empty queue</string>
+    <string name="queue_files" formatted="false">Files: %s (%s B)</string>
+    <string name="queue_info" formatted="false">Rank: %s | Job ID: %s | Started at %s</string>
 
     <string name="bahen_name">Bahen Centre for Information Technology</string>
     <string name="bahen_address">40 St George Street, Toronto, ON M5S 2E4</string>
     <string name="bahen_info">The Bahen Centre hosts the majority of the CDF labs. The labs are located in the following rooms: BA 2210, BA 2220, BA 2240, BA 3175, BA 3185, BA 3195 and BA 3200.</string>
-    <string name="floor_second">Second floor</string>
-    <string name="floor_third">Third floor</string>
-    <string name="map_bahen_second_alt">Map of Bahen\'s second floor</string>
-    <string name="map_bahen_third_alt">Map of Bahen\'s third floor</string>
+    <string name="bahen_map_second">Second floor</string>
+    <string name="bahen_map_third">Third floor</string>
+    <string name="bahen_map_second_alt">Map of Bahen\'s second floor</string>
+    <string name="bahen_map_third_alt">Map of Bahen\'s third floor</string>
 
     <string name="nx_name">NX (Remote Access Server)</string>
     <string name="nx_info">CDF offers an NX server for remote desktop connection from home or from your laptop via the wireless network. The NX technology attempts to greatly improve the experience of remote graphical connection over a slow Internet link by optimising perceived speed of response and allowing one to suspend a graphical session and reconnect to it later. You can also connect to CDF\'s NX server from any CDF workstation or Information Commons workstation using a specially crafted profile.</string>

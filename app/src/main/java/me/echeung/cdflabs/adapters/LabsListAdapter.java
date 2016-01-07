@@ -17,7 +17,7 @@ import me.echeung.cdflabs.comparators.LabsByAvail;
 import me.echeung.cdflabs.comparators.LabsByBuilding;
 import me.echeung.cdflabs.enums.LabSortEnum;
 import me.echeung.cdflabs.enums.ListEnum;
-import me.echeung.cdflabs.holders.LabHolder;
+import me.echeung.cdflabs.holders.ListItemHolder;
 import me.echeung.cdflabs.holders.TimestampHolder;
 import me.echeung.cdflabs.labs.Lab;
 import me.echeung.cdflabs.labs.Labs;
@@ -45,8 +45,8 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         switch (viewType) {
             case ListEnum.ITEM:
                 v = LayoutInflater.from(parent.getContext()).inflate(
-                        R.layout.lab_item, parent, false);
-                return new LabHolder(v);
+                        R.layout.list_info_item, parent, false);
+                return new ListItemHolder(v);
 
             case ListEnum.TIMESTAMP:
                 v = LayoutInflater.from(parent.getContext()).inflate(
@@ -66,23 +66,27 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int index) {
         switch (mLabs.get(index).getType()) {
             case ListEnum.ITEM:
-                final LabHolder labHolder = (LabHolder) holder;
+                final ListItemHolder labHolder = (ListItemHolder) holder;
                 final Lab lab = (Lab) mLabs.get(index).getItem();
 
                 // Show available machines and set the square's background colour accordingly
                 final int avail = lab.getAvailable();
-                labHolder.freeView.setText(String.valueOf(avail));
+                labHolder.statusNumView.setText(String.valueOf(avail));
+                labHolder.statusAdjView.setText(mContext.getString(R.string.lab_free));
 
                 if (avail == 0)
-                    labHolder.compsView.setBackgroundColor(getColor(R.color.free_red));
+                    labHolder.statusView.setBackgroundColor(
+                            ContextCompat.getColor(mContext, R.color.status_red));
                 else if (avail <= 5)
-                    labHolder.compsView.setBackgroundColor(getColor(R.color.free_orange));
+                    labHolder.statusView.setBackgroundColor(
+                            ContextCompat.getColor(mContext, R.color.status_orange));
                 else
-                    labHolder.compsView.setBackgroundColor(getColor(R.color.free_green));
+                    labHolder.statusView.setBackgroundColor(
+                            ContextCompat.getColor(mContext, R.color.status_green));
 
                 // Show lab name and stats
-                labHolder.labView.setText(lab.getName());
-                labHolder.statsView.setText(String.format(mContext.getString(R.string.stats),
+                labHolder.titleView.setText(lab.getName());
+                labHolder.subtitleView.setText(String.format(mContext.getString(R.string.lab_stats),
                         lab.getTotal(), lab.getPercent()));
                 break;
 
@@ -140,9 +144,5 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         this.mLabs.add(new ListItem(ListEnum.TIMESTAMP, this.mLabsData.getTimestamp()));
 
         notifyDataSetChanged();
-    }
-
-    private int getColor(int name) {
-        return ContextCompat.getColor(mContext, name);
     }
 }

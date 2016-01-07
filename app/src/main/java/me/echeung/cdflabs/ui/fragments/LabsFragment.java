@@ -88,7 +88,6 @@ public class LabsFragment extends TabFragment {
         mList = (RecyclerView) rootView.findViewById(R.id.labs);
         adapter = new LabsListAdapter(getActivity());
         mList.setAdapter(adapter);
-        mList.addItemDecoration(new DividerItemDecoration(getContext()));
 
         // Pull to refresh
         mPullToRefresh = (SwipeRefreshLayout) rootView.findViewById(R.id.labs_container);

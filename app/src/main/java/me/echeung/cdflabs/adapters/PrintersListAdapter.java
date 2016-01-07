@@ -1,6 +1,7 @@
 package me.echeung.cdflabs.adapters;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,7 +14,7 @@ import java.util.List;
 
 import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.enums.ListEnum;
-import me.echeung.cdflabs.holders.PrinterHolder;
+import me.echeung.cdflabs.holders.ListItemHolder;
 import me.echeung.cdflabs.holders.TimestampHolder;
 import me.echeung.cdflabs.printers.PrintQueue;
 import me.echeung.cdflabs.printers.Printer;
@@ -34,7 +35,7 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         // Set up job queue dialog
         this.mQueueDialog = new AlertDialog.Builder(context, R.style.AppCompatAlertDialogStyle)
-                .setTitle(context.getString(R.string.print_queue))
+                .setTitle(context.getString(R.string.queue))
                 .setPositiveButton(context.getString(R.string.close), null)
                 .create();
 
@@ -56,8 +57,8 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         switch (viewType) {
             case ListEnum.ITEM:
                 v = LayoutInflater.from(parent.getContext()).inflate(
-                        R.layout.printer_item, parent, false);
-                return new PrinterHolder(v);
+                        R.layout.list_info_item, parent, false);
+                return new ListItemHolder(v);
 
             case ListEnum.TIMESTAMP:
                 v = LayoutInflater.from(parent.getContext()).inflate(
@@ -77,14 +78,24 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int index) {
         switch (mQueue.get(index).getType()) {
             case ListEnum.ITEM:
-                final PrinterHolder printerHolder = (PrinterHolder) holder;
+                final ListItemHolder printerHolder = (ListItemHolder) holder;
                 final PrintersListItem printer = (PrintersListItem) mQueue.get(index).getItem();
 
-                printerHolder.headingView.setText(printer.getName());
-                printerHolder.descriptionView.setText(printer.getDescription());
-                printerHolder.queuedView.setText(
-                        String.format(mContext.getString(R.string.printer_queued),
-                                printer.getQueued()));
+                // Show number of queued jobs and set the square's background colour accordingly
+                final int queued = printer.getQueued();
+                printerHolder.statusNumView.setText(String.valueOf(queued));
+                printerHolder.statusAdjView.setText(mContext.getString(R.string.printer_queued));
+
+                if (queued == 0)
+                    printerHolder.statusView.setBackgroundColor(
+                            ContextCompat.getColor(mContext, R.color.status_green));
+                else
+                    printerHolder.statusView.setBackgroundColor(
+                            ContextCompat.getColor(mContext, R.color.status_orange));
+
+                // Show printer name and description
+                printerHolder.titleView.setText(printer.getName());
+                printerHolder.subtitleView.setText(printer.getDescription());
 
                 // Show queue in dialog on click
                 printerHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -97,7 +108,6 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                         mQueueDialog.show();
                     }
                 });
-
                 break;
 
             case ListEnum.TIMESTAMP:

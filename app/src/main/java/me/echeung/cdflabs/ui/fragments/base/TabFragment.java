@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import me.echeung.cdflabs.R;
+import me.echeung.cdflabs.utils.DividerItemDecoration;
 import me.echeung.cdflabs.utils.NetworkUtils;
 
 public abstract class TabFragment extends Fragment implements ITabFragment {
@@ -59,6 +60,7 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
             }
         });
 
+        mList.addItemDecoration(new DividerItemDecoration(getContext()));
         mList.setLayoutManager(new LinearLayoutManager(getActivity()));
         mList.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -128,7 +130,7 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
         showError();
 
         if (isAdded()) {
-            mErrorMsg.setText(getString(R.string.no_connection));
+            mErrorMsg.setText(getString(R.string.error_connection));
         }
     }
 
@@ -139,7 +141,7 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
         showError();
 
         if (isAdded()) {
-            mErrorMsg.setText(getString(R.string.error));
+            mErrorMsg.setText(getString(R.string.error_fetch));
         }
     }
 }

@@ -34,10 +34,10 @@ public class PrinterQueueListAdapter extends ArrayAdapter<PrintJob> {
             holder.filesView.setText(job.getRaw());
         } else {
             holder.filesView.setText(
-                    String.format(getContext().getString(R.string.print_files),
+                    String.format(getContext().getString(R.string.queue_files),
                             job.getFiles(), job.getSize()));
             holder.infoView.setText(
-                    String.format(getContext().getString(R.string.print_info),
+                    String.format(getContext().getString(R.string.queue_info),
                             job.getRank(), job.getJob(), job.getTime()));
         }
 

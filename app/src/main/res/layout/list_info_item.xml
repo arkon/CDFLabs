@@ -9,7 +9,7 @@
     android:padding="@dimen/regular_margin">
 
     <LinearLayout
-        android:id="@+id/comps"
+        android:id="@+id/status"
         android:layout_width="@dimen/free_size"
         android:layout_height="@dimen/free_size"
         android:layout_gravity="center"
@@ -17,7 +17,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/free"
+            android:id="@+id/status_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
@@ -26,11 +26,12 @@
             android:textSize="@dimen/text_headline" />
 
         <TextView
+            android:id="@+id/status_adj"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed"
             android:gravity="center"
-            android:text="@string/free_comps"
+            android:textAllCaps="true"
             android:textColor="@android:color/white"
             android:textSize="@dimen/text_caption" />
 
@@ -44,7 +45,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/lab"
+            android:id="@+id/item_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
@@ -52,7 +53,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
         <TextView
-            android:id="@+id/stats"
+            android:id="@+id/item_subtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption" />

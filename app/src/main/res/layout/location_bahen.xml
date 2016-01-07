@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="sans-serif-light"
-            android:text="@string/floor_second"
+            android:text="@string/bahen_map_second"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <ImageView
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:adjustViewBounds="true"
-            android:contentDescription="@string/map_bahen_second_alt"
+            android:contentDescription="@string/bahen_map_second_alt"
             android:src="@drawable/map_bahen_second" />
 
         <TextView
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="sans-serif-light"
-            android:text="@string/floor_third"
+            android:text="@string/bahen_map_third"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <ImageView
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:adjustViewBounds="true"
-            android:contentDescription="@string/map_bahen_third_alt"
+            android:contentDescription="@string/bahen_map_third_alt"
             android:src="@drawable/map_bahen_third" />
 
     </LinearLayout>
