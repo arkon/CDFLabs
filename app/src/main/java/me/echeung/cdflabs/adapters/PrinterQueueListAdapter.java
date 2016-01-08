@@ -25,9 +25,6 @@ public class PrinterQueueListAdapter extends ArrayAdapter<PrintJob> {
         final PrintJobHolder holder = new PrintJobHolder(itemView);
         final PrintJob job = getItem(position);
 
-//        v = LayoutInflater.from(parent.getContext()).inflate(
-//                R.layout.queue_empty_item, parent, false);
-
         holder.ownerView.setText(job.getOwner());
 
         if (job.getRaw().contains("ERROR")) {

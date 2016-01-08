@@ -25,6 +25,7 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     private Context mContext;
     private List<ListItem> mQueue;
+    private ListView mQueueList;
 
     private AlertDialog mQueueDialog;
     private PrinterQueueListAdapter mQueueAdapter;
@@ -46,8 +47,9 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         // Set dialog list adapter
         this.mQueueAdapter = new PrinterQueueListAdapter(context, R.layout.queue_job_item);
-        final ListView listView = (ListView) dialogView.findViewById(R.id.printer_queue);
-        listView.setAdapter(mQueueAdapter);
+        this.mQueueList = (ListView) dialogView.findViewById(R.id.printer_queue);
+        this.mQueueList.setEmptyView(dialogView.findViewById(R.id.printer_queue_empty));
+        this.mQueueList.setAdapter(mQueueAdapter);
     }
 
     @Override
@@ -101,6 +103,8 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 printerHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        mQueueList.invalidateViews();
+                        
                         mQueueAdapter.clear();
                         mQueueAdapter.addAll(printer.getQueue());
                         mQueueAdapter.notifyDataSetChanged();

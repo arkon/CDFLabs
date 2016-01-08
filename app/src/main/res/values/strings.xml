@@ -28,7 +28,7 @@
     <string name="printer_queued">Queued</string>
 
     <string name="queue">Printer queue</string>
-    <string name="queue_empty">Empty queue</string>
+    <string name="queue_empty">This printer has no jobs in its queue.</string>
     <string name="queue_files" formatted="false">Files: %s (%s B)</string>
     <string name="queue_info" formatted="false">Rank: %s | Job ID: %s | Started at %s</string>
 
