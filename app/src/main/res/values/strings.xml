@@ -10,6 +10,7 @@
     <string name="title_locations">Locations</string>
 
     <string name="error_connection">There\'s no network connection right now.\nTry again later.</string>
+    <string name="error_connection_short">No network connection</string>
     <string name="error_fetch">Whoops!\nWe ran into an issue fetching the data.</string>
     <string name="retry">Retry</string>
 

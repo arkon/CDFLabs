@@ -1,6 +1,7 @@
 package me.echeung.cdflabs.ui.fragments.base;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,6 +21,8 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
      * The fragment argument representing the section number for this fragment.
      */
     private static final String ARG_SECTION_NUMBER = "section_number";
+
+    private boolean loadedData;
 
     protected LinearLayout mError;
     protected TextView mErrorMsg;
@@ -77,6 +80,8 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
             }
         });
 
+        loadedData = false;
+
         return rootView;
     }
 
@@ -87,7 +92,11 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
      */
     public void fetchData() {
         if (!NetworkUtils.isNetworkAvailable(getActivity())) {
-            showConnectionError();
+            if (loadedData) {
+                showConnectionErrorSnackbar();
+            } else {
+                showConnectionError();
+            }
         } else {
             mError.setVisibility(View.GONE);
 
@@ -101,6 +110,9 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
      * content data.
      */
     public void updateContent() {
+        // Note that we've gotten data successfully once
+        loadedData = true;
+
         // Show the content
         mContent.setVisibility(View.VISIBLE);
 
@@ -109,6 +121,23 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
 
         // Scroll list back to top
         mList.smoothScrollToPosition(0);
+    }
+
+    /**
+     * Displays a connection error message in a snackbar. Used when data has already been
+     * loaded before, instead of hiding that.
+     */
+    private void showConnectionErrorSnackbar() {
+        mPullToRefresh.setRefreshing(false);
+
+        Snackbar.make(mList, getString(R.string.error_connection_short), Snackbar.LENGTH_LONG)
+                .setAction(getString(R.string.retry), new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        fetchData();
+                    }
+                })
+                .show();
     }
 
     /**
