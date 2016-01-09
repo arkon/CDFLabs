@@ -16,6 +16,10 @@
                     android:id="@+id/sortName"
                     android:title="@string/sort_name" />
             </group>
+            <item
+                android:id="@+id/showNX"
+                android:checkable="true"
+                android:title="@string/sort_show_nx" />
         </menu>
     </item>
 

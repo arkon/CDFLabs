@@ -3,20 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingLeft="@dimen/small_margin"
-    android:paddingRight="@dimen/small_margin"
+    android:paddingLeft="@dimen/regular_margin"
+    android:paddingRight="@dimen/regular_margin"
     android:paddingTop="@dimen/small_margin">
 
     <ListView
         android:id="@+id/printer_queue"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:listSelector="@android:color/transparent"/>
 
     <TextView
         android:id="@+id/printer_queue_empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/regular_margin"
+        android:padding="@dimen/small_margin"
         android:text="@string/queue_empty"
         android:textColor="@color/secondary_text"
         android:textSize="@dimen/text_body"

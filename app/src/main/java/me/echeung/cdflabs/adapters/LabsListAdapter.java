@@ -110,7 +110,7 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         this.mLabsData = labs;
 
-        sortLabs();
+        updateList();
     }
 
     public void updateSortingCriteria() {
@@ -124,16 +124,27 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 break;
         }
 
-        sortLabs();
+        updateList();
     }
 
-    private void sortLabs() {
+    public void updateList() {
         if (this.mLabsData == null) return;
 
         this.mLabs.clear();
 
         // Sort labs
-        List<Lab> sortedLabs = this.mLabsData.getLabs();
+        List<Lab> sortedLabs = new ArrayList<>(this.mLabsData.getLabs());
+
+        // Remove NX if set to do so
+        if (!AppState.isNXVisible()) {
+            for (final Lab lab : sortedLabs) {
+                if (lab.getName().equals("NX")) {
+                    sortedLabs.remove(lab);
+                    break;
+                }
+            }
+        }
+
         Collections.sort(sortedLabs, this.mComparator);
 
         for (final Lab lab : sortedLabs) {

@@ -55,6 +55,8 @@ public class LabsFragment extends TabFragment {
                 menu.findItem(R.id.sortAvail).setChecked(true);
                 break;
         }
+
+        menu.findItem(R.id.showNX).setChecked(AppState.isNXVisible());
     }
 
     @Override
@@ -62,17 +64,17 @@ public class LabsFragment extends TabFragment {
         switch (item.getItemId()) {
             case R.id.sortAvail:
                 setSortMode(LabSortEnum.AVAIL);
-                return true;
 
             case R.id.sortName:
                 setSortMode(LabSortEnum.NAME);
-                return true;
+
+            case R.id.showNX:
+                setNXVisibility(!item.isChecked());
 
             default:
-                break;
+                getActivity().invalidateOptionsMenu();
+                return true;
         }
-
-        return false;
     }
 
     @Override
@@ -139,7 +141,13 @@ public class LabsFragment extends TabFragment {
      */
     private void setSortMode(int type) {
         AppState.setLabSort(type);
+
         adapter.updateSortingCriteria();
-        getActivity().invalidateOptionsMenu();
+    }
+
+    private void setNXVisibility(boolean visible) {
+        AppState.setNXVisibility(visible);
+
+        adapter.updateList();
     }
 }

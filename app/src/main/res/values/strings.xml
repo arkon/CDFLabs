@@ -17,6 +17,7 @@
     <string name="sort">Sort</string>
     <string name="sort_avail">Availability</string>
     <string name="sort_name">Name</string>
+    <string name="sort_show_nx">Show NX</string>
 
     <string name="timestamp">Last updated: %s</string>
     <string name="no_data">No data to display</string>
