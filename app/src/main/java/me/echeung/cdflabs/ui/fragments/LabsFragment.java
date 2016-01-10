@@ -10,12 +10,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.adapters.LabsListAdapter;
-import me.echeung.cdflabs.adapters.ViewPagerAdapter;
 import me.echeung.cdflabs.enums.LabSortEnum;
 import me.echeung.cdflabs.labs.Labs;
 import me.echeung.cdflabs.ui.AppState;
@@ -84,25 +82,13 @@ public class LabsFragment extends TabFragment {
         final View rootView = inflater.inflate(R.layout.fragment_labs, container, false);
 
         // Some references
+        mPullToRefresh = (SwipeRefreshLayout) rootView.findViewById(R.id.labs_container);
         mContent = (RelativeLayout) rootView.findViewById(R.id.labs_list);
 
         // List/adapter
         mList = (RecyclerView) rootView.findViewById(R.id.labs);
         adapter = new LabsListAdapter(getActivity());
         mList.setAdapter(adapter);
-
-        // Pull to refresh
-        mPullToRefresh = (SwipeRefreshLayout) rootView.findViewById(R.id.labs_container);
-
-        // No connection retry button
-        final Button mRetry = (Button) rootView.findViewById(R.id.btn_retry);
-        mRetry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                initializeView(rootView);
-                ViewPagerAdapter.getPrintersFragment().fetchData();
-            }
-        });
 
         return initializeView(rootView);
     }

@@ -11,7 +11,7 @@
         android:id="@+id/printer_queue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:listSelector="@android:color/transparent"/>
+        android:listSelector="@android:color/transparent" />
 
     <TextView
         android:id="@+id/printer_queue_empty"

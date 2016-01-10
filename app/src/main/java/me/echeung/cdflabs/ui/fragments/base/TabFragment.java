@@ -7,11 +7,13 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import me.echeung.cdflabs.R;
+import me.echeung.cdflabs.adapters.ViewPagerAdapter;
 import me.echeung.cdflabs.utils.DividerItemDecoration;
 import me.echeung.cdflabs.utils.NetworkUtils;
 
@@ -80,6 +82,15 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
             }
         });
 
+        // No connection retry button
+        final Button mRetry = (Button) rootView.findViewById(R.id.btn_retry);
+        mRetry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fetchAllData();
+            }
+        });
+
         loadedData = false;
 
         return rootView;
@@ -103,6 +114,14 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
             mPullToRefresh.setRefreshing(true);
             mPullToRefresh.setEnabled(true);
         }
+    }
+
+    /**
+     * Fetches data in both the labs and printers tabs.
+     */
+    public void fetchAllData() {
+        ViewPagerAdapter.getLabsFragment().fetchData();
+        ViewPagerAdapter.getPrintersFragment().fetchData();
     }
 
     /**
