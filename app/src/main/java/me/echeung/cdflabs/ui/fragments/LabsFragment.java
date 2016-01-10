@@ -46,13 +46,12 @@ public class LabsFragment extends TabFragment {
         inflater.inflate(R.menu.menu_labs, menu);
 
         switch (AppState.getLabSort()) {
-            case LabSortEnum.NAME:
-                menu.findItem(R.id.sortName).setChecked(true);
+            case LabSortEnum.AVAIL:
+                menu.findItem(R.id.sortAvail).setChecked(true);
                 break;
 
-            case LabSortEnum.AVAIL:
-            default:
-                menu.findItem(R.id.sortAvail).setChecked(true);
+            case LabSortEnum.NAME:
+                menu.findItem(R.id.sortName).setChecked(true);
                 break;
         }
 
@@ -64,17 +63,19 @@ public class LabsFragment extends TabFragment {
         switch (item.getItemId()) {
             case R.id.sortAvail:
                 setSortMode(LabSortEnum.AVAIL);
+                break;
 
             case R.id.sortName:
                 setSortMode(LabSortEnum.NAME);
+                break;
 
             case R.id.showNX:
                 setNXVisibility(!item.isChecked());
-
-            default:
-                getActivity().invalidateOptionsMenu();
-                return true;
+                break;
         }
+
+        getActivity().invalidateOptionsMenu();
+        return true;
     }
 
     @Override
