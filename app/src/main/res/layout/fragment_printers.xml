@@ -1,50 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/printers_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context="me.echeung.cdflabs.ui.fragments.PrintersFragment">
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/printers_container"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/small_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/small_margin">
 
-        <RelativeLayout
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/small_margin"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/small_margin">
+            card_view:cardBackgroundColor="@android:color/white"
+            card_view:cardUseCompatPadding="true">
 
-            <android.support.v7.widget.CardView
+            <RelativeLayout
+                android:id="@+id/printers_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                card_view:cardBackgroundColor="@android:color/white"
-                card_view:cardUseCompatPadding="true">
+                android:layout_height="wrap_content">
 
-                <RelativeLayout
-                    android:id="@+id/printers_list"
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/printers"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:scrollbars="vertical" />
 
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/printers"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clipToPadding="false"
-                        android:scrollbars="vertical" />
+            </RelativeLayout>
 
-                </RelativeLayout>
+            <include layout="@layout/error" />
 
-                <include layout="@layout/error" />
+        </android.support.v7.widget.CardView>
 
-            </android.support.v7.widget.CardView>
+    </RelativeLayout>
 
-        </RelativeLayout>
-
-    </android.support.v4.widget.SwipeRefreshLayout>
-
-</RelativeLayout>
+</android.support.v4.widget.SwipeRefreshLayout>
