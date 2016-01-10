@@ -24,10 +24,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/regular_margin"
+            android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:drawableLeft="@drawable/ic_place"
             android:drawableStart="@drawable/ic_place"
-            android:foreground="?attr/selectableItemBackground"
+            android:focusable="true"
             android:gravity="center_vertical"
             android:text="@string/bahen_address"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption" />

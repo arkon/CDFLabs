@@ -111,8 +111,8 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
         } else {
             mError.setVisibility(View.GONE);
 
-            mPullToRefresh.setRefreshing(true);
             mPullToRefresh.setEnabled(true);
+            mPullToRefresh.setRefreshing(true);
         }
     }
 
