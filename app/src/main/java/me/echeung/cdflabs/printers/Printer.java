@@ -54,6 +54,7 @@ public class Printer {
     }
 
     public int getQueued() {
+        calculateQueued();
         return queued;
     }
 
