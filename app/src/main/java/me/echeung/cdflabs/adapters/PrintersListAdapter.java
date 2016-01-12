@@ -91,6 +91,9 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 if (queued == 0)
                     printerHolder.statusView.setBackgroundColor(
                             ContextCompat.getColor(mContext, R.color.status_green));
+                else if (queued >= 5)
+                    printerHolder.statusView.setBackgroundColor(
+                            ContextCompat.getColor(mContext, R.color.status_red));
                 else
                     printerHolder.statusView.setBackgroundColor(
                             ContextCompat.getColor(mContext, R.color.status_orange));
