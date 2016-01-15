@@ -15,7 +15,7 @@ import java.util.List;
 import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.comparators.LabsByAvail;
 import me.echeung.cdflabs.comparators.LabsByBuilding;
-import me.echeung.cdflabs.enums.LabSortEnum;
+import me.echeung.cdflabs.enums.SortEnum;
 import me.echeung.cdflabs.enums.ListEnum;
 import me.echeung.cdflabs.holders.ListItemHolder;
 import me.echeung.cdflabs.holders.TimestampHolder;
@@ -115,11 +115,11 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     public void updateSortingCriteria() {
         switch (AppState.getLabSort()) {
-            case LabSortEnum.NAME:
+            case SortEnum.NAME:
                 this.mComparator = new LabsByBuilding();
                 break;
 
-            case LabSortEnum.AVAIL:
+            case SortEnum.AVAIL:
                 this.mComparator = new LabsByAvail();
                 break;
         }

@@ -9,16 +9,12 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/labsSortAvail"
+                    android:id="@+id/printersSortAvail"
                     android:title="@string/sort_avail" />
                 <item
-                    android:id="@+id/labsSortName"
+                    android:id="@+id/printersSortName"
                     android:title="@string/sort_name" />
             </group>
-            <item
-                android:id="@+id/labsShowNX"
-                android:checkable="true"
-                android:title="@string/sort_show_nx" />
         </menu>
     </item>
 

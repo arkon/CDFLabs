@@ -46,6 +46,12 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
         return fragment;
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
     /**
      * Initializes common view references and prevent pull to refresh from
      * triggering if not at the top of the list.

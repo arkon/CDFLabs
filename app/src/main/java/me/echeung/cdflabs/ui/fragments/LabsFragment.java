@@ -14,7 +14,7 @@ import android.widget.RelativeLayout;
 
 import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.adapters.LabsListAdapter;
-import me.echeung.cdflabs.enums.LabSortEnum;
+import me.echeung.cdflabs.enums.SortEnum;
 import me.echeung.cdflabs.labs.Labs;
 import me.echeung.cdflabs.ui.AppState;
 import me.echeung.cdflabs.ui.fragments.base.TabFragment;
@@ -33,38 +33,32 @@ public class LabsFragment extends TabFragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-    }
-
-    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_labs, menu);
 
         switch (AppState.getLabSort()) {
-            case LabSortEnum.AVAIL:
-                menu.findItem(R.id.sortAvail).setChecked(true);
+            case SortEnum.AVAIL:
+                menu.findItem(R.id.labsSortAvail).setChecked(true);
                 break;
 
-            case LabSortEnum.NAME:
-                menu.findItem(R.id.sortName).setChecked(true);
+            case SortEnum.NAME:
+                menu.findItem(R.id.labsSortName).setChecked(true);
                 break;
         }
 
-        menu.findItem(R.id.showNX).setChecked(AppState.isNXVisible());
+        menu.findItem(R.id.labsShowNX).setChecked(AppState.isNXVisible());
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.sortAvail:
-                setSortMode(LabSortEnum.AVAIL);
+                setSortMode(SortEnum.AVAIL);
                 break;
 
             case R.id.sortName:
-                setSortMode(LabSortEnum.NAME);
+                setSortMode(SortEnum.NAME);
                 break;
 
             case R.id.showNX:
@@ -124,7 +118,7 @@ public class LabsFragment extends TabFragment {
     /**
      * Sets the sorting mode, updating the options menu and list.
      *
-     * @param type The sorting mode, which is from LabSortEnum.
+     * @param type The sorting mode, which is from SortEnum.
      */
     private void setSortMode(int type) {
         AppState.setLabSort(type);
