@@ -53,15 +53,15 @@ public class LabsFragment extends TabFragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.sortAvail:
+            case R.id.labsSortAvail:
                 setSortMode(SortEnum.AVAIL);
                 break;
 
-            case R.id.sortName:
+            case R.id.labsSortName:
                 setSortMode(SortEnum.NAME);
                 break;
 
-            case R.id.showNX:
+            case R.id.labsShowNX:
                 setNXVisibility(!item.isChecked());
                 break;
         }

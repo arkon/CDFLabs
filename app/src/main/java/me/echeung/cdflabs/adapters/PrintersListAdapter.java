@@ -106,12 +106,12 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 printerHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        mQueueList.setAdapter(null);
+
                         if (printer.getQueue().size() > 0) {
                             mQueueAdapter.clear();
                             mQueueList.setAdapter(mQueueAdapter);
                             mQueueAdapter.addAll(printer.getQueue());
-                        } else {
-                            mQueueList.setAdapter(null);
                         }
 
                         mQueueDialog.show();

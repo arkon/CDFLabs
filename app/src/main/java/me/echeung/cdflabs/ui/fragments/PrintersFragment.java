@@ -35,15 +35,15 @@ public class PrintersFragment extends TabFragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_labs, menu);
+        inflater.inflate(R.menu.menu_printers, menu);
 
-        switch (AppState.getLabSort()) {
+        switch (AppState.getPrinterSort()) {
             case SortEnum.AVAIL:
-                menu.findItem(R.id.sortAvail).setChecked(true);
+                menu.findItem(R.id.printersSortAvail).setChecked(true);
                 break;
 
             case SortEnum.NAME:
-                menu.findItem(R.id.sortName).setChecked(true);
+                menu.findItem(R.id.printersSortName).setChecked(true);
                 break;
         }
     }
@@ -51,11 +51,11 @@ public class PrintersFragment extends TabFragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.sortAvail:
+            case R.id.printersSortAvail:
                 setSortMode(SortEnum.AVAIL);
                 break;
 
-            case R.id.sortName:
+            case R.id.printersSortName:
                 setSortMode(SortEnum.NAME);
                 break;
         }

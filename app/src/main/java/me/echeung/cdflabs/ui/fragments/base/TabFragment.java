@@ -155,14 +155,16 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
     private void showConnectionErrorSnackbar() {
         mPullToRefresh.setRefreshing(false);
 
-        Snackbar.make(mList, getString(R.string.error_connection_short), Snackbar.LENGTH_LONG)
-                .setAction(getString(R.string.retry), new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        fetchData();
-                    }
-                })
-                .show();
+        if (isAdded()) {
+            Snackbar.make(mList, getString(R.string.error_connection_short), Snackbar.LENGTH_LONG)
+                    .setAction(getString(R.string.retry), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            fetchData();
+                        }
+                    })
+                    .show();
+        }
     }
 
     /**
