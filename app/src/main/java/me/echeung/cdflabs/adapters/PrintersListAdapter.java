@@ -10,21 +10,32 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import me.echeung.cdflabs.R;
+import me.echeung.cdflabs.comparators.LabsByAvail;
+import me.echeung.cdflabs.comparators.LabsByBuilding;
+import me.echeung.cdflabs.comparators.PrintersByAvail;
+import me.echeung.cdflabs.comparators.PrintersByName;
 import me.echeung.cdflabs.enums.ListEnum;
+import me.echeung.cdflabs.enums.SortEnum;
 import me.echeung.cdflabs.holders.ListItemHolder;
 import me.echeung.cdflabs.holders.TimestampHolder;
+import me.echeung.cdflabs.labs.Lab;
 import me.echeung.cdflabs.printers.Printer;
 import me.echeung.cdflabs.printers.Printers;
 import me.echeung.cdflabs.printers.PrintersListItem;
+import me.echeung.cdflabs.ui.AppState;
 import me.echeung.cdflabs.utils.ListItem;
 
 public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context mContext;
+    private Printers mPrintersData;
     private List<ListItem> mQueue;
+    private Comparator<Printer> mComparator;
 
     private AlertDialog mQueueDialog;
     private PrinterQueueListAdapter mQueueAdapter;
@@ -33,6 +44,8 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public PrintersListAdapter(Context context) {
         this.mContext = context;
         this.mQueue = new ArrayList<>();
+
+        updateSortingCriteria();
 
         // Set up job queue dialog
         this.mQueueDialog = new AlertDialog.Builder(context, R.style.AppCompatAlertDialogStyle)
@@ -137,17 +150,42 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public void setPrintQueue(Printers queue) {
         if (queue == null) return;
 
+        this.mPrintersData = queue;
+
+        updateList();
+    }
+
+    public void updateSortingCriteria() {
+        switch (AppState.getPrinterSort()) {
+            case SortEnum.NAME:
+                this.mComparator = new PrintersByName();
+                break;
+
+            case SortEnum.AVAIL:
+                this.mComparator = new PrintersByAvail();
+                break;
+        }
+
+        updateList();
+    }
+
+    public void updateList() {
+        if (this.mPrintersData == null) return;
+
         this.mQueue.clear();
 
-        final List<Printer> printers = queue.getPrinters();
-        for (final Printer printer : printers) {
+        // Sort printers
+        List<Printer> sortedPrinters= this.mPrintersData.getPrinters();
+        Collections.sort(sortedPrinters, this.mComparator);
+
+        for (final Printer printer : sortedPrinters) {
             this.mQueue.add(new ListItem(ListEnum.ITEM,
                     new PrintersListItem(printer.getName(), printer.getDescription(),
                             printer.getJobs(), printer.getQueued())));
         }
 
         // Timestamp
-        this.mQueue.add(new ListItem(ListEnum.TIMESTAMP, queue.getTimestamp()));
+        this.mQueue.add(new ListItem(ListEnum.TIMESTAMP, this.mPrintersData.getTimestamp()));
 
         notifyDataSetChanged();
     }

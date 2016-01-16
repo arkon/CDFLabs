@@ -117,6 +117,6 @@ public class PrintersFragment extends TabFragment {
     private void setSortMode(int type) {
         AppState.setPrinterSort(type);
 
-//        adapter.updateSortingCriteria();
+        adapter.updateSortingCriteria();
     }
 }
