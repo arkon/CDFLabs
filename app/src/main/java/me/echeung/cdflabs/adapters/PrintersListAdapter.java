@@ -15,15 +15,12 @@ import java.util.Comparator;
 import java.util.List;
 
 import me.echeung.cdflabs.R;
-import me.echeung.cdflabs.comparators.LabsByAvail;
-import me.echeung.cdflabs.comparators.LabsByBuilding;
 import me.echeung.cdflabs.comparators.PrintersByAvail;
 import me.echeung.cdflabs.comparators.PrintersByName;
 import me.echeung.cdflabs.enums.ListEnum;
 import me.echeung.cdflabs.enums.SortEnum;
 import me.echeung.cdflabs.holders.ListItemHolder;
 import me.echeung.cdflabs.holders.TimestampHolder;
-import me.echeung.cdflabs.labs.Lab;
 import me.echeung.cdflabs.printers.Printer;
 import me.echeung.cdflabs.printers.Printers;
 import me.echeung.cdflabs.printers.PrintersListItem;

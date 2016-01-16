@@ -28,7 +28,7 @@ public class PrinterQueueListAdapter extends ArrayAdapter<PrintJob> {
         holder.ownerView.setText(job.getOwner());
 
         if (job.getRaw().contains("ERROR")) {
-            holder.filesView.setText(job.getRaw());
+            holder.filesView.setText(job.getFiles());
         } else {
             holder.filesView.setText(
                     String.format(getContext().getString(R.string.queue_files),

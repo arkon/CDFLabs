@@ -4,8 +4,8 @@ import android.app.Application;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import me.echeung.cdflabs.enums.SortEnum;
 import me.echeung.cdflabs.enums.PreferencesEnum;
+import me.echeung.cdflabs.enums.SortEnum;
 
 public class AppState extends Application {
 
