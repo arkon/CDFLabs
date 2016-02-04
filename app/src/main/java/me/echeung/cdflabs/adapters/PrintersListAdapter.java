@@ -46,7 +46,6 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         // Set up job queue dialog
         this.mQueueDialog = new AlertDialog.Builder(context, R.style.AppCompatAlertDialogStyle)
-                .setTitle(context.getString(R.string.queue))
                 .setPositiveButton(context.getString(R.string.close), null)
                 .create();
 
@@ -124,6 +123,9 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                             mQueueAdapter.addAll(printer.getQueue());
                         }
 
+                        mQueueDialog.setTitle(String.format("%s: %s",
+                                mContext.getString(R.string.queue),
+                                printer.getName()));
                         mQueueDialog.show();
                     }
                 });
