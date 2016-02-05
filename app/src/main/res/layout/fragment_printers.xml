@@ -21,19 +21,12 @@
             card_view:cardBackgroundColor="@android:color/white"
             card_view:cardUseCompatPadding="true">
 
-            <RelativeLayout
-                android:id="@+id/printers_list"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/printers"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/printers"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clipToPadding="false"
-                    android:scrollbars="vertical" />
-
-            </RelativeLayout>
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:scrollbars="vertical" />
 
             <include layout="@layout/error" />
 

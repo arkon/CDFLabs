@@ -21,20 +21,12 @@
             card_view:cardBackgroundColor="@android:color/white"
             card_view:cardUseCompatPadding="true">
 
-            <RelativeLayout
-                android:id="@+id/labs_list"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/labs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/labs"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clipToPadding="false"
-                    android:scrollbars="vertical" />
-
-            </RelativeLayout>
+                android:clipToPadding="false"
+                android:scrollbars="vertical" />
 
             <include layout="@layout/error" />
 

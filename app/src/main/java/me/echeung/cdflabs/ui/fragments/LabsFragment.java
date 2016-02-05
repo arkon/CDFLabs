@@ -75,9 +75,7 @@ public class LabsFragment extends TabFragment {
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_labs, container, false);
 
-        // Some references
         mPullToRefresh = (SwipeRefreshLayout) rootView.findViewById(R.id.labs_container);
-        mContent = (RelativeLayout) rootView.findViewById(R.id.labs_list);
 
         // List/adapter
         mList = (RecyclerView) rootView.findViewById(R.id.labs);

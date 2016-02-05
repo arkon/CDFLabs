@@ -29,7 +29,6 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
     protected LinearLayout mError;
     protected TextView mErrorMsg;
     protected SwipeRefreshLayout mPullToRefresh;
-    protected RelativeLayout mContent;
     protected RecyclerView mList;
 
     /**
@@ -139,7 +138,7 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
         loadedData = true;
 
         // Show the content
-        mContent.setVisibility(View.VISIBLE);
+        mList.setVisibility(View.VISIBLE);
 
         // Complete pull to refresh
         mPullToRefresh.setRefreshing(false);
@@ -173,7 +172,7 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
      */
     private void showError() {
         mError.setVisibility(View.VISIBLE);
-        mContent.setVisibility(View.GONE);
+        mList.setVisibility(View.GONE);
 
         mPullToRefresh.setRefreshing(false);
         mPullToRefresh.setEnabled(false);

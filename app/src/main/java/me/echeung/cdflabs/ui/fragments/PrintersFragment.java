@@ -69,9 +69,7 @@ public class PrintersFragment extends TabFragment {
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_printers, container, false);
 
-        // Some references
         mPullToRefresh = (SwipeRefreshLayout) rootView.findViewById(R.id.printers_container);
-        mContent = (RelativeLayout) rootView.findViewById(R.id.printers_list);
 
         // List/adapter
         mList = (RecyclerView) rootView.findViewById(R.id.printers);
