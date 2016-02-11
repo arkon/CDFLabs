@@ -111,6 +111,9 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 printerHolder.titleView.setText(printer.getName());
                 printerHolder.subtitleView.setText(printer.getDescription());
 
+                // Show overflow icon
+                printerHolder.moreView.setVisibility(View.VISIBLE);
+
                 // Show queue in dialog on click
                 printerHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -174,7 +177,7 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         this.mQueue.clear();
 
         // Sort printers
-        List<Printer> sortedPrinters= this.mPrintersData.getPrinters();
+        List<Printer> sortedPrinters = this.mPrintersData.getPrinters();
         Collections.sort(sortedPrinters, this.mComparator);
 
         for (final Printer printer : sortedPrinters) {

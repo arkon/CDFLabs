@@ -14,6 +14,7 @@ public class ListItemHolder extends RecyclerView.ViewHolder {
     public TextView statusAdjView;
     public TextView titleView;
     public TextView subtitleView;
+    public LinearLayout moreView;
 
     public ListItemHolder(View itemView) {
         super(itemView);
@@ -23,5 +24,6 @@ public class ListItemHolder extends RecyclerView.ViewHolder {
         statusAdjView = (TextView) itemView.findViewById(R.id.status_adj);
         titleView = (TextView) itemView.findViewById(R.id.item_title);
         subtitleView = (TextView) itemView.findViewById(R.id.item_subtitle);
+        moreView = (LinearLayout) itemView.findViewById(R.id.item_more);
     }
 }
