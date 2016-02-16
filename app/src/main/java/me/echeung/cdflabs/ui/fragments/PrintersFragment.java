@@ -101,9 +101,11 @@ public class PrintersFragment extends TabFragment {
      * @param queue The queue information.
      */
     public void updateQueue(Printers queue) {
-        super.updateContent();
+        if (queue != null) {
+            super.updateContent();
 
-        adapter.setPrintQueue(queue);
+            adapter.setPrintQueue(queue);
+        }
     }
 
     /**

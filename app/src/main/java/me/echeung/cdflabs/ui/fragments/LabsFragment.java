@@ -107,9 +107,11 @@ public class LabsFragment extends TabFragment {
      * @param labs The labs data to display.
      */
     public void updateAdapter(Labs labs) {
-        super.updateContent();
+        if (labs != null) {
+            super.updateContent();
 
-        adapter.setLabs(labs);
+            adapter.setLabs(labs);
+        }
     }
 
     /**
