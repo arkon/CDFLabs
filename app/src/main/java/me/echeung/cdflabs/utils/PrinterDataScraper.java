@@ -18,11 +18,7 @@ public class PrinterDataScraper extends AsyncTask<Void, Void, Void> {
     private static final String PRINT_QUEUE_URL =
             "http://www.cdf.toronto.edu/~g3cheunh/cdfprinters.json";
 
-    private Printers queue;
     private String response;
-
-    public PrinterDataScraper() {
-    }
 
     @Override
     protected Void doInBackground(Void... params) {
@@ -39,17 +35,20 @@ public class PrinterDataScraper extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void items) {
         final PrintersFragment printersFragment = ViewPagerAdapter.getPrintersFragment();
 
-        if (response != null) {
-            Gson gson = new Gson();
-            queue = gson.fromJson(response, Printers.class);
+        if (printersFragment != null) {
+            if (response != null) {
+                Gson gson = new Gson();
+                final Printers queue = gson.fromJson(response, Printers.class);
 
-            // Sort the printers by name
-            Collections.sort(queue.getPrinters(), new PrintersByName());
+                if (queue != null) {
+                    // Sort the printers by name
+                    Collections.sort(queue.getPrinters(), new PrintersByName());
 
-            if (printersFragment != null) {
-                printersFragment.updateQueue(queue);
+                    printersFragment.updateQueue(queue);
+                    return;
+                }
             }
-        } else {
+
             printersFragment.showFetchError();
         }
     }

@@ -15,11 +15,7 @@ public class LabDataScraper extends AsyncTask<Void, Void, Void> {
     private static final String USAGE_URL =
             "http://www.cdf.toronto.edu/~g3cheunh/cdflabs.json";
 
-    private Labs labs;
     private String response;
-
-    public LabDataScraper() {
-    }
 
     @Override
     protected Void doInBackground(Void... params) {
@@ -36,14 +32,17 @@ public class LabDataScraper extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void items) {
         final LabsFragment labsFragment = ViewPagerAdapter.getLabsFragment();
 
-        if (response != null) {
-            Gson gson = new Gson();
-            labs = gson.fromJson(response, Labs.class);
+        if (labsFragment != null) {
+            if (response != null) {
+                Gson gson = new Gson();
+                final Labs labs = gson.fromJson(response, Labs.class);
 
-            if (labsFragment != null) {
-                labsFragment.updateAdapter(labs);
+                if (labs != null) {
+                    labsFragment.updateAdapter(labs);
+                    return;
+                }
             }
-        } else {
+
             labsFragment.showFetchError();
         }
     }
