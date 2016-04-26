@@ -61,7 +61,7 @@ public class Printer {
     private void calculateQueued() {
         int queued = 0;
         for (final PrintJob job : jobs) {
-            if (!job.getRaw().contains("ERROR") && !job.getRank().equals("done")) {
+            if (!job.hasError() && !job.getRank().equals("done")) {
                 queued++;
             }
         }

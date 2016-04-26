@@ -17,7 +17,7 @@ import me.echeung.cdflabs.enums.SortEnum;
 import me.echeung.cdflabs.labs.Labs;
 import me.echeung.cdflabs.ui.AppState;
 import me.echeung.cdflabs.ui.fragments.base.TabFragment;
-import me.echeung.cdflabs.utils.LabDataScraper;
+import me.echeung.cdflabs.utils.LabDataFetcher;
 import me.echeung.cdflabs.utils.NetworkUtils;
 
 public class LabsFragment extends TabFragment {
@@ -97,7 +97,7 @@ public class LabsFragment extends TabFragment {
         super.fetchData();
 
         if (NetworkUtils.isNetworkAvailable(getActivity())) {
-            new LabDataScraper().execute();
+            new LabDataFetcher().execute();
         }
     }
 

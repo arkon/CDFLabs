@@ -18,7 +18,7 @@ import me.echeung.cdflabs.printers.Printers;
 import me.echeung.cdflabs.ui.AppState;
 import me.echeung.cdflabs.ui.fragments.base.TabFragment;
 import me.echeung.cdflabs.utils.NetworkUtils;
-import me.echeung.cdflabs.utils.PrinterDataScraper;
+import me.echeung.cdflabs.utils.PrinterDataFetcher;
 
 public class PrintersFragment extends TabFragment {
 
@@ -91,7 +91,7 @@ public class PrintersFragment extends TabFragment {
         super.fetchData();
 
         if (NetworkUtils.isNetworkAvailable(getActivity())) {
-            new PrinterDataScraper().execute();
+            new PrinterDataFetcher().execute();
         }
     }
 
