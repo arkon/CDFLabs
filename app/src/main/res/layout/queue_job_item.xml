@@ -7,13 +7,6 @@
     android:padding="@dimen/small_margin">
 
     <TextView
-        android:id="@+id/print_job_owner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-        tools:text="Owner" />
-
-    <TextView
         android:id="@+id/print_job_files"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

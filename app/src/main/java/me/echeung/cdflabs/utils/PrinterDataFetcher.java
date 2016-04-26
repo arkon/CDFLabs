@@ -13,7 +13,7 @@ import me.echeung.cdflabs.comparators.PrintersByName;
 import me.echeung.cdflabs.printers.Printers;
 import me.echeung.cdflabs.ui.fragments.PrintersFragment;
 
-public class PrinterDataScraper extends AsyncTask<Void, Void, Void> {
+public class PrinterDataFetcher extends AsyncTask<Void, Void, Void> {
 
     private static final String PRINT_QUEUE_URL =
             "http://www.cdf.toronto.edu/~g3cheunh/cdfprinters.json";

@@ -10,7 +10,7 @@ import me.echeung.cdflabs.adapters.ViewPagerAdapter;
 import me.echeung.cdflabs.labs.Labs;
 import me.echeung.cdflabs.ui.fragments.LabsFragment;
 
-public class LabDataScraper extends AsyncTask<Void, Void, Void> {
+public class LabDataFetcher extends AsyncTask<Void, Void, Void> {
 
     private static final String USAGE_URL =
             "http://www.cdf.toronto.edu/~g3cheunh/cdflabs.json";

@@ -8,14 +8,12 @@ import me.echeung.cdflabs.R;
 
 public class PrintJobHolder extends RecyclerView.ViewHolder {
 
-    public TextView ownerView;
     public TextView filesView;
     public TextView infoView;
 
     public PrintJobHolder(View itemView) {
         super(itemView);
 
-        ownerView = (TextView) itemView.findViewById(R.id.print_job_owner);
         filesView = (TextView) itemView.findViewById(R.id.print_job_files);
         infoView = (TextView) itemView.findViewById(R.id.print_job_info);
     }
