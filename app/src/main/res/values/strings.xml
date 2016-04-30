@@ -30,6 +30,7 @@
 
     <string name="queue">Printer queue</string>
     <string name="queue_empty">This printer has no jobs in its queue.</string>
+    <string name="queue_rank" formatted="false">Rank: %s</string>
     <string name="queue_files" formatted="false">Rank: %s (size: %s B)</string>
     <string name="queue_info" formatted="false">Job ID: %s | Started at %s</string>
 

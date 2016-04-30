@@ -26,12 +26,17 @@ public class PrinterQueueListAdapter extends ArrayAdapter<PrintJob> {
         final PrintJob job = getItem(position);
 
         if (job.hasError()) {
-            holder.filesView.setText(job.getError());
+            holder.filesView.setText(
+                    String.format(getContext().getString(R.string.queue_rank),
+                            job.getRank()));
+            holder.infoView.setText(job.getError());
         } else {
             holder.filesView.setText(
-                    String.format(getContext().getString(R.string.queue_files), job.getRank(), job.getSize()));
+                    String.format(getContext().getString(R.string.queue_files),
+                            job.getRank(), job.getSize()));
             holder.infoView.setText(
-                    String.format(getContext().getString(R.string.queue_info), job.getJob(), job.getTime()));
+                    String.format(getContext().getString(R.string.queue_info),
+                            job.getJob(), job.getTime()));
         }
 
         return itemView;
