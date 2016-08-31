@@ -148,11 +148,11 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         Collections.sort(sortedLabs, this.mComparator);
 
         for (final Lab lab : sortedLabs) {
-            this.mLabs.add(new ListItem(ListEnum.ITEM, lab));
+            this.mLabs.add(new ListItem<>(ListEnum.ITEM, lab));
         }
 
         // Timestamp
-        this.mLabs.add(new ListItem(ListEnum.TIMESTAMP, this.mLabsData.getTimestamp()));
+        this.mLabs.add(new ListItem<>(ListEnum.TIMESTAMP, this.mLabsData.getTimestamp()));
 
         notifyDataSetChanged();
     }

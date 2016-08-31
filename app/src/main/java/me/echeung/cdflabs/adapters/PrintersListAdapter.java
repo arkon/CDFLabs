@@ -181,13 +181,13 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         Collections.sort(sortedPrinters, this.mComparator);
 
         for (final Printer printer : sortedPrinters) {
-            this.mQueue.add(new ListItem(ListEnum.ITEM,
+            this.mQueue.add(new ListItem<>(ListEnum.ITEM,
                     new PrintersListItem(printer.getName(), printer.getDescription(),
                             printer.getJobs(), printer.getQueued())));
         }
 
         // Timestamp
-        this.mQueue.add(new ListItem(ListEnum.TIMESTAMP, this.mPrintersData.getTimestamp()));
+        this.mQueue.add(new ListItem<>(ListEnum.TIMESTAMP, this.mPrintersData.getTimestamp()));
 
         notifyDataSetChanged();
     }
