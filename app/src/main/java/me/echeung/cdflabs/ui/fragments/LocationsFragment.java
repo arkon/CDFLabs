@@ -35,21 +35,11 @@ public class LocationsFragment extends Fragment {
 
         // Google Maps for Bahen address
         final TextView bahenAddress = (TextView) rootView.findViewById(R.id.bahen_address);
-        bahenAddress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openLink(BAHEN_MAP_ADDRESS);
-            }
-        });
+        bahenAddress.setOnClickListener(view -> openLink(BAHEN_MAP_ADDRESS));
 
         // Webpage for NX
         final Button nxMore = (Button) rootView.findViewById(R.id.more_nx);
-        nxMore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openLink(NX_ADDRESS);
-            }
-        });
+        nxMore.setOnClickListener(view -> openLink(NX_ADDRESS));
 
         return rootView;
     }

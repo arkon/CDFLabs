@@ -62,12 +62,7 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
         mErrorMsg = (TextView) rootView.findViewById(R.id.error_msg);
 
         mPullToRefresh.setColorSchemeResources(R.color.colorAccent);
-        mPullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                fetchData();
-            }
-        });
+        mPullToRefresh.setOnRefreshListener(() -> fetchData());
 
         mList.addItemDecoration(new DividerItemDecoration(getContext()));
         mList.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -88,12 +83,7 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
 
         // No connection retry button
         final Button mRetry = (Button) rootView.findViewById(R.id.btn_retry);
-        mRetry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fetchAllData();
-            }
-        });
+        mRetry.setOnClickListener(view -> fetchAllData());
 
         loadedData = false;
 
@@ -155,12 +145,7 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
 
         if (isAdded()) {
             Snackbar.make(mList, getString(R.string.error_connection_short), Snackbar.LENGTH_LONG)
-                    .setAction(getString(R.string.retry), new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            fetchData();
-                        }
-                    })
+                    .setAction(getString(R.string.retry), view -> fetchData())
                     .show();
         }
     }
