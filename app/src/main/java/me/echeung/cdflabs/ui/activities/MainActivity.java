@@ -3,6 +3,7 @@ package me.echeung.cdflabs.ui.activities;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
@@ -12,6 +13,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,9 +45,16 @@ public class MainActivity extends AppCompatActivity {
             version = "";
         }
 
+        Spanned message;
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            message = Html.fromHtml(getString(R.string.help_content, version), Html.FROM_HTML_MODE_LEGACY);
+        } else {
+            message = Html.fromHtml(getString(R.string.help_content, version));
+        }
+
         mHelpDialog = new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle)
                 .setTitle(R.string.help_and_feedback)
-                .setMessage(Html.fromHtml(getString(R.string.help_content, version)))
+                .setMessage(message)
                 .setPositiveButton(R.string.close, null)
                 .create();
     }
