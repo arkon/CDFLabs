@@ -62,7 +62,7 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
         mErrorMsg = (TextView) rootView.findViewById(R.id.error_msg);
 
         mPullToRefresh.setColorSchemeResources(R.color.colorAccent);
-        mPullToRefresh.setOnRefreshListener(() -> fetchData());
+        mPullToRefresh.setOnRefreshListener(this::fetchData);
 
         mList.addItemDecoration(new DividerItemDecoration(getContext()));
         mList.setLayoutManager(new LinearLayoutManager(getActivity()));

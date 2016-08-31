@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         final int darkColor = ContextCompat.getColor(this, R.color.colorPrimaryDark);
 
         // Change app bar title on tab change
-        mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 final int position = tab.getPosition();
