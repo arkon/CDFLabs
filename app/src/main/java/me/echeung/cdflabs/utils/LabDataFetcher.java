@@ -13,7 +13,7 @@ import me.echeung.cdflabs.ui.fragments.LabsFragment;
 public class LabDataFetcher extends AsyncTask<Void, Void, Void> {
 
     private static final String USAGE_URL =
-            "http://www.cdf.toronto.edu/~g3cheunh/cdflabs.json";
+            "http://www.teach.cs.toronto.edu/~cheun550/cdflabs.json";
 
     private String response;
 

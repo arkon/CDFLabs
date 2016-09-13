@@ -16,7 +16,7 @@ import me.echeung.cdflabs.ui.fragments.PrintersFragment;
 public class PrinterDataFetcher extends AsyncTask<Void, Void, Void> {
 
     private static final String PRINT_QUEUE_URL =
-            "http://www.cdf.toronto.edu/~g3cheunh/cdfprinters.json";
+            "http://www.teach.cs.toronto.edu/~cheun550/cdfprinters.json";
 
     private String response;
 
