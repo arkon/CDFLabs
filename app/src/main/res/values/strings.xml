@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CDF Labs</string>
+    <string name="app_name">CS Teaching Labs</string>
 
     <string name="refresh">Refresh</string>
     <string name="close">Close</string>
@@ -36,22 +36,22 @@
 
     <string name="bahen_name">Bahen Centre for Information Technology</string>
     <string name="bahen_address">40 St George Street, Toronto, ON M5S 2E4</string>
-    <string name="bahen_info">The Bahen Centre hosts the majority of the CDF labs. The labs are located in the following rooms: BA 2210, BA 2220, BA 2240, BA 3175, BA 3185, BA 3195 and BA 3200.</string>
+    <string name="bahen_info">The Bahen Centre hosts the majority of the labs. The labs are located in the following rooms: BA 2210, BA 2220, BA 2240, BA 3175, BA 3185, BA 3195 and BA 3200.</string>
     <string name="bahen_map_second">Second floor</string>
     <string name="bahen_map_third">Third floor</string>
     <string name="bahen_map_second_alt">Map of Bahen\'s second floor</string>
     <string name="bahen_map_third_alt">Map of Bahen\'s third floor</string>
 
     <string name="nx_name">NX (Remote Access Server)</string>
-    <string name="nx_info">CDF offers an NX server for remote desktop connection from home or from your laptop via the wireless network. The NX technology attempts to greatly improve the experience of remote graphical connection over a slow Internet link by optimising perceived speed of response and allowing one to suspend a graphical session and reconnect to it later. You can also connect to CDF\'s NX server from any CDF workstation or Information Commons workstation using a specially crafted profile.</string>
+    <string name="nx_info">CS Teaching Labs offers an NX server for remote desktop connection from home or from your laptop via the wireless network. The NX technology attempts to greatly improve the experience of remote graphical connection over a slow Internet link by optimising perceived speed of response and allowing one to suspend a graphical session and reconnect to it later. You can also connect to CS Teaching Labs\'s NX server from any CS Teaching Labs workstation or Information Commons workstation using a specially crafted profile.</string>
     <string name="nx_more">More information online</string>
 
     <string name="help_content"><![CDATA[
-        <b>CDF Labs %1$s</b> by <a href=\'http://echeung.me\'>Eugene Cheung</a><br/>
+        <b>CDF Labs %1$s</b> by <a href=\'https://echeung.me\'>Eugene Cheung</a><br/>
         <br/>
         Report bugs or request features on <a href=\'https://github.com/arkon/CDFLabs\'>GitHub</a>.<br/>
         <br/>
-        Find out more about CDF in the <a href=\'http://www.cdf.toronto.edu/faq.html\'>CDF FAQ</a>.<br/>
-        This app is not affiliated with CDF or the University of Toronto in any way.
+        Find out more about the CS Teaching Labs in the <a href=\'http://www.teach.cs.toronto.edu/faq.html\'>CS Teaching Labs FAQ</a>.<br/>
+        This app is not affiliated with the CS Teaching Labs or the University of Toronto in any way.
     ]]></string>
 </resources>
