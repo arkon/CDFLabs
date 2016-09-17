@@ -36,7 +36,7 @@
 
     <string name="bahen_name">Bahen Centre for Information Technology</string>
     <string name="bahen_address">40 St George Street, Toronto, ON M5S 2E4</string>
-    <string name="bahen_info">The Bahen Centre hosts the majority of the labs. The labs are located in the following rooms: BA 2210, BA 2220, BA 2240, BA 3175, BA 3185, BA 3195 and BA 3200.</string>
+    <string name="bahen_info">The Bahen Centre hosts the majority of the labs. The labs are located in the following rooms: BA 2200, BA 2220, BA 2270, BA 3175, BA 3185, and BA 3195.</string>
     <string name="bahen_map_second">Second floor</string>
     <string name="bahen_map_third">Third floor</string>
     <string name="bahen_map_second_alt">Map of Bahen\'s second floor</string>
@@ -47,11 +47,11 @@
     <string name="nx_more">More information online</string>
 
     <string name="help_content"><![CDATA[
-        <b>CDF Labs %1$s</b> by <a href=\'https://echeung.me\'>Eugene Cheung</a><br/>
+        <b>CS Teaching Labs %1$s</b> by <a href=\'https://echeung.me\'>Eugene Cheung</a><br/>
         <br/>
         Report bugs or request features on <a href=\'https://github.com/arkon/CDFLabs\'>GitHub</a>.<br/>
         <br/>
-        Find out more about the CS Teaching Labs in the <a href=\'http://www.teach.cs.toronto.edu/faq.html\'>CS Teaching Labs FAQ</a>.<br/>
+        Find out more about the CS Teaching Labs in <a href=\'http://www.teach.cs.toronto.edu/faq.html\'>their FAQ</a>.<br/>
         This app is not affiliated with the CS Teaching Labs or the University of Toronto in any way.
     ]]></string>
 </resources>
