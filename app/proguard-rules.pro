@@ -5,7 +5,7 @@
 # removes such information by default, so configure it to keep all of it.
 -keepattributes Signature
 
-# Gson specific classes
+# Gson-specific classes
 -keep class sun.misc.Unsafe { *; }
 #-keep class com.google.gson.stream.** { *; }
 
@@ -13,8 +13,14 @@
 -keep class me.echeung.cdflabs.labs.** { *; }
 -keep class me.echeung.cdflabs.printers.** { *; }
 
-##---------------End: proguard configuration for Gson  ----------
+##---------------End:   proguard configuration for Gson  ----------
+
 
 ##---------------Begin: proguard configuration for jsoup  ----------
 -keeppackagenames org.jsoup.nodes
-##---------------End: proguard configuration for jsoup  ----------
+##---------------End:   proguard configuration for jsoup  ----------
+
+
+##---------------Begin: proguard configuration for support lib  ----------
+-keep class android.support.v7.widget.** {*;}
+##---------------End:   proguard configuration for support lib  ----------

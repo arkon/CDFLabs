@@ -8,16 +8,17 @@ android {
         applicationId "me.echeung.cdflabs"
         minSdkVersion 16
         targetSdkVersion 24
-        versionCode 29
-        versionName "3.2.0"
+        versionCode 30
+        versionName "3.2.1"
         vectorDrawables.useSupportLibrary = true
         jackOptions.enabled = true
     }
 
     buildTypes {
         release {
-            minifyEnabled true
-            shrinkResources true
+//            TODO: doesn't work with Jack...?
+//            minifyEnabled true
+//            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
