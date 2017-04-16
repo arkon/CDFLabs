@@ -22,13 +22,11 @@ public abstract class TabFragment extends Fragment implements ITabFragment {
      * The fragment argument representing the section number for this fragment.
      */
     private static final String ARG_SECTION_NUMBER = "section_number";
-
-    private boolean loadedData;
-
     protected LinearLayout mError;
     protected TextView mErrorMsg;
     protected SwipeRefreshLayout mPullToRefresh;
     protected RecyclerView mList;
+    private boolean loadedData;
 
     /**
      * Returns a new instance of the fragment for the given section number.

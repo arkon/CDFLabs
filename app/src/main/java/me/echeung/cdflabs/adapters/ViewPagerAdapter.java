@@ -16,14 +16,12 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     private static LabsFragment labsFragment;
     private static PrintersFragment printersFragment;
     private static LocationsFragment locationsFragment;
-
-    private String[] TITLES;
-
     final private int[] ICONS = new int[]{
             R.drawable.ic_desktop,
             R.drawable.ic_print,
             R.drawable.ic_explore
     };
+    private String[] TITLES;
 
     public ViewPagerAdapter(FragmentManager fm, Context mContext) {
         super(fm);
