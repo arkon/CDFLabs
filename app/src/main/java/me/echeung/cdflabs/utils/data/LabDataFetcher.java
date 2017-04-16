@@ -1,4 +1,4 @@
-package me.echeung.cdflabs.utils;
+package me.echeung.cdflabs.utils.data;
 
 import android.os.AsyncTask;
 
@@ -13,7 +13,7 @@ import me.echeung.cdflabs.ui.fragments.LabsFragment;
 public class LabDataFetcher extends AsyncTask<Void, Void, Void> {
 
     private static final String USAGE_URL =
-            "http://www.teach.cs.toronto.edu/~cheun550/cdflabs.json";
+            "https://cssu.ca/data/cdflabs.json";
 
     private String response;
 
@@ -34,7 +34,7 @@ public class LabDataFetcher extends AsyncTask<Void, Void, Void> {
 
         if (labsFragment != null) {
             if (response != null) {
-                Gson gson = new Gson();
+                final Gson gson = new Gson();
                 final Labs labs = gson.fromJson(response, Labs.class);
 
                 if (labs != null) {

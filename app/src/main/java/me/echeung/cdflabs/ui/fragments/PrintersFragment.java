@@ -18,7 +18,7 @@ import me.echeung.cdflabs.printers.Printers;
 import me.echeung.cdflabs.ui.AppState;
 import me.echeung.cdflabs.ui.fragments.base.TabFragment;
 import me.echeung.cdflabs.utils.NetworkUtils;
-import me.echeung.cdflabs.utils.PrinterDataFetcher;
+import me.echeung.cdflabs.utils.data.PrinterDataFetcher;
 
 public class PrintersFragment extends TabFragment {
 

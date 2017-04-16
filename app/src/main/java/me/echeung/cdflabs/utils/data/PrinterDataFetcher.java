@@ -1,4 +1,4 @@
-package me.echeung.cdflabs.utils;
+package me.echeung.cdflabs.utils.data;
 
 import android.os.AsyncTask;
 
@@ -16,7 +16,7 @@ import me.echeung.cdflabs.ui.fragments.PrintersFragment;
 public class PrinterDataFetcher extends AsyncTask<Void, Void, Void> {
 
     private static final String PRINT_QUEUE_URL =
-            "http://www.teach.cs.toronto.edu/~cheun550/cdfprinters.json";
+            "https://cssu.ca/data/cdfprinters.json";
 
     private String response;
 
@@ -37,7 +37,7 @@ public class PrinterDataFetcher extends AsyncTask<Void, Void, Void> {
 
         if (printersFragment != null) {
             if (response != null) {
-                Gson gson = new Gson();
+                final Gson gson = new Gson();
                 final Printers queue = gson.fromJson(response, Printers.class);
 
                 if (queue != null) {
