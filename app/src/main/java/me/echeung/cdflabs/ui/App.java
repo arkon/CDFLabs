@@ -7,7 +7,7 @@ import android.preference.PreferenceManager;
 import me.echeung.cdflabs.enums.PreferencesEnum;
 import me.echeung.cdflabs.enums.SortEnum;
 
-public class AppState extends Application {
+public class App extends Application {
 
     private static SharedPreferences preferences;
 
@@ -16,26 +16,14 @@ public class AppState extends Application {
 
     private static int printerSort;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-        AppState.preferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-        AppState.labSort = AppState.preferences.getInt(PreferencesEnum.LAB_SORT, SortEnum.AVAIL);
-        AppState.labShowNX = AppState.preferences.getBoolean(PreferencesEnum.LAB_NX, true);
-
-        AppState.printerSort = AppState.preferences.getInt(PreferencesEnum.PRINTER_SORT, SortEnum.NAME);
-    }
-
     public static int getLabSort() {
         return labSort;
     }
 
     public static void setLabSort(int value) {
-        AppState.labSort = value;
+        App.labSort = value;
 
-        SharedPreferences.Editor editor = AppState.preferences.edit();
+        SharedPreferences.Editor editor = App.preferences.edit();
         editor.putInt(PreferencesEnum.LAB_SORT, value);
         editor.apply();
     }
@@ -45,9 +33,9 @@ public class AppState extends Application {
     }
 
     public static void setNXVisibility(boolean value) {
-        AppState.labShowNX = value;
+        App.labShowNX = value;
 
-        SharedPreferences.Editor editor = AppState.preferences.edit();
+        SharedPreferences.Editor editor = App.preferences.edit();
         editor.putBoolean(PreferencesEnum.LAB_NX, value);
         editor.apply();
     }
@@ -57,10 +45,22 @@ public class AppState extends Application {
     }
 
     public static void setPrinterSort(int value) {
-        AppState.printerSort = value;
+        App.printerSort = value;
 
-        SharedPreferences.Editor editor = AppState.preferences.edit();
+        SharedPreferences.Editor editor = App.preferences.edit();
         editor.putInt(PreferencesEnum.PRINTER_SORT, value);
         editor.apply();
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        App.preferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        App.labSort = App.preferences.getInt(PreferencesEnum.LAB_SORT, SortEnum.AVAIL);
+        App.labShowNX = App.preferences.getBoolean(PreferencesEnum.LAB_NX, true);
+
+        App.printerSort = App.preferences.getInt(PreferencesEnum.PRINTER_SORT, SortEnum.NAME);
     }
 }

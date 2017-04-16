@@ -15,7 +15,7 @@ import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.adapters.PrintersListAdapter;
 import me.echeung.cdflabs.enums.SortEnum;
 import me.echeung.cdflabs.printers.Printers;
-import me.echeung.cdflabs.ui.AppState;
+import me.echeung.cdflabs.ui.App;
 import me.echeung.cdflabs.ui.fragments.base.TabFragment;
 import me.echeung.cdflabs.utils.NetworkUtils;
 import me.echeung.cdflabs.utils.data.PrinterDataFetcher;
@@ -36,7 +36,7 @@ public class PrintersFragment extends TabFragment {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_printers, menu);
 
-        switch (AppState.getPrinterSort()) {
+        switch (App.getPrinterSort()) {
             case SortEnum.AVAIL:
                 menu.findItem(R.id.printersSortAvail).setChecked(true);
                 break;
@@ -114,7 +114,7 @@ public class PrintersFragment extends TabFragment {
      * @param type The sorting mode, which is from SortEnum.
      */
     private void setSortMode(int type) {
-        AppState.setPrinterSort(type);
+        App.setPrinterSort(type);
 
         adapter.updateSortingCriteria();
     }

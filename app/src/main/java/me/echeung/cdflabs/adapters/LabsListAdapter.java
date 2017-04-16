@@ -21,7 +21,7 @@ import me.echeung.cdflabs.holders.ListItemHolder;
 import me.echeung.cdflabs.holders.TimestampHolder;
 import me.echeung.cdflabs.labs.Lab;
 import me.echeung.cdflabs.labs.Labs;
-import me.echeung.cdflabs.ui.AppState;
+import me.echeung.cdflabs.ui.App;
 import me.echeung.cdflabs.utils.ListItem;
 
 public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -114,7 +114,7 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     public void updateSortingCriteria() {
-        switch (AppState.getLabSort()) {
+        switch (App.getLabSort()) {
             case SortEnum.NAME:
                 this.mComparator = new LabsByBuilding();
                 break;
@@ -136,7 +136,7 @@ public class LabsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         List<Lab> sortedLabs = new ArrayList<>(this.mLabsData.getLabs());
 
         // Remove NX if set to do so
-        if (!AppState.isNXVisible()) {
+        if (!App.isNXVisible()) {
             for (final Lab lab : sortedLabs) {
                 if (lab.getName().equals("NX")) {
                     sortedLabs.remove(lab);

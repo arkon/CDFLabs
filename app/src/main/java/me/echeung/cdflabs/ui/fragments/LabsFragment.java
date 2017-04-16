@@ -15,10 +15,10 @@ import me.echeung.cdflabs.R;
 import me.echeung.cdflabs.adapters.LabsListAdapter;
 import me.echeung.cdflabs.enums.SortEnum;
 import me.echeung.cdflabs.labs.Labs;
-import me.echeung.cdflabs.ui.AppState;
+import me.echeung.cdflabs.ui.App;
 import me.echeung.cdflabs.ui.fragments.base.TabFragment;
-import me.echeung.cdflabs.utils.data.LabDataFetcher;
 import me.echeung.cdflabs.utils.NetworkUtils;
+import me.echeung.cdflabs.utils.data.LabDataFetcher;
 
 public class LabsFragment extends TabFragment {
 
@@ -36,7 +36,7 @@ public class LabsFragment extends TabFragment {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_labs, menu);
 
-        switch (AppState.getLabSort()) {
+        switch (App.getLabSort()) {
             case SortEnum.AVAIL:
                 menu.findItem(R.id.labsSortAvail).setChecked(true);
                 break;
@@ -46,7 +46,7 @@ public class LabsFragment extends TabFragment {
                 break;
         }
 
-        menu.findItem(R.id.labsShowNX).setChecked(AppState.isNXVisible());
+        menu.findItem(R.id.labsShowNX).setChecked(App.isNXVisible());
     }
 
     @Override
@@ -120,13 +120,13 @@ public class LabsFragment extends TabFragment {
      * @param type The sorting mode, which is from SortEnum.
      */
     private void setSortMode(int type) {
-        AppState.setLabSort(type);
+        App.setLabSort(type);
 
         adapter.updateSortingCriteria();
     }
 
     private void setNXVisibility(boolean visible) {
-        AppState.setNXVisibility(visible);
+        App.setNXVisibility(visible);
 
         adapter.updateList();
     }

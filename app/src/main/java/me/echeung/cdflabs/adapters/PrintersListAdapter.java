@@ -24,7 +24,7 @@ import me.echeung.cdflabs.holders.TimestampHolder;
 import me.echeung.cdflabs.printers.Printer;
 import me.echeung.cdflabs.printers.Printers;
 import me.echeung.cdflabs.printers.PrintersListItem;
-import me.echeung.cdflabs.ui.AppState;
+import me.echeung.cdflabs.ui.App;
 import me.echeung.cdflabs.utils.ListItem;
 
 public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -158,7 +158,7 @@ public class PrintersListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     public void updateSortingCriteria() {
-        switch (AppState.getPrinterSort()) {
+        switch (App.getPrinterSort()) {
             case SortEnum.NAME:
                 this.mComparator = new PrintersByName();
                 break;
